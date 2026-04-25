@@ -1,34 +1,101 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+/* App-level utility classes */
+.section-pad {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+@media (min-width: 768px) {
+  .section-pad {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+.container-x {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+@media (min-width: 768px) {
+  .container-x {
+    padding-inline: 2.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .container-x {
+    padding-inline: 4rem;
+  }
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+/* Gold button */
+.btn-gold {
+  background-color: #c5a059;
+  color: #fff;
+  padding: 0.95rem 2rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: none;
+  cursor: pointer;
+}
+.btn-gold:hover {
+  background-color: #a88849;
+  box-shadow: 0 14px 40px -12px rgba(197, 160, 89, 0.55);
+  transform: translateY(-1px);
+}
+.btn-gold:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
-.App-link {
-    color: #61dafb;
+.btn-outline-gold {
+  background-color: transparent;
+  color: #c5a059;
+  border: 1.5px solid #c5a059;
+  padding: 0.85rem 1.85rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.btn-outline-gold:hover {
+  background-color: #f6f1e6;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+/* Eyebrow label */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.7rem;
+  color: #c5a059;
+  font-weight: 500;
+}
+.eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: #c5a059;
+}
+
+/* Card */
+.lux-card {
+  background: #fff;
+  border: 1px solid rgba(232, 226, 215, 0.55);
+  border-radius: 1.25rem;
+  padding: 2rem;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px -8px rgba(0, 0, 0, 0.05);
+}
+.lux-card:hover {
+  box-shadow: 0 24px 50px -16px rgba(42, 38, 38, 0.12);
+  transform: translateY(-3px);
 }
