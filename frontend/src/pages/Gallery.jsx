@@ -7,7 +7,6 @@ import MarqueeBar from "@/components/site/MarqueeBar";
 import Lightbox from "@/components/site/Lightbox";
 import BeforeAfterSlider from "@/components/site/BeforeAfterSlider";
 import WhatsAppButton from "@/components/site/WhatsAppButton";
-import PageTransition from "@/components/site/PageTransition";
 import { api } from "@/lib/api";
 import { fadeUp, stagger } from "@/lib/motion";
 
@@ -42,10 +41,9 @@ export default function Gallery() {
   const regularItems = filtered.filter((i) => i.category !== "before-after");
 
   return (
-    <PageTransition>
-      <div data-testid="gallery-page" className="min-h-screen bg-bg text-ink">
-        <MarqueeBar />
-        <Navbar />
+    <div data-testid="gallery-page" className="min-h-screen bg-bg text-ink">
+      <MarqueeBar />
+      <Navbar />
       <main>
         {/* Header */}
         <section className="pt-32 md:pt-40 pb-12">
@@ -190,7 +188,6 @@ export default function Gallery() {
         src={lightbox.src}
         caption={lightbox.caption}
       />
-      </div>
-    </PageTransition>
+    </div>
   );
 }

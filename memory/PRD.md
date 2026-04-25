@@ -65,19 +65,15 @@ User feedback: admin Gallery & Appointments not mobile-responsive; suggest Hind 
 
 ## Iteration 4 — 2026-04-26 (User feedback)
 User feedback: 1) Hero text top characters cut off 2) Mobile navbar logo text not visible 3) Remove admin link from public footer 4) Add "by Apixel" link 5) Marquee announcement bar with admin toggle 6) Doctors section centered layout 7) Hero right-side image 8) Owner photo in About page.
-- ✅ **Hero text cut-off fixed** — `.reveal-mask` now has `padding-top: 0.18em; padding-bottom: 0.06em; margin-top: -0.18em` to accommodate Bengali matras
-- ✅ **Mobile navbar logo text** — Removed `hidden sm:flex`, now always visible with smaller `text-sm md:text-lg` for "Banani Clinic" + `text-[8px] md:text-[11px]` for "SPECIALIZED HOSPITAL"
-- ✅ **Admin link removed from footer** — public footer only shows About / Privacy / Terms now
-- ✅ **"Crafted by Apixel · www.apixel.net"** at footer bottom-right, target="_blank" with hover effect
-- ✅ **Marquee announcement bar**:
-  - Backend: new `Settings` singleton model (`marqueeEnabled`, `marqueeText`) + `GET /api/settings` (public) + `PUT /api/settings` (admin)
-  - Frontend: `MarqueeBar` component on all public pages (Home, Gallery, About, Privacy, Terms) with gradient #1F4E79→#2C8DCC + horizontal scroll animation + Megaphone icon label
-  - Navbar offsets `top-7 md:top-9` when marquee active
-  - **Admin Settings page** (`/admin/settings`): toggle on/off (animated switch), text edit textarea, live preview, save with success toast
-- ✅ **Doctors section** — Header centered, paragraph below header centered, dynamic max-width based on doctor count (1=max-w-sm, 2=max-w-3xl, 3=max-w-5xl, 4+=max-w-6xl)
-- ✅ **Hero 2-column redesign** — Text left (col-span-7), premium image card right (col-span-5) with floating AACD certified badge top-left + Dr. Aslam Almehdi name card at bottom + decorative dot grid + soft mesh-bg background
-- ✅ **Owner photo** — Dr. Aslam Almehdi's photo (/brand/owner.jpg, 2.5MB) shown in About page with 3:4 aspect, gradient overlay, AACD MEMBER badge
-- ✅ **Testing agent: 16/16 acceptance criteria + 5/5 backend tests PASS (100%)** — zero bugs found
+- ✅ All 8 items shipped + Marquee admin control + Owner photo
+- ✅ **Testing agent: 16/16 acceptance criteria + 5/5 backend tests PASS (100%)**
+
+## Iteration 5 — 2026-04-26 (User feedback)
+User feedback: clicking Home / Gallery / About nav links caused full white flash before page reloaded.
+- ✅ **Removed `AnimatePresence mode="wait"`** + removed all `PageTransition` wrappers from Home / Gallery / About / Privacy / Terms.
+  - **Root cause:** `mode="wait"` made old page fully fade out (opacity → 0 over 0.45s) before new page mounted at opacity 0 then faded in — creating ~450ms blank/white screen.
+  - **Fix:** Plain React Router `Routes` without page-level fade. Section-level animations (whileInView with stagger) on Hero, Services, Doctors etc. still play smoothly. ScrollToTop + ScrollProgress preserved.
+- ✅ Verified: navbar+marquee visible at 20ms after click (was invisible during 0–450ms flash before). Hero word-reveal entry animation still plays as intentional premium effect.
 
 ## Backlog / Future Improvements (P0–P2)
 - **P1**: Multi-language toggle (Bengali ⇄ English)
