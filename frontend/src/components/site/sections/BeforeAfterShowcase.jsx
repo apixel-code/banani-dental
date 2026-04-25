@@ -68,13 +68,13 @@ export default function BeforeAfterShowcase() {
         )}
 
         <div className="text-center mt-12">
-          <Link
-            to="/gallery"
-            data-testid="ba-view-all"
-            className="btn-outline-gold"
-          >
-            সব ট্রান্সফরমেশন দেখুন <ArrowRight className="w-4 h-4" />
-          </Link>
+        <Link
+          to="/gallery"
+          data-testid="ba-view-all"
+          className="btn-outline-gold"
+        >
+          সব ট্রান্সফরমেশন দেখুন <ArrowRight className="w-4 h-4" />
+        </Link>
         </div>
       </div>
     </section>

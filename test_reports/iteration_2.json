@@ -1,0 +1,71 @@
+{
+  "summary": "Frontend-only iteration 2 testing for Banani Clinic UI/UX overhaul. Verified logo integration, blue medical theme, animations (CountUp/word-reveal/scroll-progress), WhatsApp floating button, route transitions without full reload, scroll reset on route change, admin login + dashboard, and mobile responsiveness at 390x844. 13/15 user-feedback items pass. One real bug found: hash navigation (/gallery -> /#contact) navigates the route correctly but DOES NOT scroll to the #contact section after arrival (scrollY stays 0). One minor concern about scroll reset timing.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "HashLink + ScrollToTop race condition",
+        "issue": "Clicking nav-link 'যোগাযোগ' (or any /#section HashLink) FROM a different route (e.g. /gallery) successfully navigates to / but the page does NOT scroll to #contact. Observed scrollY=0 even 2000ms after click, while the user feedback test specifies scrollY > 1000. Root cause: ScrollToTop runs window.scrollTo(0) on pathname change when no hash is present, AND HashLink calls navigate('/', ...) WITHOUT the hash, then sets setTimeout(scrollIntoView, 350). The two cooperate in theory, but scrollIntoView is called on an element that may already be far below the fold and the smooth scroll appears to be cancelled or never executed. Same-route hash clicks (e.g. clicking 'যোগাযোগ' while on /) work fine. Recommended fix: either include the hash in navigate() (navigate('/#contact')) so ScrollToTop sees `hash` and scrolls into view itself, OR remove the ScrollToTop competing scrollTo(0) when the click came from a HashLink (use a small flag in sessionStorage or a custom event). Cleanest: navigate(targetPath + (hash ? `#${hash}` : ''))",
+        "selector": "[data-testid=\"nav-link-যোগাযোগ\"]",
+        "priority": "HIGH"
+      },
+      {
+        "component": "ScrollToTop on route change",
+        "issue": "When navigating Home (scrolled to ~5000) -> /gallery, scrollY at 50ms after click was 4930 (pre-existing position carried over) and only settled to 12 after ~200ms. The instruction said 'resets scrollY to 0 immediately'. Final value also stops at 12 (not 0) - likely framer-motion PageTransition mounts with a transform/y offset that affects effective scroll. Functionally acceptable but not the perfect 0 the spec requested.",
+        "selector": "ScrollToTop.jsx",
+        "priority": "MEDIUM"
+      },
+      {
+        "component": "Hero secondary CTA mobile width",
+        "issue": "On 390x844 viewport, the first hero CTA (.btn-gold primary) renders width=350 (full container, x=20) which is correct, but the second outline CTA renders width=300 with x=45 (centered with extra horizontal margin). The spec says 'full-width on <480px'. Visually it looks fine but technically not full-width.",
+        "selector": ".btn-gold (second variant)",
+        "priority": "LOW"
+      }
+    ],
+    "integration_issues": [],
+    "design_issues": [
+      {
+        "screen": "Admin Dashboard",
+        "issues": [
+          "Dashboard 'নতুন অ্যাপয়েন্টমেন্ট' highlight card correctly uses blue gradient (verified visually) — pass.",
+          "Sidebar logo + 'Banani Clinic / SPECIALIZED HOSPITAL' text rendered correctly."
+        ]
+      }
+    ]
+  },
+  "verified_passing_items": [
+    "Logo image /brand/logo.png loads (naturalWidth=280) on Navbar, Footer, Admin login, AdminLayout (2 logo imgs on admin)",
+    "No full page reload on / -> /gallery -> /#contact (load events stayed at 0 during in-app nav)",
+    "WhatsApp floating btn visible on / and /gallery, NOT on /admin (None) — href = https://wa.me/8801711170890?text=...  target=_blank",
+    "Hero word-reveal text rendering (BANANI CLINIC LTD · SPECIALIZED HOSPITAL ব্যথামুক্ত আধুনিক চিকিৎসায়...)",
+    "CountUp Bengali numerals visible after scroll-into-view: ১৫, ৫০০০, ১০০ all detected in DOM text",
+    "btn-gold uses blue gradient (linear-gradient 135deg #1F4E79 -> #2C8DCC), text color rgb(255,255,255), text content visible (no hidden-text bug)",
+    "ScrollProgress bar element present at top",
+    "Admin login (admin / Admin@2026) -> /admin redirect works; dashboard renders stats cards",
+    "Admin sidebar contains 'Banani Clinic' + 'SPECIALIZED HOSPITAL' subtitle",
+    "Mobile (390x844): logo + hamburger visible; mobile menu opens with 5 nav items + অ্যাপয়েন্টমেন্ট CTA",
+    "Hash nav while ON same route (e.g. clicking যোগাযোগ from /) works (#contact in DOM, no full reload)",
+    "No champagne/gold colors observed; all CTAs blue"
+  ],
+  "test_report_links": ["/app/test_reports/iteration_2.json"],
+  "action_items": [
+    "PRIORITY HIGH: Fix HashLink cross-route scroll-to-section. Recommendation: change navigate(targetPath) to navigate(`${targetPath}#${hash}`) so URL contains the hash, then ScrollToTop's existing hash branch will handle scrollIntoView (and the redundant setTimeout in HashLink can be kept as fallback or removed). Verify: from /gallery, click 'যোগাযোগ', within 1.5s scrollY > 1000.",
+    "PRIORITY MEDIUM: Investigate why scrollY settles at 12 (not 0) after route change. Possibly remove a residual margin/padding or ensure ScrollToTop runs in a useLayoutEffect rather than useEffect to avoid one paint with old scroll.",
+    "PRIORITY LOW: Make second hero CTA full-width on <480px (currently ~300px wide centered)."
+  ],
+  "critical_code_review_comments": [
+    "ScrollToTop uses behavior:'instant' which is supported in modern browsers; observed transient scrollY=4930 at +50ms after route change suggests the effect runs after first paint of the new page. Consider useLayoutEffect for synchronous reset.",
+    "HashLink strips the hash from URL before navigate(), then schedules a 350ms setTimeout to scrollIntoView. This creates a fragile race with ScrollToTop. Cleaner pattern: keep the hash in the URL so React Router + ScrollToTop handle it consistently.",
+    "Footer link to /admin/login is a Link (good). Suggest adding rel='nofollow' for SEO cleanliness (non-blocking).",
+    "WhatsAppButton is mounted per-page (Home.jsx, Gallery.jsx) rather than at the App level - works as intended (excluded from /admin). Acceptable.",
+    "No 404s observed on /brand/logo.png; logo natural dims = 280x?, sized to 40-44px in navbar - file size 63KB could be optimized to <10KB via webp but not blocking."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "skipped (per request)", "frontend": "87% (13/15 items fully pass; 1 hash-nav bug, 1 minor scroll-reset timing)"},
+  "test_credentials": "admin / Admin@2026 (verified working)",
+  "seed_data_creation": "None - used existing seeded data",
+  "retest_needed": true,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Frontend-only retest after main agent fixes HashLink cross-route scroll. Specifically: from /gallery, click data-testid='nav-link-যোগাযোগ' and assert window.scrollY > 1000 within 1.5s AND that no full page reload event fires. Also verify mobile second hero CTA becomes full-width on 390px viewport. Backend was skipped per request and remained 100% from iteration 1 - no need to retest unless main agent touches API code.",
+  "rca_of_the_issue": "Cross-route hash navigation bug RCA: 1) User clicks <HashLink to='/#contact'> while on /gallery. 2) HashLink splits to into path='/' and hash='contact'. 3) Calls navigate('/') WITHOUT the hash. 4) Schedules setTimeout(scrollIntoView, 350). 5) On route change, ScrollToTop's useEffect sees pathname='/' and hash='' so it calls window.scrollTo(0, 'instant'). 6) Home page mounts inside AnimatePresence (mode='wait') with PageTransition fade+y motion — this can take ~300-500ms and DOM #contact is mounted. 7) setTimeout fires scrollIntoView({behavior:'smooth'}) but observed scrollY remains 0 - the smooth-scroll appears to be cancelled or ignored, possibly because the new route's body/html scroll container has not yet stabilized at the 350ms mark, or because the framer-motion PageTransition transform makes scrollIntoView compute the wrong target. Mitigation (recommended): preserve the hash in navigate, e.g. `navigate(`${targetPath}${hash ? '#' + hash : ''}`)`. Then ScrollToTop's existing `if (hash)` branch — which uses requestAnimationFrame to scrollIntoView — will fire after the new route mounts. The setTimeout fallback in HashLink can be removed or kept at 0ms."
+}

@@ -44,14 +44,18 @@ export default function AdminLogin() {
         className="relative w-full max-w-md bg-white rounded-3xl shadow-lux border border-line/60 p-8 md:p-10"
       >
         <div className="text-center mb-8">
-          <div className="flex items-center justify-center gap-2 mb-3">
-            <span className="font-enSerif text-2xl text-ink">Banani</span>
-            <span className="font-bnSerif text-2xl text-gold">ডেন্টাল</span>
-          </div>
-          <p className="text-xs uppercase tracking-[0.25em] text-gold font-bnSans">
+          <motion.img
+            initial={{ scale: 0, rotate: -180 }}
+            animate={{ scale: 1, rotate: 0 }}
+            transition={{ type: "spring", stiffness: 200, delay: 0.3 }}
+            src="/brand/logo.png"
+            alt="Banani Clinic"
+            className="w-16 h-16 mx-auto mb-4 object-contain"
+          />
+          <p className="text-xs uppercase tracking-[0.25em] text-accent font-bnSans">
             অ্যাডমিন প্যানেল
           </p>
-          <h1 className="font-bnSerif text-3xl text-ink mt-4">
+          <h1 className="font-bnSerif text-2xl md:text-3xl text-ink mt-3">
             স্বাগতম, লগইন করুন
           </h1>
         </div>

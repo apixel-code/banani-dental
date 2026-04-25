@@ -2,44 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Banani Dental Clinic - Modern Luxury & Minimalist
- * Theme: Premium Whitey Vibe with Champagne Gold accents
+/* Banani Clinic Ltd. - Premium Medical Theme
+ * Palette: Medical Navy + Cobalt Blue + Steel Grey (derived from logo)
  */
 
 :root {
-  --color-bg: #fdfbf7;
+  --color-bg: #f7fafc;
   --color-surface: #ffffff;
-  --color-primary: #c5a059;
-  --color-primary-hover: #a88849;
-  --color-text: #2a2626;
-  --color-muted: #68635b;
-  --color-border: #e8e2d7;
-  --color-accent-subtle: #f6f1e6;
+  --color-primary: #1f4e79;       /* medical navy */
+  --color-primary-hover: #163e63;
+  --color-accent: #2c8dcc;        /* cobalt */
+  --color-accent-soft: #5da9dc;
+  --color-text: #1a2332;
+  --color-muted: #5c6470;
+  --color-border: #e1e8ef;
+  --color-accent-subtle: #eaf3fb;
+  --color-steel: #7c8389;
   --radius: 1rem;
 }
 
 @layer base {
-  /* shadcn tokens kept for compatibility with /components/ui */
   :root {
-    --background: 36 47% 98%;
-    --foreground: 0 6% 16%;
+    --background: 210 40% 98%;
+    --foreground: 215 35% 14%;
     --card: 0 0% 100%;
-    --card-foreground: 0 6% 16%;
+    --card-foreground: 215 35% 14%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 6% 16%;
-    --primary: 39 47% 56%;
+    --popover-foreground: 215 35% 14%;
+    --primary: 210 59% 30%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 36 50% 94%;
-    --secondary-foreground: 0 6% 16%;
-    --muted: 36 30% 92%;
-    --muted-foreground: 30 7% 38%;
-    --accent: 36 50% 94%;
-    --accent-foreground: 0 6% 16%;
+    --secondary: 209 70% 95%;
+    --secondary-foreground: 215 35% 14%;
+    --muted: 210 30% 92%;
+    --muted-foreground: 215 12% 40%;
+    --accent: 209 60% 49%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 70% 50%;
     --destructive-foreground: 0 0% 100%;
-    --border: 36 30% 88%;
-    --input: 36 30% 88%;
-    --ring: 39 47% 56%;
+    --border: 210 25% 91%;
+    --input: 210 25% 91%;
+    --ring: 210 59% 30%;
     --radius: 1rem;
   }
 
@@ -54,39 +56,23 @@
     font-family: "Anek Bangla", "Hind Siliguri", system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-feature-settings: "ss01", "ss02";
+    overflow-x: hidden;
   }
 
   ::selection {
-    background-color: rgba(197, 160, 89, 0.25);
+    background-color: rgba(44, 141, 204, 0.22);
     color: var(--color-text);
   }
 }
 
 /* Typography utilities */
-.font-bn-serif {
-  font-family: "Tiro Bangla", "Noto Serif Bengali", serif;
-}
-.font-en-serif {
-  font-family: "Playfair Display", "Tiro Bangla", serif;
-}
-.font-bn-sans {
-  font-family: "Anek Bangla", "Hind Siliguri", system-ui, sans-serif;
-}
+.font-bn-serif { font-family: "Tiro Bangla", "Noto Serif Bengali", serif; }
+.font-en-serif { font-family: "Playfair Display", "Tiro Bangla", serif; }
+.font-bn-sans  { font-family: "Anek Bangla", "Hind Siliguri", system-ui, sans-serif; }
 
-/* Hide scrollbar (filter tabs etc) */
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.hide-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-/* Soft luxury text shadow for hero */
-.hero-text-shadow {
-  text-shadow: 0 2px 30px rgba(255, 255, 255, 0.3);
-}
+/* Hide scrollbar */
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
 /* Underline animation */
 .link-underline {
@@ -99,81 +85,117 @@
   left: 0;
   bottom: -4px;
   width: 0;
-  height: 1px;
-  background-color: var(--color-primary);
-  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  height: 1.5px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .link-underline:hover::after,
 .link-underline.is-active::after {
   width: 100%;
 }
 
-/* Gold accent dot/divider */
-.gold-divider {
-  display: inline-block;
-  width: 40px;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--color-primary),
-    transparent
-  );
+/* Masonry */
+.masonry { column-gap: 1.5rem; }
+.masonry > * { break-inside: avoid; margin-bottom: 1.5rem; display: block; }
+
+/* Subtle dotted clinical pattern overlay */
+.dot-pattern {
+  background-image: radial-gradient(rgba(31, 78, 121, 0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
-/* Masonry columns helper (using CSS columns for true masonry) */
-.masonry {
-  column-gap: 1.5rem;
-}
-.masonry > * {
-  break-inside: avoid;
-  margin-bottom: 1.5rem;
-  display: block;
+/* Soft mesh background */
+.mesh-bg {
+  background-image:
+    radial-gradient(at 20% 20%, rgba(44, 141, 204, 0.10) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, rgba(31, 78, 121, 0.08) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(124, 131, 137, 0.07) 0px, transparent 50%);
 }
 
-/* Subtle grain texture for hero */
-.grain-overlay::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.77 0 0 0 0 0.63 0 0 0 0 0.35 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  opacity: 0.06;
-  mix-blend-mode: multiply;
+/* Text gradient */
+.text-gradient {
+  background: linear-gradient(135deg, #1F4E79 0%, #2C8DCC 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-/* Loader dot animation */
+/* Loader dot */
 @keyframes pulse-soft {
   0%, 100% { opacity: 0.4; transform: scale(1); }
   50% { opacity: 1; transform: scale(1.15); }
 }
-.pulse-dot {
-  animation: pulse-soft 1.6s ease-in-out infinite;
-}
+.pulse-dot { animation: pulse-soft 1.6s ease-in-out infinite; }
 
-/* Fade-in for images */
-.img-fade-in {
-  animation: fadeIn 0.8s ease-out;
-}
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
+/* Image fade-in */
+.img-fade-in { animation: fadeIn 0.8s ease-out; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-/* Compare slider override - gold handle */
-[data-rcs="root"] {
-  border-radius: 1rem;
-  overflow: hidden;
-}
+/* Compare slider */
+[data-rcs="root"] { border-radius: 1rem; overflow: hidden; }
 
-/* Smooth focus ring */
+/* Focus ring */
 *:focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid var(--color-accent);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
-/* Bengali numerals look slightly larger - balance with English */
-.tabular-nums {
-  font-variant-numeric: tabular-nums;
+.tabular-nums { font-variant-numeric: tabular-nums; }
+
+/* Marquee container */
+.marquee-track {
+  display: flex;
+  gap: 4rem;
+  animation: marquee 35s linear infinite;
+  width: max-content;
+}
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Magnetic button base (transitions handled by component for hover) */
+.magnetic { will-change: transform; }
+
+/* Shimmer overlay */
+.shimmer {
+  background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,0.55) 50%, transparent 70%);
+  background-size: 200% 100%;
+  animation: shimmer 2.5s linear infinite;
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Floating shapes */
+.float-slow { animation: floatSlow 8s ease-in-out infinite; }
+.float-fast { animation: floatFast 5s ease-in-out infinite; }
+@keyframes floatSlow {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(15px, -30px) rotate(8deg); }
+}
+@keyframes floatFast {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+/* Scroll progress */
+.scroll-progress {
+  background: linear-gradient(90deg, #1F4E79, #2C8DCC);
+  height: 2px;
+  transform-origin: 0%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+/* Section reveal mask */
+.reveal-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
 }

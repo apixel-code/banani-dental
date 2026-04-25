@@ -46,10 +46,13 @@ export default function AdminLayout() {
     <div data-testid="admin-layout" className="min-h-screen bg-bg text-ink flex">
       {/* Mobile top bar */}
       <header className="lg:hidden fixed top-0 left-0 right-0 z-40 bg-bg/90 backdrop-blur border-b border-line/60">
-        <div className="flex items-center justify-between px-5 py-4">
-          <div className="flex items-center gap-2">
-            <span className="font-enSerif text-lg text-ink">Banani</span>
-            <span className="font-bnSerif text-lg text-gold">ডেন্টাল</span>
+        <div className="flex items-center justify-between px-5 py-3">
+          <div className="flex items-center gap-2.5">
+            <img src="/brand/logo.png" alt="Banani Clinic" className="w-8 h-8 object-contain" />
+            <div className="leading-none">
+              <p className="font-enSerif text-sm text-ink">Banani Clinic</p>
+              <p className="text-[9px] uppercase tracking-[0.18em] text-accent mt-0.5">Admin</p>
+            </div>
           </div>
           <button
             data-testid="admin-mobile-menu-btn"
@@ -68,12 +71,15 @@ export default function AdminLayout() {
           open ? "translate-x-0" : "-translate-x-full"
         } lg:translate-x-0 flex flex-col`}
       >
-        <div className="p-7 border-b border-line/60">
-          <div className="flex items-center gap-2">
-            <span className="font-enSerif text-xl text-ink">Banani</span>
-            <span className="font-bnSerif text-xl text-gold">ডেন্টাল</span>
+        <div className="p-6 border-b border-line/60">
+          <div className="flex items-center gap-3">
+            <img src="/brand/logo.png" alt="Banani Clinic" className="w-11 h-11 object-contain" />
+            <div className="leading-none">
+              <p className="font-enSerif text-lg text-ink">Banani Clinic</p>
+              <p className="text-[10px] uppercase tracking-[0.2em] text-accent mt-0.5">Specialized Hospital</p>
+            </div>
           </div>
-          <p className="text-xs uppercase tracking-[0.22em] text-gold font-bnSans mt-1.5">
+          <p className="text-xs uppercase tracking-[0.22em] text-accent font-bnSans mt-4">
             অ্যাডমিন প্যানেল
           </p>
         </div>

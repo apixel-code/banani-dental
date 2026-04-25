@@ -59,7 +59,7 @@ export default function AdminDashboard() {
               key={c.label}
               to={c.to}
               data-testid={`stat-${c.label}`}
-              style={c.highlight ? { background: "#C5A059", borderColor: "transparent" } : {}}
+              style={c.highlight ? { background: "linear-gradient(135deg, #1F4E79 0%, #2C8DCC 100%)", borderColor: "transparent" } : {}}
               className={`lux-card group !p-7 ${c.highlight ? "!text-white" : ""}`}
             >
               <div className="flex items-start justify-between mb-6">

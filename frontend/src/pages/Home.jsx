@@ -7,20 +7,25 @@ import Doctors from "@/components/site/sections/Doctors";
 import BeforeAfterShowcase from "@/components/site/sections/BeforeAfterShowcase";
 import Testimonials from "@/components/site/sections/Testimonials";
 import Contact from "@/components/site/sections/Contact";
+import WhatsAppButton from "@/components/site/WhatsAppButton";
+import PageTransition from "@/components/site/PageTransition";
 
 export default function Home() {
   return (
-    <div data-testid="home-page" className="min-h-screen bg-bg text-ink">
-      <Navbar />
-      <main>
-        <Hero />
-        <Services />
-        <Doctors />
-        <BeforeAfterShowcase />
-        <Testimonials />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <PageTransition>
+      <div data-testid="home-page" className="min-h-screen bg-bg text-ink">
+        <Navbar />
+        <main>
+          <Hero />
+          <Services />
+          <Doctors />
+          <BeforeAfterShowcase />
+          <Testimonials />
+          <Contact />
+        </main>
+        <Footer />
+        <WhatsAppButton />
+      </div>
+    </PageTransition>
   );
 }
