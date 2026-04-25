@@ -56,12 +56,28 @@ User feedback: admin Gallery & Appointments not mobile-responsive; suggest Hind 
 - ✅ **Bengali font upgrade** — Body changed to **Hind Siliguri** (clean, professional, readable). Headings remain **Tiro Bangla** (luxury serif). Anek Bangla removed entirely. Added Noto Serif Bengali as fallback. Updated `index.html`, `tailwind.config.js`, `index.css`.
 - ✅ **3 new pages**:
   - **`/about`** — Banani Clinic intro, Dr. Aslam Almehdi credentials (BDS, FCPS, AACD member, USA/Japan/Korea/UK trained), 4 value cards (ব্যথামুক্ত, আন্তর্জাতিক, রোগীকেন্দ্রিক, সম্পূর্ণ), full Cleft Lip & Palate explainer (6,000 children stat), Filariasis/Elephantiasis section, CTA to /#contact
-  - **`/privacy`** — 8-section Bengali privacy policy (data collection, usage, cookies, media, security, third-parties, user rights, policy changes)
-  - **`/terms`** — 9-section Bengali terms (acceptance, medical disclaimer, appointments/payment, cancellation, IP, conduct, liability, jurisdiction, changes)
+  - **`/privacy`** — 8-section Bengali privacy policy
+  - **`/terms`** — 9-section Bengali terms
 - ✅ **Shared `ContentPageLayout`** with mesh-bg header, Navbar+Footer+WhatsAppButton+PageTransition wrappers
 - ✅ **Footer expanded** — 4 legal nav links (About, Privacy, Terms, Admin) all using `<Link>` for SPA navigation
 - ✅ **Navbar expanded** — Added `আমাদের সম্পর্কে` (About) link
 - ✅ **Testing agent: 14/14 (100%)** iteration 3 frontend tests pass
+
+## Iteration 4 — 2026-04-26 (User feedback)
+User feedback: 1) Hero text top characters cut off 2) Mobile navbar logo text not visible 3) Remove admin link from public footer 4) Add "by Apixel" link 5) Marquee announcement bar with admin toggle 6) Doctors section centered layout 7) Hero right-side image 8) Owner photo in About page.
+- ✅ **Hero text cut-off fixed** — `.reveal-mask` now has `padding-top: 0.18em; padding-bottom: 0.06em; margin-top: -0.18em` to accommodate Bengali matras
+- ✅ **Mobile navbar logo text** — Removed `hidden sm:flex`, now always visible with smaller `text-sm md:text-lg` for "Banani Clinic" + `text-[8px] md:text-[11px]` for "SPECIALIZED HOSPITAL"
+- ✅ **Admin link removed from footer** — public footer only shows About / Privacy / Terms now
+- ✅ **"Crafted by Apixel · www.apixel.net"** at footer bottom-right, target="_blank" with hover effect
+- ✅ **Marquee announcement bar**:
+  - Backend: new `Settings` singleton model (`marqueeEnabled`, `marqueeText`) + `GET /api/settings` (public) + `PUT /api/settings` (admin)
+  - Frontend: `MarqueeBar` component on all public pages (Home, Gallery, About, Privacy, Terms) with gradient #1F4E79→#2C8DCC + horizontal scroll animation + Megaphone icon label
+  - Navbar offsets `top-7 md:top-9` when marquee active
+  - **Admin Settings page** (`/admin/settings`): toggle on/off (animated switch), text edit textarea, live preview, save with success toast
+- ✅ **Doctors section** — Header centered, paragraph below header centered, dynamic max-width based on doctor count (1=max-w-sm, 2=max-w-3xl, 3=max-w-5xl, 4+=max-w-6xl)
+- ✅ **Hero 2-column redesign** — Text left (col-span-7), premium image card right (col-span-5) with floating AACD certified badge top-left + Dr. Aslam Almehdi name card at bottom + decorative dot grid + soft mesh-bg background
+- ✅ **Owner photo** — Dr. Aslam Almehdi's photo (/brand/owner.jpg, 2.5MB) shown in About page with 3:4 aspect, gradient overlay, AACD MEMBER badge
+- ✅ **Testing agent: 16/16 acceptance criteria + 5/5 backend tests PASS (100%)** — zero bugs found
 
 ## Backlog / Future Improvements (P0–P2)
 - **P1**: Multi-language toggle (Bengali ⇄ English)
