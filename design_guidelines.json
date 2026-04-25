@@ -1,0 +1,159 @@
+{
+  "theme": "light",
+  "archetype": "5 (Jewel & Luxury - Adapted for Light)",
+  "vibe": "Premium Whitey Vibe with Champagne Gold accents",
+  "colors": {
+    "background": "#FDFBF7",
+    "surface": "#FFFFFF",
+    "primary": "#C5A059",
+    "primary_hover": "#A88849",
+    "text_main": "#2A2626",
+    "text_muted": "#68635B",
+    "border": "#E8E2D7",
+    "accent_subtle": "#F6F1E6"
+  },
+  "typography": {
+    "fonts": [
+      {
+        "name": "Tiro Bangla",
+        "url": "https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital@0;1&display=swap",
+        "usage": "Primary Heading (Bengali Luxury Serif)"
+      },
+      {
+        "name": "Playfair Display",
+        "url": "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap",
+        "usage": "Secondary Heading (English Luxury Serif)"
+      },
+      {
+        "name": "Anek Bangla",
+        "url": "https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@300;400;500;600;700&display=swap",
+        "usage": "Body Text (Bengali Modern Sans)"
+      }
+    ],
+    "hierarchy": {
+      "h1": "text-5xl md:text-6xl font-serif tracking-tight text-main",
+      "h2": "text-3xl md:text-4xl font-serif tracking-tight text-main",
+      "h3": "text-2xl font-serif text-main",
+      "body": "text-base font-sans text-muted leading-relaxed"
+    }
+  },
+  "layout": {
+    "container_padding": "p-6 md:p-12 lg:p-20",
+    "section_gap": "gap-16 md:gap-32",
+    "gallery_grid": "columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6"
+  },
+  "components": {
+    "button_primary": "bg-[#C5A059] text-white hover:bg-[#A88849] rounded-full px-8 py-4 transition-all duration-500 ease-out hover:shadow-[0_8px_30px_rgb(197,160,89,0.3)] shadow-sm",
+    "button_outline": "border-2 border-[#C5A059] text-[#C5A059] hover:bg-[#F6F1E6] rounded-full px-8 py-4 transition-all duration-300",
+    "card": "bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-[#E8E2D7]/50 p-6 md:p-8 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] transition-all duration-500",
+    "admin_sidebar": "bg-[#FDFBF7] border-r border-[#E8E2D7] w-64 h-screen fixed",
+    "admin_table": "bg-white rounded-xl shadow-sm border border-[#E8E2D7] overflow-hidden",
+    "gallery_filter": "flex gap-4 overflow-x-auto pb-4 hide-scrollbar"
+  },
+  "motion": {
+    "framer_variants": {
+      "fadeUp": {
+        "hidden": { "opacity": 0, "y": 40 },
+        "visible": { "opacity": 1, "y": 0, "transition": { "duration": 0.8, "ease": [0.16, 1, 0.3, 1] } }
+      },
+      "stagger": {
+        "visible": { "transition": { "staggerChildren": 0.1 } }
+      }
+    },
+    "scroll": "Lenis smooth scroll mandatory for luxury feel"
+  },
+  "content": {
+    "clinic_name": "Banani Dental Clinic",
+    "phone": "01711170890",
+    "address": "House #116, Road #15, Block #C, Banani, Dhaka-1213",
+    "copywriting": {
+      "hero_headline": "ব্যথামুক্ত আধুনিক চিকিৎসায় বদলে দিন আপনার জীবন।",
+      "hero_subheadline": "লুকানো হাসি নয়, ফিরে পান আপনার প্রকৃত আত্মবিশ্বাস।",
+      "hero_cta": "আপনার নতুন হাসির যাত্রা শুরু করুন",
+      "whatsapp_cta": "হোয়াটসঅ্যাপে কথা বলুন"
+    }
+  },
+  "media": {
+    "images": [
+      {
+        "url": "https://images.pexels.com/photos/11563145/pexels-photo-11563145.jpeg",
+        "category": "hero",
+        "description": "Close-up smiling woman conveying confidence for Hero Section"
+      },
+      {
+        "url": "https://images.pexels.com/photos/16571735/pexels-photo-16571735.jpeg",
+        "category": "clinic_interior",
+        "description": "Sleek luxury clinic interior for About/Background"
+      },
+      {
+        "url": "https://images.pexels.com/photos/31844508/pexels-photo-31844508.jpeg",
+        "category": "clinic_interior_2",
+        "description": "Elegant reception area for gallery"
+      },
+      {
+        "url": "https://images.pexels.com/photos/14235194/pexels-photo-14235194.jpeg",
+        "category": "doctor_male",
+        "description": "Smiling male dentist for Doctor Profile"
+      },
+      {
+        "url": "https://images.pexels.com/photos/31043312/pexels-photo-31043312.jpeg",
+        "category": "doctor_female",
+        "description": "Confident female dentist for Doctor Profile"
+      },
+      {
+        "url": "https://images.pexels.com/photos/16212691/pexels-photo-16212691.png",
+        "category": "transformation_gallery",
+        "description": "Perfect white teeth smile macro for gallery/before-after"
+      },
+      {
+        "url": "https://images.pexels.com/photos/19976565/pexels-photo-19976565.jpeg",
+        "category": "patient_treatment",
+        "description": "Dentist examining patient for Service Section"
+      },
+      {
+        "url": "https://images.pexels.com/photos/6627413/pexels-photo-6627413.jpeg",
+        "category": "patient_treatment_2",
+        "description": "Dentist check-up for Gallery/Services"
+      }
+    ]
+  },
+  "pages": {
+    "landing": {
+      "sections": [
+        "Hero with overlay and Bengali typography",
+        "Services Bento Grid (General, Cosmetic, Orthodontic, Implants)",
+        "Doctors Profile Section (Carousel or Grid)",
+        "Before/After Interactive Slider preview",
+        "Testimonials Grid",
+        "Contact & Location CTA"
+      ]
+    },
+    "gallery": {
+      "features": [
+        "Masonry Layout using CSS columns",
+        "Filter Tabs (All, Doctors, Patients, Clinic)",
+        "Lightbox view on click"
+      ]
+    },
+    "admin": {
+      "features": [
+        "Login screen with luxury branding",
+        "Sidebar navigation",
+        "Doctor Profile CRUD (Form with image upload)",
+        "Gallery Management (Drag-drop upload zone, masonry preview)",
+        "Empty States Design (Subtle gold icon, 'No images uploaded yet' text)"
+      ]
+    }
+  },
+  "instructions_to_main_agent": [
+    "Strictly use the Champagne Gold (#C5A059) as primary action color. Do not use default Tailwind blue/indigo.",
+    "Import Google fonts: Tiro Bangla and Anek Bangla. Map them correctly in Tailwind config.",
+    "Use framer-motion for page entrances and hover states.",
+    "For the Before/After slider, use react-compare-slider or build a custom framer-motion slider.",
+    "Ensure the hero image has a subtle white/gold gradient overlay to make dark text readable, OR a dark gradient overlay if using white text. Given the light theme, use a semi-transparent white/champagne wash over the hero image.",
+    "Add 'data-testid' to ALL interactive elements (buttons, nav links, admin forms, tabs).",
+    "Admin panel must be mobile-responsive. Hide sidebar on mobile behind a hamburger.",
+    "Never use placeholders (via.placeholder.com). Use ONLY the image URLs provided in media section.",
+    "Gallery should use 'columns-1 md:columns-2 lg:columns-3' for true masonry, not just grid."
+  ]
+}
