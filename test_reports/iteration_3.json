@@ -1,0 +1,50 @@
+{
+  "summary": "Iteration 3 frontend-only retest. All 14/14 user-feedback items PASS: (1) Mobile admin Gallery/Doctors/Appointments/Dashboard fully responsive at 390x844 with no horizontal overflow, delete/edit buttons visible without hover (opacity=1 on mobile via 'opacity-100 lg:opacity-0 lg:group-hover:opacity-100'); (2) Body font correctly switched to 'Hind Siliguri', headings use 'Tiro Bangla', Anek Bangla fully removed from index.html font link; (3) About/Privacy/Terms pages render with all expected Bengali content (Cleft Lip 6,000 children stat, Filariasis section, Dr. Aslam Almehdi, 4 value cards, CTA to /#contact); (4) Privacy has all 8 sections, Terms has all 9 sections (file count verified); (5) Navbar has 6 nav items including 'আমাদের সম্পর্কে' -> /about; (6) Footer has all 4 legal links (/about, /privacy, /terms, /admin/login) using <Link> - clicking footer /privacy does NOT trigger full reload (window.__noReload flag preserved). No regressions found.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {
+        "screen": "Mobile admin (Gallery, Doctors)",
+        "issues": [
+          "Upload/Add buttons render at 358px width on 390px viewport (92%) due to AdminLayout p-4 padding (16px each side = 32px). This is correct full-width-within-content behavior — visually full-width with proper gutters. Not a bug; flagging only as observation."
+        ]
+      }
+    ]
+  },
+  "verified_passing_items": [
+    "Hind Siliguri body font: getComputedStyle(body).fontFamily = '\"Hind Siliguri\", \"Noto Serif Bengali\", system-ui, sans-serif'",
+    "Tiro Bangla heading font: hero h1 computed font 'Tiro Bangla' (font-bnSerif class)",
+    "Anek Bangla NOT loaded - index.html only has Tiro+Bangla, Hind+Siliguri, Noto+Serif+Bengali, Playfair+Display",
+    "Navbar has 6 nav links including /about ('আমাদের সম্পর্কে')",
+    "About page: hasAlmehdi=True, hasCleft=True, hasFilariasis=True, has6000=True, hasIntroBn=True; 3 CTAs link to /#contact",
+    "About page has grids of 4 and 3 cards (4 value cards confirmed)",
+    "Privacy page: 8/8 Bengali sections present (তথ্য সংগ্রহ, তথ্যের ব্যবহার, কুকিজ, ছবি ও মিডিয়া, তথ্যের নিরাপত্তা, তৃতীয় পক্ষ, আপনার অধিকার, নীতির পরিবর্তন)",
+    "Terms page: 9 section titles in source file (গ্রহণযোগ্যতা, চিকিৎসা পরামর্শ, অ্যাপয়েন্টমেন্ট ও পেমেন্ট, পরিবর্তন/বাতিল, মেধাস্বত্ব, ব্যবহারকারীর আচরণ, দায়বদ্ধতা, প্রযোজ্য আইন, পরিবর্তন)",
+    "Footer has all 4 required links: /about, /privacy, /terms, /admin/login",
+    "Footer link click /privacy preserves window.__noReload flag (true SPA navigation, no full reload)",
+    "Mobile admin login (admin/Admin@2026) at 390x844 succeeds and redirects to /admin",
+    "Admin Dashboard mobile: scrollWidth=390 == winWidth=390 (no overflow); 4 stat cards stack 1-column (distinctXs=1)",
+    "Admin Gallery mobile: no overflow, gallery grid is 2 columns, 8 delete-buttons all opacity=1 (visible without hover), upload btn full content width, filter chips parent overflowX=auto and scrollWidth>clientWidth (horizontal scroll works)",
+    "Admin Doctors mobile: no overflow, edit+delete wrapper has class 'opacity-100 lg:opacity-0 lg:group-hover:opacity-100' with computed opacity=1, both buttons rendered visible",
+    "Admin Appointments mobile: no overflow, status select + delete button render in SAME ROW (statusY==delY=546), parent has 'flex flex-row md:flex-col' + 'border-t md:border-t-0' (correct mobile design)"
+  ],
+  "test_report_links": ["/app/test_reports/iteration_3.json"],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Iteration 2's HashLink cross-route scroll bug was NOT explicitly retested in this iteration (it was outside the scope of iteration 3 user feedback). If main agent did not fix it, it likely persists. Recommend retest from /gallery -> click 'যোগাযোগ' nav link.",
+    "Mobile admin pages cleanly use the 'opacity-100 lg:opacity-0 lg:group-hover:opacity-100' pattern - good responsive practice.",
+    "AdminAppointments mobile action row uses 'flex-row md:flex-col' with 'border-t md:border-t-0 pt-3 md:pt-0' - clean separation between mobile (horizontal row with top divider) and desktop (vertical column without divider).",
+    "Footer correctly uses React Router <Link> for /about, /privacy, /terms, /admin/login (SPA navigation verified by window.__noReload flag survival).",
+    "Anek Bangla font fully removed from public/index.html - only Tiro Bangla + Hind Siliguri + Noto Serif Bengali + Playfair Display loaded, reducing font payload."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "skipped (per request)", "frontend": "100% (14/14 iteration-3 items pass)"},
+  "test_credentials": "admin / Admin@2026 (verified working)",
+  "seed_data_creation": "None - used existing seeded data (8 gallery items, 2 doctors, 3 appointments)",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Iteration 3 (mobile admin responsiveness + new About/Privacy/Terms pages + Hind Siliguri font) all passed. Open issue from iteration 2 (HashLink cross-route scroll to /#contact from /gallery) was NOT retested in this round and may still be present — verify if main agent claims to have fixed it. Login: admin/Admin@2026. Test data-testids: nav-link-আমাদের সম্পর্কে, admin-gallery-page, admin-doctors-page, admin-appointments-page, delete-gallery-{id}, edit-doctor-{id}, delete-doctor-{id}, appt-status-{id}, delete-appt-{id}.",
+  "rca_of_the_issue": "N/A - no new bugs found in iteration 3 scope."
+}

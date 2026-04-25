@@ -45,7 +45,7 @@ export default function AdminGallery() {
           <p className="text-xs uppercase tracking-[0.22em] text-gold font-bnSans mb-2">
             গ্যালারি ম্যানেজমেন্ট
           </p>
-          <h1 className="font-bnSerif text-3xl md:text-4xl text-ink">
+          <h1 className="font-bnSerif text-2xl md:text-4xl text-ink">
             সব ছবি ও ট্রান্সফরমেশন
           </h1>
           <p className="font-bnSans text-sm text-ink-muted mt-2">
@@ -55,7 +55,7 @@ export default function AdminGallery() {
         <button
           data-testid="gallery-upload-btn"
           onClick={() => setShowUpload(true)}
-          className="btn-gold"
+          className="btn-gold w-full md:w-auto"
         >
           <Plus className="w-4 h-4" />
           নতুন ছবি যোগ করুন
@@ -63,7 +63,7 @@ export default function AdminGallery() {
       </header>
 
       {/* Filter chips */}
-      <div className="flex gap-2 overflow-x-auto pb-3 mb-6 hide-scrollbar">
+      <div className="flex gap-2 overflow-x-auto pb-3 mb-6 hide-scrollbar -mx-4 md:mx-0 px-4 md:px-0">
         <FilterChip
           active={filter === "all"}
           onClick={() => setFilter("all")}
@@ -166,7 +166,7 @@ function GalleryCard({ item, onDelete }) {
       <button
         onClick={onDelete}
         data-testid={`delete-gallery-${item.id}`}
-        className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/95 backdrop-blur text-red-600 flex items-center justify-center opacity-0 group-hover:opacity-100 hover:bg-red-600 hover:text-white transition-all duration-300"
+        className="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/95 backdrop-blur text-red-600 flex items-center justify-center opacity-100 lg:opacity-0 lg:group-hover:opacity-100 hover:bg-red-600 hover:text-white shadow-md transition-all duration-300"
         aria-label="Delete"
       >
         <Trash2 className="w-4 h-4" />

@@ -35,14 +35,14 @@ export default function AdminDoctors() {
           <p className="text-xs uppercase tracking-[0.22em] text-gold font-bnSans mb-2">
             চিকিৎসক ম্যানেজমেন্ট
           </p>
-          <h1 className="font-bnSerif text-3xl md:text-4xl text-ink">
+          <h1 className="font-bnSerif text-2xl md:text-4xl text-ink">
             চিকিৎসকদের প্রোফাইল
           </h1>
         </div>
         <button
           data-testid="add-doctor-btn"
           onClick={() => setEditing("new")}
-          className="btn-gold"
+          className="btn-gold w-full md:w-auto"
         >
           <Plus className="w-4 h-4" />
           নতুন চিকিৎসক যোগ করুন
@@ -71,18 +71,18 @@ export default function AdminDoctors() {
                   alt={d.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute top-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute top-3 right-3 flex gap-2 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300">
                   <button
                     onClick={() => setEditing(d)}
                     data-testid={`edit-doctor-${d.id}`}
-                    className="w-8 h-8 rounded-full bg-white text-ink hover:bg-gold hover:text-white flex items-center justify-center transition-colors"
+                    className="w-9 h-9 rounded-full bg-white text-ink hover:bg-gold hover:text-white shadow-md flex items-center justify-center transition-colors"
                   >
                     <Pencil className="w-4 h-4" />
                   </button>
                   <button
                     onClick={() => handleDelete(d.id)}
                     data-testid={`delete-doctor-${d.id}`}
-                    className="w-8 h-8 rounded-full bg-white text-red-600 hover:bg-red-600 hover:text-white flex items-center justify-center transition-colors"
+                    className="w-9 h-9 rounded-full bg-white text-red-600 hover:bg-red-600 hover:text-white shadow-md flex items-center justify-center transition-colors"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>

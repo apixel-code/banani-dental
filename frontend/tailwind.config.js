@@ -58,9 +58,9 @@ module.exports = {
         ring: "hsl(var(--ring))",
       },
       fontFamily: {
-        bnSerif: ['"Tiro Bangla"', "serif"],
+        bnSerif: ['"Tiro Bangla"', '"Noto Serif Bengali"', "serif"],
         enSerif: ['"Playfair Display"', "serif"],
-        bnSans: ['"Anek Bangla"', "system-ui", "sans-serif"],
+        bnSans: ['"Hind Siliguri"', '"Noto Serif Bengali"', "system-ui", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",

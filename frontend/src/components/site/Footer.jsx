@@ -108,17 +108,40 @@ export default function Footer() {
           </motion.div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-bg/10 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-bg/40 font-bnSans">
+        <div className="mt-12 pt-8 border-t border-bg/10 flex flex-col md:flex-row justify-between items-center gap-5">
+          <p className="text-xs text-bg/40 font-bnSans text-center md:text-left">
             © {new Date().getFullYear()} Banani Clinic Ltd. সমস্ত অধিকার সংরক্ষিত।
           </p>
-          <Link
-            to="/admin/login"
-            className="text-xs text-bg/40 hover:text-accent transition-colors font-bnSans"
-            data-testid="footer-admin-link"
-          >
-            অ্যাডমিন লগইন
-          </Link>
+          <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs font-bnSans">
+            <Link
+              to="/about"
+              className="text-bg/55 hover:text-accent transition-colors"
+              data-testid="footer-about"
+            >
+              আমাদের সম্পর্কে
+            </Link>
+            <Link
+              to="/privacy"
+              className="text-bg/55 hover:text-accent transition-colors"
+              data-testid="footer-privacy"
+            >
+              গোপনীয়তা নীতি
+            </Link>
+            <Link
+              to="/terms"
+              className="text-bg/55 hover:text-accent transition-colors"
+              data-testid="footer-terms"
+            >
+              শর্তাবলী
+            </Link>
+            <Link
+              to="/admin/login"
+              className="text-bg/40 hover:text-accent transition-colors"
+              data-testid="footer-admin-link"
+            >
+              অ্যাডমিন
+            </Link>
+          </nav>
         </div>
       </div>
     </footer>

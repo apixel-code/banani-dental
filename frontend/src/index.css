@@ -53,10 +53,12 @@
     margin: 0;
     background-color: var(--color-bg);
     color: var(--color-text);
-    font-family: "Anek Bangla", "Hind Siliguri", system-ui, sans-serif;
+    font-family: "Hind Siliguri", "Noto Serif Bengali", system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+    font-weight: 400;
+    letter-spacing: 0.005em;
   }
 
   ::selection {
@@ -68,7 +70,7 @@
 /* Typography utilities */
 .font-bn-serif { font-family: "Tiro Bangla", "Noto Serif Bengali", serif; }
 .font-en-serif { font-family: "Playfair Display", "Tiro Bangla", serif; }
-.font-bn-sans  { font-family: "Anek Bangla", "Hind Siliguri", system-ui, sans-serif; }
+.font-bn-sans  { font-family: "Hind Siliguri", "Noto Serif Bengali", system-ui, sans-serif; }
 
 /* Hide scrollbar */
 .hide-scrollbar::-webkit-scrollbar { display: none; }

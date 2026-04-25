@@ -8,6 +8,7 @@ import HashLink from "@/components/site/HashLink";
 const NAV = [
   { to: "/", label: "হোম", type: "route" },
   { to: "/gallery", label: "গ্যালারি", type: "route" },
+  { to: "/about", label: "আমাদের সম্পর্কে", type: "route" },
   { to: "/#services", label: "সেবা", type: "hash" },
   { to: "/#doctors", label: "চিকিৎসক", type: "hash" },
   { to: "/#contact", label: "যোগাযোগ", type: "hash" },

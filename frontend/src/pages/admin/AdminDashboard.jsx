@@ -42,11 +42,11 @@ export default function AdminDashboard() {
 
   return (
     <div data-testid="admin-dashboard">
-      <header className="mb-10">
+      <header className="mb-8 md:mb-10">
         <p className="text-xs uppercase tracking-[0.22em] text-gold font-bnSans mb-2">
           ড্যাশবোর্ড
         </p>
-        <h1 className="font-bnSerif text-3xl md:text-4xl text-ink">
+        <h1 className="font-bnSerif text-2xl md:text-4xl text-ink leading-tight">
           স্বাগতম! এখানে আপনার ক্লিনিকের সংক্ষিপ্ত পরিসংখ্যান
         </h1>
       </header>

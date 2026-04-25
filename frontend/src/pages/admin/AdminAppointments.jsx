@@ -51,13 +51,13 @@ export default function AdminAppointments() {
         <p className="text-xs uppercase tracking-[0.22em] text-gold font-bnSans mb-2">
           অ্যাপয়েন্টমেন্ট
         </p>
-        <h1 className="font-bnSerif text-3xl md:text-4xl text-ink">
+        <h1 className="font-bnSerif text-2xl md:text-4xl text-ink">
           সব অ্যাপয়েন্টমেন্ট রিকোয়েস্ট
         </h1>
         <p className="font-bnSans text-sm text-ink-muted mt-2">মোট {items.length} টি</p>
       </header>
 
-      <div className="flex gap-2 overflow-x-auto pb-3 mb-6 hide-scrollbar">
+      <div className="flex gap-2 overflow-x-auto pb-3 mb-6 hide-scrollbar -mx-4 md:mx-0 px-4 md:px-0">
         <button
           data-testid="appt-filter-all"
           onClick={() => setFilter("all")}
@@ -103,27 +103,27 @@ export default function AdminAppointments() {
               <article
                 key={appt.id}
                 data-testid={`appt-${appt.id}`}
-                className="bg-white rounded-2xl border border-line/60 p-6 hover:shadow-lux transition-shadow duration-500"
+                className="bg-white rounded-2xl border border-line/60 p-4 md:p-6 hover:shadow-lux transition-shadow duration-500"
               >
                 <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2 flex-wrap">
-                      <h3 className="font-bnSerif text-xl text-ink">{appt.name}</h3>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 md:gap-3 mb-2 flex-wrap">
+                      <h3 className="font-bnSerif text-lg md:text-xl text-ink break-words">{appt.name}</h3>
                       <span
-                        className={`text-xs px-3 py-1 rounded-full border font-bnSans ${s.color}`}
+                        className={`text-[10px] md:text-xs px-2.5 md:px-3 py-0.5 md:py-1 rounded-full border font-bnSans whitespace-nowrap ${s.color}`}
                       >
                         {s.label}
                       </span>
                     </div>
-                    <div className="flex flex-wrap gap-4 text-sm text-ink-muted font-bnSans mt-3">
+                    <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-ink-muted font-bnSans mt-3">
                       <a href={`tel:${appt.phone}`} className="flex items-center gap-2 hover:text-gold">
                         <Phone className="w-4 h-4" />
                         <span className="tabular-nums">{appt.phone}</span>
                       </a>
                       {appt.email && (
-                        <a href={`mailto:${appt.email}`} className="flex items-center gap-2 hover:text-gold">
-                          <Mail className="w-4 h-4" />
-                          {appt.email}
+                        <a href={`mailto:${appt.email}`} className="flex items-center gap-2 hover:text-gold break-all">
+                          <Mail className="w-4 h-4 shrink-0" />
+                          <span className="break-all">{appt.email}</span>
                         </a>
                       )}
                       <a
@@ -149,7 +149,7 @@ export default function AdminAppointments() {
                       </p>
                     )}
                     {appt.message && (
-                      <p className="mt-3 text-sm font-bnSans bg-bg/60 rounded-xl p-3 border border-line/40">
+                      <p className="mt-3 text-sm font-bnSans bg-bg/60 rounded-xl p-3 border border-line/40 break-words">
                         {appt.message}
                       </p>
                     )}
@@ -158,12 +158,12 @@ export default function AdminAppointments() {
                     </p>
                   </div>
 
-                  <div className="flex flex-col gap-2 md:items-end shrink-0">
+                  <div className="flex flex-row md:flex-col items-stretch md:items-end gap-3 md:gap-2 shrink-0 pt-3 md:pt-0 border-t md:border-t-0 border-line/40">
                     <select
                       data-testid={`appt-status-${appt.id}`}
                       value={appt.status}
                       onChange={(e) => updateStatus(appt.id, e.target.value)}
-                      className="px-3 py-2 rounded-lg border border-line bg-bg/40 text-sm font-bnSans focus:outline-none focus:border-gold"
+                      className="flex-1 md:flex-none px-3 py-2 rounded-lg border border-line bg-bg/40 text-sm font-bnSans focus:outline-none focus:border-gold"
                     >
                       {STATUSES.map((opt) => (
                         <option key={opt.id} value={opt.id}>
@@ -174,7 +174,7 @@ export default function AdminAppointments() {
                     <button
                       onClick={() => handleDelete(appt.id)}
                       data-testid={`delete-appt-${appt.id}`}
-                      className="text-xs text-red-600 hover:text-red-800 font-bnSans flex items-center gap-1"
+                      className="px-3 py-2 md:px-0 md:py-0 rounded-lg md:rounded-none text-xs text-red-600 hover:text-red-800 font-bnSans flex items-center justify-center gap-1 border md:border-0 border-red-200 md:bg-transparent"
                     >
                       <Trash2 className="w-3 h-3" />
                       মুছুন
