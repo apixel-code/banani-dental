@@ -34,27 +34,30 @@ Comprehensive upgrade for `apixel-code/Dental-Clinic-Template2`:
 - ✅ JWT middleware (`requireAdmin`) on all admin endpoints; bcrypt password hashing
 - ✅ Cloudinary signed-upload via backend (`buildUploader('folder')`); auto-destroy on delete & photo replace
 - ✅ Idempotent seeding: 1 admin (admin/Admin@2026), 2 demo doctors, 7 demo gallery items (incl. 1 before-after pair)
-- ✅ Home page sections: Hero (Bengali emotional headline + Pexels imagery), Services bento grid (6 services), dynamic Doctors section, BeforeAfter showcase, Testimonials, Contact form (POSTs to `/api/appointments`)
-- ✅ `/gallery` page: filter chips (All / Transformation / Doctors / Patients / Clinic), masonry grid, lightbox, before/after comparison slider with gold handle
-- ✅ `/admin/login` luxury card with auto-redirect when authed
-- ✅ `/admin` sidebar layout with mobile hamburger; dashboard stats cards
-- ✅ `/admin/gallery` upload modal (auto-switches between single-image and before/after pair fields), category-tagged items, hover-delete
-- ✅ `/admin/doctors` create/edit modal with photo replacement, list cards, hover-delete
-- ✅ `/admin/appointments` list with status dropdown (new/contacted/confirmed/completed/cancelled), WhatsApp/tel/email quick links
-- ✅ Champagne Gold #C5A059 design tokens applied across the app via tailwind.config + index.css
-- ✅ data-testid coverage across all interactive elements
-- ✅ Testing agent: 100% backend (30/30), 100% executed frontend flows pass
+- ✅ Home page sections: Hero, Services bento grid, dynamic Doctors, BeforeAfter showcase, Testimonials, Contact form
+- ✅ `/gallery` page: filter chips, masonry grid, lightbox, before/after compare slider
+- ✅ `/admin/login` + protected admin sub-routes (gallery, doctors, appointments)
+- ✅ Testing agent: 100% backend (30/30), 100% frontend flows pass
+
+## Iteration 2 — 2026-04-25 (User feedback)
+User feedback: logo not added, no animations, full page reload on navigation, no scroll-to-top, mobile button issues, missing WhatsApp button.
+- ✅ **Logo integration** — User-uploaded `Banani Clinic Ltd.` logo now in Navbar, Footer, Admin login, Admin sidebar, mobile admin top bar
+- ✅ **Color palette overhaul** — Switched from champagne gold to **Medical Navy `#1F4E79` + Cobalt Blue `#2C8DCC` + Steel Grey** to match logo identity. Updated tailwind.config.js + index.css design tokens
+- ✅ **Page reload bug fixed** — Replaced `<a href>` with `<Link to>` and custom `HashLink` for hash anchors. No more full page reloads on navigation
+- ✅ **Smooth scroll-to-top** — `ScrollToTop` component using `useLayoutEffect` + RAF polling. Resets scrollY on route change; smooth-scrolls to hash sections after AnimatePresence mounts new page
+- ✅ **AnimatePresence page transitions** — Wrapped routes for fade+y exit/enter
+- ✅ **Premium animations** — Hero word-by-word reveal mask, Bengali CountUp stat animation (১৫+, ৫০০০+, ১০০%), floating decorative blobs, scroll progress bar, magnetic CTAs, staggered mobile menu, scroll hint
+- ✅ **WhatsApp floating button** — Green pulse-ring CTA on `/` and `/gallery` pages, opens `wa.me/8801711170890` with prefilled message
+- ✅ **Mobile button responsiveness** — Both hero CTAs now full-width (350×48) on viewports <640px; reduced padding & font on small screens
 
 ## Backlog / Future Improvements (P0–P2)
-- **P1**: Multi-language toggle (Bengali ⇄ English) for international tourists
-- **P1**: Email/SMS notifications to clinic when new appointment arrives (SendGrid + Twilio)
-- **P2**: SEO meta tags per route + Open Graph image; sitemap.xml
+- **P1**: Multi-language toggle (Bengali ⇄ English)
+- **P1**: Email/SMS notifications when new appointment arrives (SendGrid + Twilio)
+- **P2**: SEO meta tags + Open Graph image; sitemap.xml
 - **P2**: Drag-to-reorder doctors and gallery items in admin
 - **P2**: Patient testimonials CRUD in admin (currently hardcoded)
-- **P2**: WhatsApp Click-to-Chat float button on all pages
-- **P2**: Add "Services" page with detailed treatment info
-- **P2**: Audit log of admin actions
-- **P2**: Image optimization (WebP, srcset)
+- **P2**: Add "Services" detail page
+- **P2**: Image optimization (WebP, srcset, lazy)
 
 ## Next Action Items
 - Demo to user; collect feedback on copy / imagery / additional sections

@@ -130,9 +130,10 @@
 }
 
 /* Mobile-friendly button stretch on small screens */
-@media (max-width: 480px) {
+@media (max-width: 639px) {
   .btn-gold, .btn-outline-gold {
     width: 100%;
     justify-content: center;
+    align-self: stretch;
   }
 }
