@@ -109,39 +109,49 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-bg/10 flex flex-col md:flex-row justify-between items-center gap-5">
-          <p className="text-xs text-bg/40 font-bnSans text-center md:text-left">
-            © {new Date().getFullYear()} Banani Clinic Ltd. সমস্ত অধিকার সংরক্ষিত।
-          </p>
-          <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs font-bnSans">
-            <Link
-              to="/about"
-              className="text-bg/55 hover:text-accent transition-colors"
-              data-testid="footer-about"
-            >
-              আমাদের সম্পর্কে
-            </Link>
-            <Link
-              to="/privacy"
-              className="text-bg/55 hover:text-accent transition-colors"
-              data-testid="footer-privacy"
-            >
-              গোপনীয়তা নীতি
-            </Link>
-            <Link
-              to="/terms"
-              className="text-bg/55 hover:text-accent transition-colors"
-              data-testid="footer-terms"
-            >
-              শর্তাবলী
-            </Link>
-            <Link
-              to="/admin/login"
-              className="text-bg/40 hover:text-accent transition-colors"
-              data-testid="footer-admin-link"
-            >
-              অ্যাডমিন
-            </Link>
-          </nav>
+          <div className="flex flex-col md:flex-row items-center gap-x-5 gap-y-2 text-xs font-bnSans">
+            <p className="text-bg/40 text-center md:text-left">
+              © {new Date().getFullYear()} Banani Clinic Ltd. সমস্ত অধিকার সংরক্ষিত।
+            </p>
+            <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+              <Link
+                to="/about"
+                className="text-bg/55 hover:text-accent transition-colors"
+                data-testid="footer-about"
+              >
+                আমাদের সম্পর্কে
+              </Link>
+              <Link
+                to="/privacy"
+                className="text-bg/55 hover:text-accent transition-colors"
+                data-testid="footer-privacy"
+              >
+                গোপনীয়তা নীতি
+              </Link>
+              <Link
+                to="/terms"
+                className="text-bg/55 hover:text-accent transition-colors"
+                data-testid="footer-terms"
+              >
+                শর্তাবলী
+              </Link>
+            </nav>
+          </div>
+          <a
+            href="https://www.apixel.net"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-testid="footer-apixel"
+            className="text-xs font-bnSans text-bg/45 hover:text-accent transition-colors flex items-center gap-1.5 group"
+          >
+            <span className="opacity-70">Crafted by</span>
+            <span className="font-enSerif tracking-wide group-hover:text-accent transition-colors">
+              Apixel
+            </span>
+            <span className="text-bg/30 group-hover:text-accent/70 transition-colors">
+              · www.apixel.net
+            </span>
+          </a>
         </div>
       </div>
     </footer>

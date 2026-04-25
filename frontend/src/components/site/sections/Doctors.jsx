@@ -1,4 +1,4 @@
-// Doctors section - dynamic from API
+// Doctors section - dynamic from API. Centered vertical layout (header above, cards centered below)
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { api } from "@/lib/api";
@@ -20,52 +20,58 @@ export default function Doctors() {
     <section
       id="doctors"
       data-testid="home-doctors"
-      className="section-pad bg-gold/[0.04] scroll-mt-20"
+      className="section-pad bg-gold/[0.04] scroll-mt-24"
     >
       <div className="container-x">
+        {/* Centered header */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={stagger}
-          className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14"
+          className="text-center max-w-3xl mx-auto mb-14 md:mb-16"
         >
-          <div className="max-w-xl">
-            <motion.span variants={fadeUp} className="eyebrow mb-4">
-              বিশেষজ্ঞ চিকিৎসক দল
-            </motion.span>
-            <motion.h2
-              variants={fadeUp}
-              className="font-bnSerif text-3xl md:text-5xl text-ink leading-tight"
-            >
-              অভিজ্ঞ হাতে{" "}
-              <span className="italic text-gold">নিরাপদ চিকিৎসা</span>
-            </motion.h2>
-          </div>
+          <motion.span variants={fadeUp} className="eyebrow mb-4 justify-center">
+            বিশেষজ্ঞ চিকিৎসক দল
+          </motion.span>
+          <motion.h2
+            variants={fadeUp}
+            className="font-bnSerif text-3xl md:text-5xl text-ink leading-tight"
+          >
+            অভিজ্ঞ হাতে <span className="italic text-gradient">নিরাপদ চিকিৎসা</span>
+          </motion.h2>
           <motion.p
             variants={fadeUp}
-            className="font-bnSans text-ink-muted max-w-md"
+            className="font-bnSans text-ink-muted mt-5 md:mt-6 leading-relaxed max-w-2xl mx-auto"
           >
             দেশের শীর্ষস্থানীয় ডেন্টাল প্রতিষ্ঠান থেকে প্রশিক্ষিত ও আন্তর্জাতিক
-            অভিজ্ঞতাসম্পন্ন চিকিৎসক।
+            অভিজ্ঞতাসম্পন্ন চিকিৎসকদের সমন্বয়ে গঠিত আমাদের টিম।
           </motion.p>
         </motion.div>
 
         {loading ? (
-          <div data-testid="doctors-loading" className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div data-testid="doctors-loading" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {[1, 2].map((i) => (
               <div key={i} className="h-96 rounded-2xl bg-white border border-line/50 animate-pulse" />
             ))}
           </div>
         ) : doctors.length === 0 ? (
-          <p className="font-bnSans text-ink-muted">কোন চিকিৎসকের তথ্য পাওয়া যায়নি।</p>
+          <p className="font-bnSans text-ink-muted text-center">কোন চিকিৎসকের তথ্য পাওয়া যায়নি।</p>
         ) : (
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.1 }}
             variants={stagger}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className={`grid gap-6 md:gap-8 mx-auto ${
+              doctors.length === 1
+                ? "grid-cols-1 max-w-sm"
+                : doctors.length === 2
+                ? "grid-cols-1 md:grid-cols-2 max-w-3xl"
+                : doctors.length === 3
+                ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-5xl"
+                : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl"
+            }`}
           >
             {doctors.map((d) => (
               <motion.article
@@ -93,13 +99,9 @@ export default function Doctors() {
                       {d.nameEn}
                     </p>
                   )}
-                  <p className="text-sm text-gold font-bnSans mt-2">
-                    {d.specialization}
-                  </p>
+                  <p className="text-sm text-accent font-bnSans mt-2">{d.specialization}</p>
                   {d.degrees && (
-                    <p className="text-xs text-ink-muted mt-1 font-bnSans">
-                      {d.degrees}
-                    </p>
+                    <p className="text-xs text-ink-muted mt-1 font-bnSans">{d.degrees}</p>
                   )}
                   {d.bio && (
                     <p className="text-sm text-ink-muted mt-4 font-bnSans leading-relaxed line-clamp-3">

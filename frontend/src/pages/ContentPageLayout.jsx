@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import Navbar from "@/components/site/Navbar";
 import Footer from "@/components/site/Footer";
+import MarqueeBar from "@/components/site/MarqueeBar";
 import WhatsAppButton from "@/components/site/WhatsAppButton";
 import PageTransition from "@/components/site/PageTransition";
 
@@ -9,6 +10,7 @@ export default function ContentPageLayout({ eyebrow, title, intro, children, tes
   return (
     <PageTransition>
       <div data-testid={testId} className="min-h-screen bg-bg text-ink">
+        <MarqueeBar />
         <Navbar />
         <main>
           {/* Header */}

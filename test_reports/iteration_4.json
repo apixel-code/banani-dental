@@ -1,0 +1,47 @@
+{
+  "summary": "Iteration 4 backend + frontend testing: ALL 16 acceptance criteria PASS. Backend Settings API (GET public, PUT admin-only with 401 on unauth, persistence) verified via 5 pytest cases (5/5 pass). Frontend verified end-to-end across desktop (1920x1080) and mobile (390x844): Hero Bengali matras fully visible (reveal-mask padding-top=12.096px), mobile navbar shows 'Banani Clinic / SPECIALIZED HOSPITAL' text, footer admin link removed, footer has Apixel link to https://www.apixel.net target=_blank, MarqueeBar present on /, /gallery, /about, /privacy, /terms with marquee-track animation, navbar offset (top-9) applied when marquee active, hero 2-col layout with right image card + AACD সনদপ্রাপ্ত badge + Dr. Aslam Almehdi name card, doctors section centered, About page shows /brand/owner.jpg (1600x1448) with AACD MEMBER badge. Admin /admin/settings reachable via sidebar (data-testid='admin-nav-সেটিংস'), marquee-toggle/marquee-text/settings-save all functional, save shows success toast 'পরিবর্তন সংরক্ষিত হয়েছে', disabling marquee + reload public page → marquee-bar NOT rendered and navbar top-0. Cleanup performed: marqueeEnabled restored to true with original Bengali text via API verification.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {"ui_bugs": [], "integration_issues": [], "design_issues": []},
+  "verified_passing_items": [
+    "GET /api/settings public 200 with {marqueeEnabled, marqueeText}",
+    "PUT /api/settings without Authorization header returns 401",
+    "PUT /api/settings with admin Bearer token updates marqueeEnabled+marqueeText, persists across GET",
+    "/brand/owner.jpg served by frontend (200 OK, ~2.5MB)",
+    "Hero .reveal-mask computed paddingTop=12.096px, marginTop=-12.096px (Bengali top matras NOT cut off)",
+    "Mobile (390x844) nav-logo innerText = 'Banani Clinic\\nSPECIALIZED HOSPITAL', width=151px (fully visible)",
+    "Footer has NO data-testid='footer-admin-link' AND zero anchors with /admin in href",
+    "Footer data-testid='footer-apixel' href=https://www.apixel.net target=_blank rel=noopener noreferrer",
+    "MarqueeBar (data-testid='marquee-bar') present on /, /gallery, /about, /privacy, /terms",
+    "MarqueeBar has .marquee-track child + class 'fixed top-0 z-[60]' (CSS marquee animation)",
+    "Navbar has class 'top-9' when marqueeEnabled=true (correct offset to sit below marquee)",
+    "Hero right image card: img alt='Confident smile - Banani Clinic' + AACD সনদপ্রাপ্ত badge + Dr. Aslam Almehdi name card",
+    "Doctors section header centered via 'text-center' ancestor; cards mx-auto with dynamic max-w by count",
+    "About page owner image: src=/brand/owner.jpg, naturalWidth=1600, naturalHeight=1448, alt='Assoc. Prof. Dr. Aslam Almehdi'",
+    "About page has 'Dr. Aslam Almehdi' text and 'AACD MEMBER' badge",
+    "Admin login (admin/Admin@2026) succeeds; sidebar data-testid='admin-nav-সেটিংস' navigates to /admin/settings",
+    "/admin/settings has marquee-toggle, marquee-text, settings-save data-testids; save shows success toast",
+    "After admin disables marquee + reloads /, marquee-bar NOT rendered and navbar class contains 'top-0'",
+    "Final cleanup: API GET /api/settings returns marqueeEnabled=true with original Bengali default text"
+  ],
+  "test_report_links": [
+    "/app/backend/tests/test_settings.py",
+    "/app/test_reports/pytest/iter4_settings.xml",
+    "/app/test_reports/iteration_4.json"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "MarqueeBar.jsx reads /api/settings on every public-page mount; same data is also fetched independently by Navbar.jsx (duplicate request). Could be lifted into a shared context/hook to halve marquee API calls on initial load.",
+    "Settings model uses singleton pattern with key:'site' unique - reasonable; idempotent getOrCreate is safe for cold-start.",
+    "PUT validation only checks typeof; no length cap on marqueeText. Consider 280-char limit to prevent abuse via admin panel.",
+    "Hero.jsx uses Pexels external URL for hero image — works but adds external dependency; consider self-hosting to /brand/ for resilience.",
+    "owner.jpg is 2.5MB at 1600x1448 — large for web; consider serving a 800x720 WebP variant for /about above-the-fold."
+  ],
+  "updated_files": ["/app/backend/tests/test_settings.py"],
+  "success_rate": {"backend": "100% (5/5)", "frontend": "100% (all 16 acceptance criteria)"},
+  "test_credentials": "admin / Admin@2026 (verified)",
+  "seed_data_creation": "None - used existing seeded data; transient TEST_marquee text was overwritten back to original Bengali default per request",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Iteration 4 complete with no issues. Backend Settings model + routes work correctly. Marquee toggle persisted state verified. Admin UI testids: admin-nav-সেটিংস, marquee-toggle, marquee-text, settings-save. Public site marquee restored to enabled=true. Login form inputs use data-testid='login-username' and 'login-password' (no name attribute). Public testids: marquee-bar, site-navbar (with top-7 md:top-9 class when marquee active), nav-logo, footer-apixel. About owner image at /brand/owner.jpg.",
+  "rca_of_the_issue": "N/A - no bugs found"
+}

@@ -6,6 +6,7 @@ import {
   Image as ImageIcon,
   Users,
   Calendar,
+  Settings,
   LogOut,
   Menu,
   X,
@@ -17,6 +18,7 @@ const NAV = [
   { to: "/admin/gallery", label: "গ্যালারি", icon: ImageIcon },
   { to: "/admin/doctors", label: "চিকিৎসক", icon: Users },
   { to: "/admin/appointments", label: "অ্যাপয়েন্টমেন্ট", icon: Calendar },
+  { to: "/admin/settings", label: "সেটিংস", icon: Settings },
 ];
 
 export default function AdminLayout() {

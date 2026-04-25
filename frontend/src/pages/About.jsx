@@ -36,21 +36,61 @@ export default function About() {
       intro="ঢাকার বানানীতে অবস্থিত একটি স্পেশালাইজড হাসপাতাল যেখানে আধুনিক প্রযুক্তি, আন্তর্জাতিক মানের চিকিৎসা ও মানবিক যত্ন একসাথে পাওয়া যায়। আমরা শুধু চিকিৎসা দিই না — ফিরিয়ে দিই আত্মবিশ্বাস।"
     >
       {/* Lead doctor */}
-      <h2 className="font-bnSerif text-2xl md:text-3xl text-ink mt-0 mb-4">
+      <h2 className="font-bnSerif text-2xl md:text-3xl text-ink mt-0 mb-6 not-prose">
         আমাদের প্রতিষ্ঠাতা ও বিশেষজ্ঞ
       </h2>
-      <p className="font-bnSans text-ink-muted leading-relaxed text-[15px] md:text-base">
-        <strong className="text-ink">Assoc. Prof. Dr. Aslam Almehdi</strong> — Best Dentist /
-        Dental Surgeon / Periodontist / Implantologist / Maxillofacial Surgeon. তিনি Advanced
-        Dentistry এর Leader এবং Advanced Digital Implant Treatments (USA) এর leader। American
-        Academy of Cosmetic Dentistry (AACD) এর সম্মানিত সদস্য।
-      </p>
-      <p className="font-bnSans text-ink-muted leading-relaxed text-[15px] md:text-base mt-4">
-        Dental implants, maxillofacial surgery এবং periodontal plastic surgery তে বিশেষ
-        দক্ষতাসম্পন্ন এই অভিজ্ঞ চিকিৎসক জাপান, কোরিয়া, ইউকে, আমেরিকা ও অস্ট্রেলিয়া থেকে advanced
-        training সম্পন্ন করেছেন। জটিল dental ও oral conditions এর ক্ষেত্রে personalized
-        treatment plans এবং cutting-edge procedures এর জন্য তিনি প্রসিদ্ধ।
-      </p>
+
+      {/* Owner photo + bio */}
+      <div className="not-prose grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-8 mb-8">
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="md:col-span-2"
+        >
+          <div className="relative rounded-2xl overflow-hidden bg-white border border-line/50 shadow-lux">
+            <div className="aspect-[3/4]">
+              <img
+                src="/brand/owner.jpg"
+                alt="Assoc. Prof. Dr. Aslam Almehdi"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-ink/85 via-ink/40 to-transparent p-5 text-white">
+              <p className="font-enSerif text-lg leading-tight">Dr. Aslam Almehdi</p>
+              <p className="font-bnSans text-[10px] uppercase tracking-[0.2em] text-accent-soft mt-1">
+                Founder · Lead Maxillofacial Surgeon
+              </p>
+            </div>
+            <div className="absolute top-4 right-4 bg-white/95 backdrop-blur rounded-full px-3 py-1 text-[10px] uppercase tracking-widest font-bnSans text-accent flex items-center gap-1.5">
+              <Award className="w-3 h-3" /> AACD Member
+            </div>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.15 }}
+          className="md:col-span-3 flex flex-col justify-center"
+        >
+          <p className="font-bnSans text-ink-muted leading-relaxed text-[15px] md:text-base">
+            <strong className="text-ink">Assoc. Prof. Dr. Aslam Almehdi</strong> — Best Dentist /
+            Dental Surgeon / Periodontist / Implantologist / Maxillofacial Surgeon. তিনি Advanced
+            Dentistry এর Leader এবং Advanced Digital Implant Treatments (USA) এর leader। American
+            Academy of Cosmetic Dentistry (AACD) এর সম্মানিত সদস্য।
+          </p>
+          <p className="font-bnSans text-ink-muted leading-relaxed text-[15px] md:text-base mt-4">
+            Dental implants, maxillofacial surgery এবং periodontal plastic surgery তে বিশেষ
+            দক্ষতাসম্পন্ন এই অভিজ্ঞ চিকিৎসক <strong className="text-ink">জাপান, কোরিয়া, ইউকে,
+            আমেরিকা ও অস্ট্রেলিয়া</strong> থেকে advanced training সম্পন্ন করেছেন। জটিল dental ও
+            oral conditions এর ক্ষেত্রে personalized treatment plans এবং cutting-edge procedures এর
+            জন্য তিনি প্রসিদ্ধ।
+          </p>
+        </motion.div>
+      </div>
 
       {/* Values grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-10 not-prose">

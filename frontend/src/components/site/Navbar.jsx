@@ -4,6 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import HashLink from "@/components/site/HashLink";
+import { api } from "@/lib/api";
 
 const NAV = [
   { to: "/", label: "হোম", type: "route" },
@@ -17,13 +18,22 @@ const NAV = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [marqueeActive, setMarqueeActive] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll);
+    // detect marquee presence to offset navbar
+    api
+      .get("/settings")
+      .then((r) => setMarqueeActive(!!r.data?.marqueeEnabled && !!r.data?.marqueeText?.trim()))
+      .catch(() => setMarqueeActive(false));
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Top offset so navbar sits below marquee
+  const topClass = marqueeActive ? "top-7 md:top-9" : "top-0";
 
   return (
     <motion.header
@@ -31,7 +41,7 @@ export default function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       data-testid="site-navbar"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed ${topClass} left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
           ? "bg-bg/85 backdrop-blur-lg border-b border-line/60 shadow-sm"
           : "bg-transparent"
@@ -41,20 +51,20 @@ export default function Navbar() {
         <Link
           to="/"
           data-testid="nav-logo"
-          className="flex items-center gap-3 group shrink-0"
+          className="flex items-center gap-2.5 md:gap-3 group shrink-0 min-w-0"
         >
           <motion.img
             whileHover={{ rotate: -8, scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
             src="/brand/logo.png"
             alt="Banani Clinic Ltd."
-            className="w-10 h-10 md:w-11 md:h-11 object-contain drop-shadow-sm"
+            className="w-9 h-9 md:w-11 md:h-11 object-contain drop-shadow-sm shrink-0"
           />
-          <span className="hidden sm:flex flex-col leading-none">
-            <span className="font-enSerif text-base md:text-lg tracking-tight text-ink">
+          <span className="flex flex-col leading-none min-w-0">
+            <span className="font-enSerif text-sm md:text-lg tracking-tight text-ink truncate">
               Banani Clinic
             </span>
-            <span className="font-bnSans text-[10px] md:text-[11px] uppercase tracking-[0.18em] text-accent mt-0.5">
+            <span className="font-bnSans text-[8px] md:text-[11px] uppercase tracking-[0.16em] md:tracking-[0.18em] text-accent mt-0.5 truncate">
               Specialized Hospital
             </span>
           </span>

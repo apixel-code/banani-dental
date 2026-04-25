@@ -17,6 +17,7 @@ import AdminDashboard from "@/pages/admin/AdminDashboard";
 import AdminGallery from "@/pages/admin/AdminGallery";
 import AdminDoctors from "@/pages/admin/AdminDoctors";
 import AdminAppointments from "@/pages/admin/AdminAppointments";
+import AdminSettings from "@/pages/admin/AdminSettings";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -34,6 +35,7 @@ function AnimatedRoutes() {
           <Route path="gallery" element={<AdminGallery />} />
           <Route path="doctors" element={<AdminDoctors />} />
           <Route path="appointments" element={<AdminAppointments />} />
+          <Route path="settings" element={<AdminSettings />} />
         </Route>
       </Routes>
     </AnimatePresence>

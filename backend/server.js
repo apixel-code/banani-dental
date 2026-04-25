@@ -9,6 +9,7 @@ const authRoutes = require('./routes/auth');
 const doctorRoutes = require('./routes/doctors');
 const galleryRoutes = require('./routes/gallery');
 const appointmentRoutes = require('./routes/appointments');
+const settingsRoutes = require('./routes/settings');
 
 const app = express();
 
@@ -32,6 +33,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/doctors', doctorRoutes);
 app.use('/api/gallery', galleryRoutes);
 app.use('/api/appointments', appointmentRoutes);
+app.use('/api/settings', settingsRoutes);
 
 // 404 handler
 app.use((req, res) => {

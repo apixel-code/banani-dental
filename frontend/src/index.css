@@ -195,9 +195,13 @@
   z-index: 100;
 }
 
-/* Section reveal mask */
+/* Section reveal mask - extra padding for Bengali matras above headline characters */
 .reveal-mask {
   display: inline-block;
   overflow: hidden;
   vertical-align: bottom;
+  padding-top: 0.18em;
+  padding-bottom: 0.06em;
+  margin-top: -0.18em;
+  line-height: 1.2;
 }
