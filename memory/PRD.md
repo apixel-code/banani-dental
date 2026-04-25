@@ -50,6 +50,19 @@ User feedback: logo not added, no animations, full page reload on navigation, no
 - ✅ **WhatsApp floating button** — Green pulse-ring CTA on `/` and `/gallery` pages, opens `wa.me/8801711170890` with prefilled message
 - ✅ **Mobile button responsiveness** — Both hero CTAs now full-width (350×48) on viewports <640px; reduced padding & font on small screens
 
+## Iteration 3 — 2026-04-26 (User feedback)
+User feedback: admin Gallery & Appointments not mobile-responsive; suggest Hind Siliguri/Kalpurush Bengali font; create About/Privacy/Terms pages.
+- ✅ **Mobile admin pages** — Delete/edit buttons now `opacity-100 lg:opacity-0 lg:group-hover:opacity-100` (always visible on mobile, hover-only on desktop). Added 9px buttons with shadows. Fixed AdminAppointments layout (status select + delete in horizontal row at bottom of card with border-top divider on mobile). Reduced AdminLayout padding on mobile (`p-4 sm:p-6 md:p-10`). Heading sizes responsive (`text-2xl md:text-4xl`). Added `-mx-4 md:mx-0 px-4 md:px-0` for filter chips edge-to-edge scroll on mobile.
+- ✅ **Bengali font upgrade** — Body changed to **Hind Siliguri** (clean, professional, readable). Headings remain **Tiro Bangla** (luxury serif). Anek Bangla removed entirely. Added Noto Serif Bengali as fallback. Updated `index.html`, `tailwind.config.js`, `index.css`.
+- ✅ **3 new pages**:
+  - **`/about`** — Banani Clinic intro, Dr. Aslam Almehdi credentials (BDS, FCPS, AACD member, USA/Japan/Korea/UK trained), 4 value cards (ব্যথামুক্ত, আন্তর্জাতিক, রোগীকেন্দ্রিক, সম্পূর্ণ), full Cleft Lip & Palate explainer (6,000 children stat), Filariasis/Elephantiasis section, CTA to /#contact
+  - **`/privacy`** — 8-section Bengali privacy policy (data collection, usage, cookies, media, security, third-parties, user rights, policy changes)
+  - **`/terms`** — 9-section Bengali terms (acceptance, medical disclaimer, appointments/payment, cancellation, IP, conduct, liability, jurisdiction, changes)
+- ✅ **Shared `ContentPageLayout`** with mesh-bg header, Navbar+Footer+WhatsAppButton+PageTransition wrappers
+- ✅ **Footer expanded** — 4 legal nav links (About, Privacy, Terms, Admin) all using `<Link>` for SPA navigation
+- ✅ **Navbar expanded** — Added `আমাদের সম্পর্কে` (About) link
+- ✅ **Testing agent: 14/14 (100%)** iteration 3 frontend tests pass
+
 ## Backlog / Future Improvements (P0–P2)
 - **P1**: Multi-language toggle (Bengali ⇄ English)
 - **P1**: Email/SMS notifications when new appointment arrives (SendGrid + Twilio)
