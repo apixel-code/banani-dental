@@ -31,6 +31,13 @@ export const brand = {
     },
   },
   copyrightText: "সমস্ত অধিকার সংরক্ষিত।",
+  developerCredit: {
+    prefix: "Developed by",
+    name: "Apixel",
+    href: "https://www.apixel.net",
+    displayUrl: "www.apixel.net",
+    ariaLabel: "Visit Apixel website",
+  },
 };
 
 export const buildTelHref = (number) => `tel:${number.replace(/[^\d+]/g, "")}`;

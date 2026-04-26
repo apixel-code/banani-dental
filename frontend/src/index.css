@@ -54,7 +54,7 @@
     background-color: var(--color-bg);
     color: var(--color-text);
     font-family: "Hind Siliguri", system-ui, sans-serif;
-    line-height: 1.6;
+    line-height: 1.4;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
@@ -75,35 +75,33 @@
   font-family: "Hind Siliguri", system-ui, sans-serif;
 }
 
-/* Bengali glyph safety: prevents top matras/i-kar from being clipped. */
-p,
-span,
-a,
-button,
-label,
-input,
-textarea,
-select,
-li,
-blockquote,
-figcaption,
-.font-bn-serif,
-.font-en-serif,
-.font-bn-sans {
-  line-height: 1.6;
-  overflow: visible;
-}
-
+/* Bengali glyph safety: prevent top matras/i-kar from clipping without loose body copy. */
 h1,
 h2,
 h3,
 h4,
 h5,
-h6,
+h6 {
+  line-height: 1.35;
+  padding-top: 10px;
+  overflow: visible !important;
+  transform: translateZ(0);
+}
+
+h1,
+h2 {
+  padding-top: 12px;
+}
+
+.text-accent,
+.text-gold,
+.text-gradient,
 .eyebrow {
-  line-height: 1.45;
+  line-height: 1.35;
   padding-top: 0.08em;
-  overflow: visible;
+  overflow: visible !important;
+  vertical-align: middle;
+  transform: translateZ(0);
 }
 
 /* Hide scrollbar */
@@ -232,10 +230,16 @@ h6,
 /* Section reveal mask - extra padding for Bengali matras above headline characters */
 .reveal-mask {
   display: inline-block;
-  overflow: visible;
-  vertical-align: bottom;
-  padding-top: 0.22em;
-  padding-bottom: 0.08em;
-  margin-top: -0.12em;
-  line-height: 1.45;
+  overflow: visible !important;
+  vertical-align: middle;
+  padding-top: 10px;
+  padding-bottom: 2px;
+  margin-top: -8px;
+  line-height: 1.35;
+  transform: translateZ(0);
+}
+
+.reveal-mask > * {
+  overflow: visible !important;
+  transform: translateZ(0);
 }
