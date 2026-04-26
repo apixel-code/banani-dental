@@ -31,7 +31,7 @@ export const heroContent = {
   ],
   images: {
     right: {
-      src: "https://images.pexels.com/photos/3845810/pexels-photo-3845810.jpeg",
+      src: "/assets/hero.jpeg",
       alt: "Confident smile - Banani Clinic",
     },
     background: {
