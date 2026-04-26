@@ -282,6 +282,17 @@ class TestAppointments:
         r = session.post(f"{BASE_URL}/api/appointments", json={"name": "noPhone"}, timeout=15)
         assert r.status_code == 400
 
+        r = session.post(
+            f"{BASE_URL}/api/appointments",
+            json={
+                "name": "TEST_past",
+                "phone": "+8801711000000",
+                "preferredDate": "2000-01-01",
+            },
+            timeout=15,
+        )
+        assert r.status_code == 400
+
     def test_03_list_admin(self, session, admin_headers):
         r = session.get(f"{BASE_URL}/api/appointments", headers=admin_headers, timeout=20)
         assert r.status_code == 200

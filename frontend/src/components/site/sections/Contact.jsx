@@ -14,6 +14,22 @@ const SERVICES = [
   "অন্যান্য",
 ];
 
+const PAST_DATE_ERROR =
+  "অনুগ্রহ করে আজকের তারিখ বা ভবিষ্যতের একটি তারিখ নির্বাচন করুন।";
+
+const getTodayDateString = () => {
+  const now = new Date();
+  const localDate = new Date(now.getTime() - now.getTimezoneOffset() * 60000);
+  return localDate.toISOString().slice(0, 10);
+};
+
+const getPreferredDateError = (preferredDate, todayDate = getTodayDateString()) => {
+  if (preferredDate && preferredDate < todayDate) {
+    return PAST_DATE_ERROR;
+  }
+  return "";
+};
+
 export default function Contact() {
   const [form, setForm] = useState({
     name: "",
@@ -24,9 +40,16 @@ export default function Contact() {
     message: "",
   });
   const [status, setStatus] = useState({ loading: false, ok: false, err: "" });
+  const todayDate = getTodayDateString();
 
   const submit = async (e) => {
     e.preventDefault();
+    const preferredDateError = getPreferredDateError(form.preferredDate);
+    if (preferredDateError) {
+      setStatus({ loading: false, ok: false, err: preferredDateError });
+      return;
+    }
+
     setStatus({ loading: true, ok: false, err: "" });
     try {
       await api.post("/appointments", form);
@@ -41,7 +64,21 @@ export default function Contact() {
     }
   };
 
-  const onChange = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
+  const onChange = (k) => (e) => {
+    const { value } = e.target;
+    setForm((f) => ({ ...f, [k]: value }));
+
+    if (k === "preferredDate") {
+      const preferredDateError = getPreferredDateError(value);
+      setStatus((current) => ({
+        ...current,
+        ok: false,
+        err:
+          preferredDateError ||
+          (current.err === PAST_DATE_ERROR ? "" : current.err),
+      }));
+    }
+  };
 
   return (
     <section
@@ -183,6 +220,7 @@ export default function Contact() {
             <Field
               label="পছন্দের তারিখ"
               type="date"
+              min={todayDate}
               value={form.preferredDate}
               onChange={onChange("preferredDate")}
               testId="appt-date"

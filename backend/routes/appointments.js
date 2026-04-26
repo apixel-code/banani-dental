@@ -6,6 +6,29 @@ const { requireAdmin } = require('../middleware/auth');
 
 const router = express.Router();
 
+const getClinicTodayDateString = () => {
+  const parts = new Intl.DateTimeFormat('en', {
+    timeZone: 'Asia/Dhaka',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  })
+    .formatToParts(new Date())
+    .reduce((acc, part) => {
+      if (part.type !== 'literal') acc[part.type] = part.value;
+      return acc;
+    }, {});
+
+  return `${parts.year}-${parts.month}-${parts.day}`;
+};
+
+const isValidDateString = (value) => {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+
+  const date = new Date(`${value}T00:00:00Z`);
+  return !Number.isNaN(date.getTime()) && date.toISOString().slice(0, 10) === value;
+};
+
 // Public: submit appointment request
 router.post(
   '/',
@@ -13,6 +36,14 @@ router.post(
     const { name, phone, email, service, message, preferredDate } = req.body || {};
     if (!name || !phone) {
       return res.status(400).json({ error: 'Name and phone are required' });
+    }
+    if (preferredDate) {
+      if (!isValidDateString(preferredDate)) {
+        return res.status(400).json({ error: 'Preferred date must be a valid date' });
+      }
+      if (preferredDate < getClinicTodayDateString()) {
+        return res.status(400).json({ error: 'Preferred date cannot be in the past' });
+      }
     }
     const appt = await Appointment.create({
       name,
