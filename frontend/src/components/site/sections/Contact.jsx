@@ -153,7 +153,7 @@ export default function Contact() {
                   data-testid="contact-whatsapp"
                   className="font-bnSans text-sm text-ink-muted hover:text-gold transition-colors"
                 >
-                  Chat on WhatsApp ->
+                  Chat on WhatsApp
                 </a>
               </div>
             </motion.li>
