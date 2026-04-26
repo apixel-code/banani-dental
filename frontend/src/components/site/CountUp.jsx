@@ -1,16 +1,8 @@
-// Animated number/label - count up when in view, supports Bengali numerals
+// Animated number/label - count up when in view
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "framer-motion";
 
-const BN_DIGITS = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
-
-const toBengali = (n) =>
-  String(n)
-    .split("")
-    .map((ch) => (/\d/.test(ch) ? BN_DIGITS[Number(ch)] : ch))
-    .join("");
-
-export default function CountUp({ value, suffix = "", duration = 1.6, bengali = true }) {
+export default function CountUp({ value, suffix = "", duration = 1.6 }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-50px" });
   const [n, setN] = useState(0);
@@ -31,7 +23,7 @@ export default function CountUp({ value, suffix = "", duration = 1.6, bengali = 
 
   return (
     <span ref={ref} className="tabular-nums">
-      {bengali ? toBengali(n) : n}
+      {n}
       {suffix}
     </span>
   );

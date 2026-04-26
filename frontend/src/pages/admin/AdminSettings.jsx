@@ -18,7 +18,7 @@ export default function AdminSettings() {
     api
       .get("/settings")
       .then((r) => setSettings(r.data))
-      .catch(() => setErr("সেটিংস লোড করা যায়নি"))
+      .catch(() => setErr("Unable to load settings."))
       .finally(() => setLoading(false));
   }, []);
 
@@ -32,7 +32,7 @@ export default function AdminSettings() {
       setSavedAt(new Date());
       setTimeout(() => setSavedAt(null), 3000);
     } catch (e2) {
-      setErr(e2?.response?.data?.error || "সংরক্ষণে সমস্যা হয়েছে");
+      setErr(e2?.response?.data?.error || "Unable to save changes.");
     } finally {
       setSaving(false);
     }
@@ -51,13 +51,13 @@ export default function AdminSettings() {
     <div data-testid="admin-settings-page">
       <header className="mb-8">
         <p className="text-xs uppercase tracking-[0.22em] text-gold font-bnSans mb-2">
-          সেটিংস
+          Settings
         </p>
         <h1 className="font-bnSerif text-2xl md:text-4xl text-ink">
-          সাইট কনফিগারেশন
+          Site Configuration
         </h1>
         <p className="font-bnSans text-sm text-ink-muted mt-2">
-          ঘোষণা বার ও সাইটের অন্যান্য সেটিংস নিয়ন্ত্রণ করুন।
+          Manage the announcement bar and other site settings.
         </p>
       </header>
 
@@ -68,9 +68,9 @@ export default function AdminSettings() {
             <Megaphone className="w-5 h-5" />
           </div>
           <div>
-            <h2 className="font-bnSerif text-xl text-ink">ঘোষণা বার (Marquee)</h2>
+            <h2 className="font-bnSerif text-xl text-ink">Announcement Bar (Marquee)</h2>
             <p className="text-xs text-ink-muted font-bnSans mt-0.5">
-              নেভিগেশনের উপরে স্ক্রলিং টেক্সট দেখান
+              Show scrolling text above the navigation
             </p>
           </div>
         </div>
@@ -85,12 +85,12 @@ export default function AdminSettings() {
             )}
             <div>
               <p className="font-bnSerif text-ink">
-                {settings.marqueeEnabled ? "চালু আছে" : "বন্ধ আছে"}
+                {settings.marqueeEnabled ? "Enabled" : "Disabled"}
               </p>
               <p className="text-xs text-ink-muted font-bnSans">
                 {settings.marqueeEnabled
-                  ? "ঘোষণাটি ওয়েবসাইটে দৃশ্যমান"
-                  : "ঘোষণাটি লুকানো রয়েছে"}
+                  ? "The announcement is visible on the website"
+                  : "The announcement is currently hidden"}
               </p>
             </div>
           </div>
@@ -118,7 +118,7 @@ export default function AdminSettings() {
         {/* Text input */}
         <div className="mb-6">
           <label className="block text-xs uppercase tracking-widest text-ink-muted font-bnSans mb-2">
-            ঘোষণার টেক্সট
+            Announcement Text
           </label>
           <textarea
             data-testid="marquee-text"
@@ -127,18 +127,18 @@ export default function AdminSettings() {
               setSettings((s) => ({ ...s, marqueeText: e.target.value }))
             }
             rows={3}
-            placeholder="যেমন: আজই অ্যাপয়েন্টমেন্ট নিয়ে বিশেষ ছাড় উপভোগ করুন"
+            placeholder="Example: Schedule an appointment today and enjoy a special offer"
             className="w-full px-4 py-3 rounded-xl border border-line bg-bg/40 font-bnSans text-base focus:outline-none focus:border-accent transition-colors resize-none"
           />
           <p className="text-xs text-ink-muted/80 font-bnSans mt-2">
-            টেক্সটি স্বয়ংক্রিয়ভাবে স্ক্রল হবে। সংক্ষিপ্ত ও আকর্ষণীয় রাখার পরামর্শ দেওয়া হলো।
+            This text will scroll automatically. Keep it concise and engaging.
           </p>
         </div>
 
         {/* Live preview */}
         <div className="mb-6">
           <p className="text-xs uppercase tracking-widest text-ink-muted font-bnSans mb-2">
-            লাইভ প্রিভিউ
+            Live Preview
           </p>
           <div className="rounded-xl overflow-hidden border border-line/60">
             {settings.marqueeEnabled && settings.marqueeText.trim() ? (
@@ -154,7 +154,7 @@ export default function AdminSettings() {
               </div>
             ) : (
               <div className="bg-bg/60 py-4 text-center text-sm text-ink-muted font-bnSans">
-                ঘোষণা বার বর্তমানে দৃশ্যমান নয়
+                The announcement bar is not currently visible
               </div>
             )}
           </div>
@@ -167,7 +167,7 @@ export default function AdminSettings() {
         )}
         {savedAt && (
           <div data-testid="settings-saved" className="mb-4 p-3 rounded-xl bg-emerald-50 text-emerald-700 text-sm font-bnSans">
-            ✓ পরিবর্তন সংরক্ষিত হয়েছে
+            Saved successfully.
           </div>
         )}
 
@@ -178,7 +178,7 @@ export default function AdminSettings() {
           className="btn-gold w-full md:w-auto justify-center"
         >
           <Save className="w-4 h-4" />
-          {saving ? "সংরক্ষণ হচ্ছে..." : "পরিবর্তন সংরক্ষণ করুন"}
+          {saving ? "Saving..." : "Save Changes"}
         </button>
       </form>
     </div>

@@ -32,20 +32,20 @@ export default function Doctors() {
           className="text-center max-w-3xl mx-auto mb-14 md:mb-16"
         >
           <motion.span variants={fadeUp} className="eyebrow mb-4 justify-center">
-            বিশেষজ্ঞ চিকিৎসক দল
+            Specialist Doctor Team
           </motion.span>
           <motion.h2
             variants={fadeUp}
             className="font-bnSerif text-3xl md:text-5xl text-ink leading-tight"
           >
-            অভিজ্ঞ হাতে <span className="italic text-gradient">নিরাপদ চিকিৎসা</span>
+            Safe Care from <span className="italic text-gradient">Experienced Hands</span>
           </motion.h2>
           <motion.p
             variants={fadeUp}
             className="font-bnSans text-ink-muted mt-5 md:mt-6 leading-relaxed max-w-2xl mx-auto"
           >
-            দেশের শীর্ষস্থানীয় ডেন্টাল প্রতিষ্ঠান থেকে প্রশিক্ষিত ও আন্তর্জাতিক
-            অভিজ্ঞতাসম্পন্ন চিকিৎসকদের সমন্বয়ে গঠিত আমাদের টিম।
+            Our team brings together clinicians trained by leading dental
+            institutions with extensive international experience.
           </motion.p>
         </motion.div>
 
@@ -56,7 +56,7 @@ export default function Doctors() {
             ))}
           </div>
         ) : doctors.length === 0 ? (
-          <p className="font-bnSans text-ink-muted text-center">কোন চিকিৎসকের তথ্য পাওয়া যায়নি।</p>
+          <p className="font-bnSans text-ink-muted text-center">No doctor information is available.</p>
         ) : (
           <motion.div
             initial="hidden"
@@ -89,7 +89,7 @@ export default function Doctors() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent" />
                   <span className="absolute bottom-4 left-4 px-3 py-1 rounded-full bg-white/90 backdrop-blur text-xs font-bnSans text-ink">
-                    {d.experience || "অভিজ্ঞ"}
+                    {d.experience || "Experienced"}
                   </span>
                 </div>
                 <div className="p-6">

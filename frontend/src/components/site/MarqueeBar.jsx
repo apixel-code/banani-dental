@@ -34,7 +34,7 @@ export default function MarqueeBar() {
           <div className="flex items-center gap-2 pl-3 md:pl-5 shrink-0 z-10 bg-[#1F4E79] pr-3">
             <Megaphone className="w-3.5 h-3.5 md:w-4 md:h-4" />
             <span className="text-[10px] md:text-xs uppercase tracking-[0.18em] font-bnSans hidden sm:inline">
-              ঘোষণা
+              Announcement
             </span>
           </div>
           <div className="flex-1 overflow-hidden">

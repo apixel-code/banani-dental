@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const PHONE = "8801711170890";
 const MESSAGE =
-  "আসসালামু আলাইকুম! আমি Banani Dental এর সেবা নিয়ে জানতে চাই।";
+  "Hello, I would like to learn more about Banani Dental services.";
 const HREF = `https://wa.me/${PHONE}?text=${encodeURIComponent(MESSAGE)}`;
 
 export default function WhatsAppButton() {
@@ -38,7 +38,7 @@ export default function WhatsAppButton() {
 
       {/* Tooltip on desktop */}
       <span className="hidden lg:flex absolute right-full top-1/2 -translate-y-1/2 mr-4 whitespace-nowrap px-4 py-2 rounded-full bg-ink text-white text-xs font-bnSans opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300 pointer-events-none">
-        হোয়াটসঅ্যাপে কথা বলুন
+        Chat on WhatsApp
       </span>
     </motion.a>
   );

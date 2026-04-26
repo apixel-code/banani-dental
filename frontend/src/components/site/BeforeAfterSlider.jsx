@@ -35,10 +35,10 @@ export default function BeforeAfterSlider({ before, after, caption, title }) {
       />
       {/* Labels */}
       <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/55 backdrop-blur text-white text-xs uppercase tracking-widest font-bnSans">
-        আগে
+        Before
       </span>
       <span className="absolute top-4 right-4 px-3 py-1 rounded-full bg-gold text-white text-xs uppercase tracking-widest font-bnSans">
-        পরে
+        After
       </span>
       {(title || caption) && (
         <div className="px-6 py-5 bg-white border-t border-line/60">

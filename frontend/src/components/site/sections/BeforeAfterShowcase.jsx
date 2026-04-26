@@ -35,19 +35,19 @@ export default function BeforeAfterShowcase() {
           className="text-center max-w-2xl mx-auto mb-14"
         >
           <motion.span variants={fadeUp} className="eyebrow mb-4 justify-center">
-            ট্রান্সফরমেশন
+            Transformation
           </motion.span>
           <motion.h2
             variants={fadeUp}
             className="font-bnSerif text-3xl md:text-5xl text-ink leading-tight"
           >
-            আগে ও পরে — <span className="italic text-gold">প্রকৃত পরিবর্তন</span>
+            Before and After: <span className="italic text-gold">Real Change</span>
           </motion.h2>
           <motion.p
             variants={fadeUp}
             className="font-bnSans text-ink-muted mt-5"
           >
-            আমাদের রোগীদের আত্মবিশ্বাস ফিরে পাওয়ার গল্প। স্লাইড করে দেখুন।
+            See how our patients regained confidence. Slide to compare.
           </motion.p>
         </motion.div>
 
@@ -73,7 +73,7 @@ export default function BeforeAfterShowcase() {
           data-testid="ba-view-all"
           className="btn-outline-gold"
         >
-          সব ট্রান্সফরমেশন দেখুন <ArrowRight className="w-4 h-4" />
+          View All Transformations <ArrowRight className="w-4 h-4" />
         </Link>
         </div>
       </div>

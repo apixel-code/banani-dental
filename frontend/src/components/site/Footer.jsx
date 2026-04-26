@@ -47,7 +47,7 @@ export default function Footer() {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <h4 className="font-enSerif text-sm uppercase tracking-[0.22em] text-accent-soft mb-5">
-              যোগাযোগ
+              Contact
             </h4>
             <ul className="space-y-3 font-bnSans text-sm">
               <li className="flex items-start gap-3">
@@ -97,19 +97,19 @@ export default function Footer() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <h4 className="font-enSerif text-sm uppercase tracking-[0.22em] text-accent-soft mb-5">
-              খোলার সময়
+              Opening Hours
             </h4>
             <ul className="space-y-2 font-bnSans text-sm text-bg/80">
               <li className="flex justify-between">
-                <span>শনি - বৃহস্পতি</span>
-                <span className="text-bg/55 tabular-nums">৯:০০ - ১০:০০</span>
+                <span>Sat - Thu</span>
+                <span className="text-bg/55 tabular-nums">9:00 - 10:00</span>
               </li>
               <li className="flex justify-between">
-                <span>শুক্রবার</span>
-                <span className="text-bg/55 tabular-nums">৩:০০ - ৯:০০</span>
+                <span>Friday</span>
+                <span className="text-bg/55 tabular-nums">3:00 - 9:00</span>
               </li>
               <li className="pt-3 text-xs text-bg/45">
-                জরুরী সেবা: ২৪/৭ ফোনে যোগাযোগ
+                Emergency support: call 24/7
               </li>
             </ul>
           </motion.div>

@@ -109,7 +109,7 @@ export default function Navbar() {
             data-testid="nav-cta"
             className="hidden lg:inline-flex btn-gold !py-2 !px-4 !text-xs cursor-pointer"
           >
-            অ্যাপয়েন্টমেন্ট
+            Appointment
           </HashLink>
           <button
             data-testid="nav-mobile-toggle"
@@ -172,7 +172,7 @@ export default function Navbar() {
                   data-testid="mobile-nav-cta"
                   className="btn-gold mt-4 justify-center cursor-pointer"
                 >
-                  অ্যাপয়েন্টমেন্ট নিন
+                  Schedule Appointment
                 </HashLink>
               </motion.div>
             </div>

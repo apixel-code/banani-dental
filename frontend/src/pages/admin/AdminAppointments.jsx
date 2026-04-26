@@ -51,12 +51,12 @@ export default function AdminAppointments() {
     <div data-testid="admin-appointments-page">
       <header className="mb-8">
         <p className="text-xs uppercase tracking-[0.22em] text-gold font-bnSans mb-2">
-          অ্যাপয়েন্টমেন্ট
+          Appointments
         </p>
         <h1 className="font-bnSerif text-2xl md:text-4xl text-ink">
-          সব অ্যাপয়েন্টমেন্ট রিকোয়েস্ট
+          All Appointment Requests
         </h1>
-        <p className="font-bnSans text-sm text-ink-muted mt-2">মোট {items.length} টি</p>
+        <p className="font-bnSans text-sm text-ink-muted mt-2">Total {items.length}</p>
       </header>
 
       <div className="flex gap-2 overflow-x-auto pb-3 mb-6 hide-scrollbar -mx-4 md:mx-0 px-4 md:px-0">
@@ -67,7 +67,7 @@ export default function AdminAppointments() {
             filter === "all" ? "bg-ink text-bg" : "bg-white border border-line text-ink-muted hover:border-gold"
           }`}
         >
-          সব
+          All
         </button>
         {appointmentStatuses.map((s) => (
           <button
@@ -92,9 +92,9 @@ export default function AdminAppointments() {
       ) : filtered.length === 0 ? (
         <div data-testid="appt-empty" className="rounded-3xl bg-white border border-dashed border-line py-20 text-center">
           <Calendar className="w-12 h-12 mx-auto text-gold mb-4" />
-          <h3 className="font-bnSerif text-xl text-ink">কোন অ্যাপয়েন্টমেন্ট নেই</h3>
+          <h3 className="font-bnSerif text-xl text-ink">No Appointments Found</h3>
           <p className="font-bnSans text-sm text-ink-muted mt-2">
-            নতুন রিকোয়েস্ট এলে এখানে দেখা যাবে।
+            New requests will appear here.
           </p>
         </div>
       ) : (
@@ -140,13 +140,13 @@ export default function AdminAppointments() {
                     </div>
                     {appt.service && (
                       <p className="mt-3 text-sm font-bnSans">
-                        <span className="text-ink-muted">সেবা:</span>{" "}
+                        <span className="text-ink-muted">Service:</span>{" "}
                         <span className="text-ink">{appt.service}</span>
                       </p>
                     )}
                     {appt.preferredDate && (
                       <p className="mt-1 text-sm font-bnSans">
-                        <span className="text-ink-muted">পছন্দের তারিখ:</span>{" "}
+                        <span className="text-ink-muted">Preferred Date:</span>{" "}
                         <span className="text-ink tabular-nums">{appt.preferredDate}</span>
                       </p>
                     )}
@@ -156,7 +156,7 @@ export default function AdminAppointments() {
                       </p>
                     )}
                     <p className="mt-3 text-xs text-ink-muted/70 font-bnSans">
-                      {new Date(appt.createdAt).toLocaleString("bn-BD")}
+                      {new Date(appt.createdAt).toLocaleString("en-US")}
                     </p>
                   </div>
 
@@ -179,7 +179,7 @@ export default function AdminAppointments() {
                       className="px-3 py-2 md:px-0 md:py-0 rounded-lg md:rounded-none text-xs text-red-600 hover:text-red-800 font-bnSans flex items-center justify-center gap-1 border md:border-0 border-red-200 md:bg-transparent"
                     >
                       <Trash2 className="w-3 h-3" />
-                      মুছুন
+                      Delete
                     </button>
                   </div>
                 </div>
@@ -193,11 +193,11 @@ export default function AdminAppointments() {
         isOpen={Boolean(deleteTarget)}
         onClose={() => setDeleteTarget(null)}
         onConfirm={confirmDelete}
-        title="অ্যাপয়েন্টমেন্ট মুছে ফেলবেন?"
+        title="Delete this appointment?"
         description={
           deleteTarget?.name
-            ? `${deleteTarget.name} এর অ্যাপয়েন্টমেন্টটি স্থায়ীভাবে মুছে যাবে। পরে এটি ফিরিয়ে আনা যাবে না।`
-            : "এই অ্যাপয়েন্টমেন্টটি স্থায়ীভাবে মুছে যাবে। পরে এটি ফিরিয়ে আনা যাবে না।"
+            ? `${deleteTarget.name}'s appointment will be permanently deleted. This action cannot be undone.`
+            : "This appointment will be permanently deleted. This action cannot be undone."
         }
       />
     </div>

@@ -79,7 +79,7 @@ function ContactBlock({ contactBlock }) {
       <p className="font-bnSans text-sm text-ink-muted">
         {contactBlock.desc}
         <br />
-        ইমেইল:{" "}
+        Email:{" "}
         <a
           className="text-accent hover:underline"
           href={`mailto:${contactBlock.email}`}
@@ -87,7 +87,7 @@ function ContactBlock({ contactBlock }) {
           {contactBlock.email}
         </a>
         <br />
-        ফোন:{" "}
+        Phone:{" "}
         <a
           className="text-accent hover:underline tabular-nums"
           href={buildTelHref(contactBlock.phone.number)}
@@ -151,7 +151,7 @@ export default function ContentPageLayout({
             >
               {lastUpdated && (
                 <p className="font-bnSans text-sm text-ink-muted not-prose">
-                  সর্বশেষ আপডেট: {lastUpdated}
+                  Last updated: {lastUpdated}
                 </p>
               )}
               {children}

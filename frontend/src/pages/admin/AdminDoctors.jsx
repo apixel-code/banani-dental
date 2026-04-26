@@ -41,10 +41,10 @@ export default function AdminDoctors() {
       <header className="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-8">
         <div>
           <p className="text-xs uppercase tracking-[0.22em] text-gold font-bnSans mb-2">
-            চিকিৎসক ম্যানেজমেন্ট
+            Doctor Management
           </p>
           <h1 className="font-bnSerif text-2xl md:text-4xl text-ink">
-            চিকিৎসকদের প্রোফাইল
+            Doctor Profiles
           </h1>
         </div>
         <button
@@ -53,7 +53,7 @@ export default function AdminDoctors() {
           className="btn-gold w-full md:w-auto"
         >
           <Plus className="w-4 h-4" />
-          নতুন চিকিৎসক যোগ করুন
+          Add New Doctor
         </button>
       </header>
 
@@ -104,7 +104,7 @@ export default function AdminDoctors() {
                 )}
                 {d.experience && (
                   <p className="text-xs text-ink-muted mt-2 font-bnSans">
-                    অভিজ্ঞতা: {d.experience}
+                    Experience: {d.experience}
                   </p>
                 )}
               </div>
@@ -128,11 +128,11 @@ export default function AdminDoctors() {
         isOpen={Boolean(deleteTarget)}
         onClose={() => setDeleteTarget(null)}
         onConfirm={confirmDelete}
-        title="চিকিৎসকের প্রোফাইল মুছে ফেলবেন?"
+        title="Delete this doctor profile?"
         description={
           deleteTarget?.name
-            ? `${deleteTarget.name} এর প্রোফাইলটি স্থায়ীভাবে মুছে যাবে। পরে এটি ফিরিয়ে আনা যাবে না।`
-            : "এই চিকিৎসকের প্রোফাইলটি স্থায়ীভাবে মুছে যাবে। পরে এটি ফিরিয়ে আনা যাবে না।"
+            ? `${deleteTarget.name}'s profile will be permanently deleted. This action cannot be undone.`
+            : "This doctor profile will be permanently deleted. This action cannot be undone."
         }
       />
     </div>
@@ -148,13 +148,13 @@ function EmptyDoctors({ onAdd }) {
       <div className="w-16 h-16 mx-auto rounded-full bg-gold/10 text-gold flex items-center justify-center mb-5">
         <Users className="w-7 h-7" />
       </div>
-      <h3 className="font-bnSerif text-2xl text-ink">এখনো কোন চিকিৎসক যোগ করা হয়নি</h3>
+      <h3 className="font-bnSerif text-2xl text-ink">No Doctors Have Been Added Yet</h3>
       <p className="font-bnSans text-sm text-ink-muted mt-2 max-w-md mx-auto">
-        চিকিৎসকদের প্রোফাইল যোগ করুন যাতে রোগীরা সঠিক বিশেষজ্ঞের কাছে পৌঁছাতে পারেন।
+        Add doctor profiles so patients can find the right specialist.
       </p>
       <button onClick={onAdd} data-testid="empty-add-doctor" className="btn-gold mt-7">
         <Plus className="w-4 h-4" />
-        প্রথম চিকিৎসক যোগ করুন
+        Add First Doctor
       </button>
     </div>
   );
@@ -185,7 +185,7 @@ function DoctorFormModal({ doctor, onClose, onSuccess }) {
       Object.entries(form).forEach(([k, v]) => fd.append(k, v));
       if (photo) fd.append("photo", photo);
       else if (!isEdit) {
-        setErr("একটি ছবি আপলোড করুন");
+        setErr("Please upload a photo.");
         setSubmitting(false);
         return;
       }
@@ -200,7 +200,7 @@ function DoctorFormModal({ doctor, onClose, onSuccess }) {
       }
       onSuccess();
     } catch (e2) {
-      setErr(e2?.response?.data?.error || "সংরক্ষণে সমস্যা হয়েছে");
+      setErr(e2?.response?.data?.error || "Unable to save changes.");
     } finally {
       setSubmitting(false);
     }
@@ -220,10 +220,10 @@ function DoctorFormModal({ doctor, onClose, onSuccess }) {
         <div className="flex items-start justify-between mb-6">
           <div>
             <p className="text-xs uppercase tracking-widest text-gold font-bnSans">
-              {isEdit ? "এডিট" : "নতুন"}
+              {isEdit ? "Edit" : "New"}
             </p>
             <h2 className="font-bnSerif text-2xl text-ink mt-1">
-              {isEdit ? "চিকিৎসকের প্রোফাইল আপডেট" : "নতুন চিকিৎসক যোগ করুন"}
+              {isEdit ? "Update Doctor Profile" : "Add New Doctor"}
             </h2>
           </div>
           <button type="button" onClick={onClose} className="p-2 text-ink-muted hover:text-ink">
@@ -241,41 +241,41 @@ function DoctorFormModal({ doctor, onClose, onSuccess }) {
           </div>
 
           <FormField
-            label="নাম (বাংলা) *"
+            label="Name *"
             value={form.name}
             onChange={(v) => setForm((f) => ({ ...f, name: v }))}
             required
             testId="doctor-name"
           />
           <FormField
-            label="নাম (English)"
+            label="Name (English)"
             value={form.nameEn}
             onChange={(v) => setForm((f) => ({ ...f, nameEn: v }))}
             testId="doctor-nameEn"
           />
           <FormField
-            label="বিশেষজ্ঞতা *"
+            label="Specialization *"
             value={form.specialization}
             onChange={(v) => setForm((f) => ({ ...f, specialization: v }))}
             required
             testId="doctor-spec"
           />
           <FormField
-            label="ডিগ্রি"
+            label="Degrees"
             value={form.degrees}
             onChange={(v) => setForm((f) => ({ ...f, degrees: v }))}
             placeholder="BDS, FCPS"
             testId="doctor-degrees"
           />
           <FormField
-            label="অভিজ্ঞতা"
+            label="Experience"
             value={form.experience}
             onChange={(v) => setForm((f) => ({ ...f, experience: v }))}
-            placeholder="১০+ বছর"
+            placeholder="10+ years"
             testId="doctor-experience"
           />
           <FormField
-            label="ক্রম (Order)"
+            label="Display Order"
             value={form.order}
             onChange={(v) => setForm((f) => ({ ...f, order: v }))}
             type="number"
@@ -284,7 +284,7 @@ function DoctorFormModal({ doctor, onClose, onSuccess }) {
 
           <div className="md:col-span-2">
             <label className="block text-xs uppercase tracking-widest text-ink-muted font-bnSans mb-2">
-              বায়ো / পরিচিতি
+              Bio / Introduction
             </label>
             <textarea
               data-testid="doctor-bio"
@@ -303,10 +303,10 @@ function DoctorFormModal({ doctor, onClose, onSuccess }) {
             data-testid="doctor-submit"
             className="btn-gold flex-1 justify-center"
           >
-            {submitting ? "সংরক্ষণ হচ্ছে..." : isEdit ? "আপডেট" : "যোগ করুন"}
+            {submitting ? "Saving..." : isEdit ? "Update" : "Add"}
           </button>
           <button type="button" onClick={onClose} className="btn-outline-gold">
-            বাতিল
+            Cancel
           </button>
         </div>
       </form>
@@ -337,7 +337,7 @@ function PhotoDrop({ file, existingUrl, onFile }) {
   return (
     <label className="block cursor-pointer">
       <span className="block text-xs uppercase tracking-widest text-ink-muted font-bnSans mb-2">
-        চিকিৎসকের ছবি
+        Doctor Photo
       </span>
       <div
         className={`relative aspect-[3/2] rounded-2xl border-2 border-dashed transition-colors flex items-center justify-center overflow-hidden ${
@@ -349,7 +349,7 @@ function PhotoDrop({ file, existingUrl, onFile }) {
         ) : (
           <div className="text-center">
             <Upload className="w-7 h-7 text-gold mx-auto mb-2" />
-            <p className="text-sm text-ink-muted font-bnSans">ক্লিক করে ছবি নির্বাচন করুন</p>
+            <p className="text-sm text-ink-muted font-bnSans">Click to select a photo</p>
             <p className="text-xs text-ink-muted/70 mt-1">JPG, PNG (max 10MB)</p>
           </div>
         )}

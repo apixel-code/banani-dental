@@ -5,10 +5,10 @@ export default function ConfirmDeleteModal({
   isOpen,
   onClose,
   onConfirm,
-  title = "মুছে ফেলতে চান?",
-  description = "এই আইটেমটি স্থায়ীভাবে মুছে যাবে। পরে এটি ফিরিয়ে আনা যাবে না।",
-  confirmLabel = "মুছুন",
-  cancelLabel = "বাতিল",
+  title = "Delete this item?",
+  description = "This item will be permanently deleted. This action cannot be undone.",
+  confirmLabel = "Delete",
+  cancelLabel = "Cancel",
 }) {
   useEffect(() => {
     if (!isOpen) return undefined;

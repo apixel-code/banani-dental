@@ -45,13 +45,13 @@ export default function AdminGallery() {
       <header className="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-8">
         <div>
           <p className="text-xs uppercase tracking-[0.22em] text-gold font-bnSans mb-2">
-            গ্যালারি ম্যানেজমেন্ট
+            Gallery Management
           </p>
           <h1 className="font-bnSerif text-2xl md:text-4xl text-ink">
-            সব ছবি ও ট্রান্সফরমেশন
+            All Images and Transformations
           </h1>
           <p className="font-bnSans text-sm text-ink-muted mt-2">
-            মোট {items.length} টি আইটেম
+            Total {items.length} items
           </p>
         </div>
         <button
@@ -60,7 +60,7 @@ export default function AdminGallery() {
           className="btn-gold w-full md:w-auto"
         >
           <Plus className="w-4 h-4" />
-          নতুন ছবি যোগ করুন
+          Add New Image
         </button>
       </header>
 
@@ -69,7 +69,7 @@ export default function AdminGallery() {
         <FilterChip
           active={filter === "all"}
           onClick={() => setFilter("all")}
-          label="সব"
+          label="All"
           count={items.length}
         />
         {adminGalleryCategories.map((c) => (
@@ -114,11 +114,11 @@ export default function AdminGallery() {
         isOpen={Boolean(deleteTarget)}
         onClose={() => setDeleteTarget(null)}
         onConfirm={confirmDelete}
-        title="গ্যালারি আইটেম মুছে ফেলবেন?"
+        title="Delete this gallery item?"
         description={
           deleteTarget?.title
-            ? `${deleteTarget.title} ছবিটি স্থায়ীভাবে মুছে যাবে। পরে এটি ফিরিয়ে আনা যাবে না।`
-            : "এই ছবিটি স্থায়ীভাবে মুছে যাবে। পরে এটি ফিরিয়ে আনা যাবে না।"
+            ? `${deleteTarget.title} will be permanently deleted. This action cannot be undone.`
+            : "This image will be permanently deleted. This action cannot be undone."
         }
       />
     </div>
@@ -199,13 +199,13 @@ function EmptyState({ onUpload }) {
       <div className="w-16 h-16 mx-auto rounded-full bg-gold/10 text-gold flex items-center justify-center mb-5">
         <ImageIcon className="w-7 h-7" />
       </div>
-      <h3 className="font-bnSerif text-2xl text-ink">এখনো কোন ছবি যোগ করা হয়নি</h3>
+      <h3 className="font-bnSerif text-2xl text-ink">No Images Have Been Added Yet</h3>
       <p className="font-bnSans text-sm text-ink-muted mt-2 max-w-md mx-auto">
-        আপনার ক্লিনিকের প্রিমিয়াম ছবিগুলো আপলোড করুন এবং ভিজিটরদের আস্থা অর্জন করুন।
+        Upload premium clinic images to build visitor confidence.
       </p>
       <button onClick={onUpload} data-testid="empty-upload-btn" className="btn-gold mt-7">
         <Plus className="w-4 h-4" />
-        প্রথম ছবি আপলোড করুন
+        Upload First Image
       </button>
     </div>
   );
@@ -232,7 +232,7 @@ function UploadModal({ onClose, onSuccess }) {
       fd.append("caption", caption);
       if (category === "before-after") {
         if (!beforeFile || !afterFile) {
-          setErr("আগে ও পরে — দুটি ছবিই দিতে হবে");
+          setErr("Both before and after images are required.");
           setSubmitting(false);
           return;
         }
@@ -240,7 +240,7 @@ function UploadModal({ onClose, onSuccess }) {
         fd.append("after", afterFile);
       } else {
         if (!imageFile) {
-          setErr("একটি ছবি নির্বাচন করুন");
+          setErr("Please select an image.");
           setSubmitting(false);
           return;
         }
@@ -251,7 +251,7 @@ function UploadModal({ onClose, onSuccess }) {
       });
       onSuccess();
     } catch (e2) {
-      setErr(e2?.response?.data?.error || "আপলোডে সমস্যা হয়েছে");
+      setErr(e2?.response?.data?.error || "Upload failed.");
     } finally {
       setSubmitting(false);
     }
@@ -271,9 +271,9 @@ function UploadModal({ onClose, onSuccess }) {
         <div className="flex items-start justify-between mb-6">
           <div>
             <p className="text-xs uppercase tracking-widest text-gold font-bnSans">
-              নতুন ছবি
+              New Image
             </p>
-            <h2 className="font-bnSerif text-2xl text-ink mt-1">গ্যালারিতে যোগ করুন</h2>
+            <h2 className="font-bnSerif text-2xl text-ink mt-1">Add to Gallery</h2>
           </div>
           <button type="button" onClick={onClose} className="p-2 text-ink-muted hover:text-ink">
             <X className="w-5 h-5" />
@@ -289,7 +289,7 @@ function UploadModal({ onClose, onSuccess }) {
         <div className="space-y-5">
           <div>
             <label className="block text-xs uppercase tracking-widest text-ink-muted font-bnSans mb-2">
-              ক্যাটাগরি
+              Category
             </label>
             <select
               data-testid="upload-category"
@@ -308,7 +308,7 @@ function UploadModal({ onClose, onSuccess }) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label className="block text-xs uppercase tracking-widest text-ink-muted font-bnSans mb-2">
-                শিরোনাম
+                Title
               </label>
               <input
                 data-testid="upload-title"
@@ -319,7 +319,7 @@ function UploadModal({ onClose, onSuccess }) {
             </div>
             <div>
               <label className="block text-xs uppercase tracking-widest text-ink-muted font-bnSans mb-2">
-                ক্যাপশন
+                Caption
               </label>
               <input
                 data-testid="upload-caption"
@@ -334,13 +334,13 @@ function UploadModal({ onClose, onSuccess }) {
             <div className="grid grid-cols-2 gap-4">
               <FileDrop
                 testId="upload-before"
-                label="আগের ছবি *"
+                label="Before Image *"
                 file={beforeFile}
                 onFile={setBeforeFile}
               />
               <FileDrop
                 testId="upload-after"
-                label="পরের ছবি *"
+                label="After Image *"
                 file={afterFile}
                 onFile={setAfterFile}
               />
@@ -348,7 +348,7 @@ function UploadModal({ onClose, onSuccess }) {
           ) : (
             <FileDrop
               testId="upload-image"
-              label="ছবি নির্বাচন করুন *"
+              label="Select Image *"
               file={imageFile}
               onFile={setImageFile}
             />
@@ -362,14 +362,14 @@ function UploadModal({ onClose, onSuccess }) {
             data-testid="upload-submit"
             className="btn-gold flex-1 justify-center"
           >
-            {submitting ? "আপলোড হচ্ছে..." : "আপলোড করুন"}
+            {submitting ? "Uploading..." : "Upload"}
           </button>
           <button
             type="button"
             onClick={onClose}
             className="btn-outline-gold"
           >
-            বাতিল
+            Cancel
           </button>
         </div>
       </form>
@@ -401,7 +401,7 @@ function FileDrop({ label, file, onFile, testId }) {
           <div className="text-center">
             <Upload className="w-6 h-6 text-gold mx-auto mb-2" />
             <p className="text-xs text-ink-muted font-bnSans">
-              ক্লিক করে নির্বাচন করুন
+              Click to select
             </p>
           </div>
         )}

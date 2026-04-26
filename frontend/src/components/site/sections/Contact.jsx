@@ -6,16 +6,16 @@ import { api } from "@/lib/api";
 import { fadeUp, stagger } from "@/lib/motion";
 
 const SERVICES = [
-  "জেনারেল চেক-আপ",
-  "কসমেটিক / স্মাইল ডিজাইনিং",
-  "ডেন্টাল ইমপ্ল্যান্ট",
-  "অর্থোডন্টিক্স / ব্রেস",
-  "পেডিয়াট্রিক ডেন্টিস্ট্রি",
-  "অন্যান্য",
+  "General Check-up",
+  "Cosmetic / Smile Design",
+  "Dental Implant",
+  "Orthodontics / Braces",
+  "Pediatric Dentistry",
+  "Other",
 ];
 
 const PAST_DATE_ERROR =
-  "অনুগ্রহ করে আজকের তারিখ বা ভবিষ্যতের একটি তারিখ নির্বাচন করুন।";
+  "Please select today's date or a future date.";
 
 const getTodayDateString = () => {
   const now = new Date();
@@ -59,7 +59,7 @@ export default function Contact() {
       setStatus({
         loading: false,
         ok: false,
-        err: err?.response?.data?.error || "কিছু একটা সমস্যা হয়েছে। পরে চেষ্টা করুন।",
+        err: err?.response?.data?.error || "Something went wrong. Please try again later.",
       });
     }
   };
@@ -95,21 +95,20 @@ export default function Contact() {
           className="lg:col-span-2"
         >
           <motion.span variants={fadeUp} className="eyebrow mb-4">
-            যোগাযোগ
+            Contact
           </motion.span>
           <motion.h2
             variants={fadeUp}
             className="font-bnSerif text-3xl md:text-5xl text-ink leading-tight mb-6"
           >
-            আপনার নতুন হাসির <span className="italic text-gold">যাত্রা</span>{" "}
-            শুরু করুন
+            Begin Your New <span className="italic text-gold">Smile Journey</span>
           </motion.h2>
           <motion.p
             variants={fadeUp}
             className="font-bnSans text-ink-muted mb-10 leading-relaxed"
           >
-            ফর্মটি পূরণ করুন বা সরাসরি কল করুন। আমাদের কোঅর্ডিনেটর ১২ ঘণ্টার
-            মধ্যে আপনার সাথে যোগাযোগ করবেন।
+            Complete the form or call us directly. Our coordinator will contact
+            you within 12 hours.
           </motion.p>
 
           <motion.ul variants={stagger} className="space-y-5">
@@ -118,7 +117,7 @@ export default function Contact() {
                 <MapPin className="w-4 h-4" />
               </span>
               <div>
-                <p className="font-bnSerif text-ink">আমাদের ঠিকানা</p>
+                <p className="font-bnSerif text-ink">Our Address</p>
                 <p className="font-bnSans text-sm text-ink-muted mt-1">
                   House #116, Road #15, Block #C,
                   <br />
@@ -131,7 +130,7 @@ export default function Contact() {
                 <Phone className="w-4 h-4" />
               </span>
               <div>
-                <p className="font-bnSerif text-ink">কল করুন</p>
+                <p className="font-bnSerif text-ink">Call Us</p>
                 <a
                   href="tel:01711170890"
                   data-testid="contact-phone"
@@ -146,7 +145,7 @@ export default function Contact() {
                 <MessageCircle className="w-4 h-4" />
               </span>
               <div>
-                <p className="font-bnSerif text-ink">হোয়াটসঅ্যাপ</p>
+                <p className="font-bnSerif text-ink">WhatsApp</p>
                 <a
                   href="https://wa.me/8801711170890"
                   target="_blank"
@@ -154,7 +153,7 @@ export default function Contact() {
                   data-testid="contact-whatsapp"
                   className="font-bnSans text-sm text-ink-muted hover:text-gold transition-colors"
                 >
-                  হোয়াটসঅ্যাপে কথা বলুন →
+                  Chat on WhatsApp ->
                 </a>
               </div>
             </motion.li>
@@ -178,9 +177,9 @@ export default function Contact() {
             >
               <CheckCircle2 className="w-5 h-5 text-gold mt-0.5 shrink-0" />
               <div>
-                <p className="font-bnSerif text-ink">ধন্যবাদ! আপনার অনুরোধ পাঠানো হয়েছে।</p>
+                <p className="font-bnSerif text-ink">Thank you. Your request has been submitted.</p>
                 <p className="font-bnSans text-sm text-ink-muted">
-                  আমাদের কোঅর্ডিনেটর শীঘ্রই আপনার সাথে যোগাযোগ করবেন।
+                  Our coordinator will contact you shortly.
                 </p>
               </div>
             </div>
@@ -196,14 +195,14 @@ export default function Contact() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <Field
-              label="আপনার নাম *"
+              label="Your Name *"
               required
               value={form.name}
               onChange={onChange("name")}
               testId="appt-name"
             />
             <Field
-              label="ফোন নম্বর *"
+              label="Phone Number *"
               required
               type="tel"
               value={form.phone}
@@ -211,14 +210,14 @@ export default function Contact() {
               testId="appt-phone"
             />
             <Field
-              label="ইমেইল"
+              label="Email"
               type="email"
               value={form.email}
               onChange={onChange("email")}
               testId="appt-email"
             />
             <Field
-              label="পছন্দের তারিখ"
+              label="Preferred Date"
               type="date"
               min={todayDate}
               value={form.preferredDate}
@@ -227,7 +226,7 @@ export default function Contact() {
             />
             <div className="md:col-span-2">
               <label className="block text-xs uppercase tracking-widest text-ink-muted font-bnSans mb-2">
-                সেবা
+                Service
               </label>
               <select
                 data-testid="appt-service"
@@ -235,7 +234,7 @@ export default function Contact() {
                 onChange={onChange("service")}
                 className="w-full px-4 py-3 rounded-xl border border-line bg-bg/40 font-bnSans focus:outline-none focus:border-gold transition-colors"
               >
-                <option value="">— সেবা নির্বাচন করুন —</option>
+                <option value="">-- Select a service --</option>
                 {SERVICES.map((s) => (
                   <option key={s} value={s}>
                     {s}
@@ -245,14 +244,14 @@ export default function Contact() {
             </div>
             <div className="md:col-span-2">
               <label className="block text-xs uppercase tracking-widest text-ink-muted font-bnSans mb-2">
-                বার্তা
+                Message
               </label>
               <textarea
                 data-testid="appt-message"
                 value={form.message}
                 onChange={onChange("message")}
                 rows={4}
-                placeholder="আপনার দাঁতের সমস্যা সংক্ষেপে বলুন..."
+                placeholder="Briefly describe your dental concern..."
                 className="w-full px-4 py-3 rounded-xl border border-line bg-bg/40 font-bnSans focus:outline-none focus:border-gold transition-colors resize-none"
               />
             </div>
@@ -264,7 +263,7 @@ export default function Contact() {
             data-testid="appointment-submit"
             className="btn-gold mt-7 w-full md:w-auto justify-center"
           >
-            {status.loading ? "পাঠানো হচ্ছে..." : "অ্যাপয়েন্টমেন্ট রিকোয়েস্ট পাঠান"}
+            {status.loading ? "Submitting..." : "Submit Appointment Request"}
             {!status.loading && <Send className="w-4 h-4" />}
           </button>
         </motion.form>

@@ -22,7 +22,7 @@ export default function AdminLogin() {
       await login(form.username, form.password);
       navigate("/admin");
     } catch (e2) {
-      setErr(e2?.response?.data?.error || "লগইন ব্যর্থ হয়েছে");
+      setErr(e2?.response?.data?.error || "Login failed.");
     } finally {
       setSubmitting(false);
     }
@@ -53,10 +53,10 @@ export default function AdminLogin() {
             className="w-16 h-16 mx-auto mb-4 object-contain"
           />
           <p className="text-xs uppercase tracking-[0.25em] text-accent font-bnSans">
-            অ্যাডমিন প্যানেল
+            Admin Panel
           </p>
           <h1 className="font-bnSerif text-2xl md:text-3xl text-ink mt-3">
-            স্বাগতম, লগইন করুন
+            Welcome, Please Log In
           </h1>
         </div>
 
@@ -69,7 +69,7 @@ export default function AdminLogin() {
 
           <div>
             <label className="block text-xs uppercase tracking-widest text-ink-muted font-bnSans mb-2">
-              ইউজারনেম
+              Username
             </label>
             <div className="relative">
               <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-ink-muted" />
@@ -85,7 +85,7 @@ export default function AdminLogin() {
 
           <div>
             <label className="block text-xs uppercase tracking-widest text-ink-muted font-bnSans mb-2">
-              পাসওয়ার্ড
+              Password
             </label>
             <div className="relative">
               <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-ink-muted" />
@@ -106,12 +106,12 @@ export default function AdminLogin() {
             data-testid="login-submit"
             className="btn-gold w-full justify-center"
           >
-            {submitting ? "লগইন হচ্ছে..." : "লগইন করুন"}
+            {submitting ? "Logging in..." : "Log In"}
           </button>
         </form>
 
         <p className="mt-6 text-center text-xs text-ink-muted font-bnSans">
-          ডিফল্ট: <span className="font-mono text-ink">admin / Admin@2026</span>
+          Default: <span className="font-mono text-ink">admin / Admin@2026</span>
         </p>
       </motion.div>
     </div>
