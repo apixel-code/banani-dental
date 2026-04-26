@@ -9,6 +9,11 @@ import BeforeAfterShowcase from "@/components/site/sections/BeforeAfterShowcase"
 import Testimonials from "@/components/site/sections/Testimonials";
 import Contact from "@/components/site/sections/Contact";
 import WhatsAppButton from "@/components/site/WhatsAppButton";
+import {
+  heroContent,
+  servicesContent,
+  testimonialsContent,
+} from "@/content/home";
 
 export default function Home() {
   return (
@@ -16,11 +21,17 @@ export default function Home() {
       <MarqueeBar />
       <Navbar />
       <main>
-        <Hero />
-        <Services />
+        <Hero content={heroContent} />
+        <Services
+          heading={servicesContent.heading}
+          items={servicesContent.items}
+        />
         <Doctors />
         <BeforeAfterShowcase />
-        <Testimonials />
+        <Testimonials
+          heading={testimonialsContent.heading}
+          items={testimonialsContent.items}
+        />
         <Contact />
       </main>
       <Footer />

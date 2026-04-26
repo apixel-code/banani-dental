@@ -2,13 +2,7 @@
 import { useEffect, useState } from "react";
 import { Trash2, Upload, X, Image as ImageIcon, Plus } from "lucide-react";
 import { api } from "@/lib/api";
-
-const CATEGORIES = [
-  { id: "clinic", label: "ক্লিনিক" },
-  { id: "patients", label: "রোগী" },
-  { id: "doctors", label: "চিকিৎসক" },
-  { id: "before-after", label: "ট্রান্সফরমেশন" },
-];
+import { adminGalleryCategories } from "@/content/admin";
 
 export default function AdminGallery() {
   const [items, setItems] = useState([]);
@@ -70,7 +64,7 @@ export default function AdminGallery() {
           label="সব"
           count={items.length}
         />
-        {CATEGORIES.map((c) => (
+        {adminGalleryCategories.map((c) => (
           <FilterChip
             key={c.id}
             active={filter === c.id}
@@ -138,7 +132,8 @@ function GalleryCard({ item, onDelete }) {
   const isBA = item.category === "before-after";
   const previewSrc = isBA ? item.afterUrl : item.imageUrl;
   const categoryLabel =
-    CATEGORIES.find((c) => c.id === item.category)?.label || item.category;
+    adminGalleryCategories.find((c) => c.id === item.category)?.label ||
+    item.category;
 
   return (
     <div
@@ -282,7 +277,7 @@ function UploadModal({ onClose, onSuccess }) {
               onChange={(e) => setCategory(e.target.value)}
               className="w-full px-4 py-3 rounded-xl border border-line bg-bg/40 font-bnSans focus:outline-none focus:border-gold"
             >
-              {CATEGORIES.map((c) => (
+              {adminGalleryCategories.map((c) => (
                 <option key={c.id} value={c.id}>
                   {c.label}
                 </option>

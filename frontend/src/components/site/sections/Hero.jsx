@@ -1,14 +1,10 @@
 // Home page hero - 2-column layout: cinematic Bengali headline + premium image card on right
+import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, ShieldCheck, Award } from "lucide-react";
 import HashLink from "@/components/site/HashLink";
 import CountUp from "@/components/site/CountUp";
-
-const HERO_IMG_RIGHT =
-  "https://images.pexels.com/photos/3845810/pexels-photo-3845810.jpeg";
-const HERO_IMG_BG =
-  "https://images.pexels.com/photos/11563145/pexels-photo-11563145.jpeg";
 
 const Reveal = ({ children, delay = 0 }) => (
   <span className="reveal-mask">
@@ -23,13 +19,26 @@ const Reveal = ({ children, delay = 0 }) => (
   </span>
 );
 
-const STATS = [
-  { num: 15, suffix: "+", label: "বছরের অভিজ্ঞতা" },
-  { num: 5000, suffix: "+", label: "সন্তুষ্ট রোগী" },
-  { num: 100, suffix: "%", label: "ব্যথামুক্ত" },
-];
+const HeadlineLine = ({ line, className = "block" }) => (
+  <span className={className}>
+    {line.map((segment, index) => (
+      <Fragment key={`${segment.text}-${index}`}>
+        {index > 0 && " "}
+        <Reveal delay={segment.delay}>
+          {segment.highlight ? (
+            <span className="italic text-gradient font-en-serif">
+              {segment.text}
+            </span>
+          ) : (
+            segment.text
+          )}
+        </Reveal>
+      </Fragment>
+    ))}
+  </span>
+);
 
-export default function Hero() {
+export default function Hero({ content }) {
   return (
     <section
       data-testid="home-hero"
@@ -66,25 +75,18 @@ export default function Hero() {
               data-testid="hero-eyebrow"
             >
               <ShieldCheck className="w-3.5 h-3.5" />
-              BANANI CLINIC LTD · SPECIALIZED HOSPITAL
+              {content.eyebrow}
             </motion.span>
 
             <h1
               className="font-bnSerif text-[2rem] sm:text-5xl md:text-6xl lg:text-[4.2rem] leading-[1.18] text-ink mb-5 md:mb-7"
               data-testid="hero-headline"
             >
-              <span className="block">
-                <Reveal delay={0.3}>ব্যথামুক্ত</Reveal>{" "}
-                <Reveal delay={0.4}>আধুনিক</Reveal>{" "}
-                <Reveal delay={0.5}>চিকিৎসায়</Reveal>
-              </span>
-              <span className="block mt-2 md:mt-3">
-                <Reveal delay={0.7}>
-                  <span className="italic text-gradient font-en-serif">বদলে দিন</span>
-                </Reveal>{" "}
-                <Reveal delay={0.85}>আপনার</Reveal>{" "}
-                <Reveal delay={0.95}>জীবন।</Reveal>
-              </span>
+              <HeadlineLine line={content.headline[0]} />
+              <HeadlineLine
+                line={content.headline[1]}
+                className="block mt-2 md:mt-3"
+              />
             </h1>
 
             <motion.p
@@ -94,8 +96,7 @@ export default function Hero() {
               className="font-bnSans text-base md:text-lg text-ink-muted leading-relaxed max-w-xl mb-8 md:mb-10"
               data-testid="hero-sub"
             >
-              লুকানো হাসি নয়, ফিরে পান আপনার প্রকৃত আত্মবিশ্বাস। প্রিমিয়াম কেয়ার,
-              বিশ্বমানের সরঞ্জাম এবং অভিজ্ঞ চিকিৎসকের তত্ত্বাবধানে।
+              {content.subtitle}
             </motion.p>
 
             <motion.div
@@ -105,11 +106,11 @@ export default function Hero() {
               className="flex flex-col sm:flex-row gap-3 sm:gap-4"
             >
               <HashLink
-                to="/#contact"
+                to={content.ctas.primary.href}
                 data-testid="hero-cta-primary"
                 className="btn-gold cursor-pointer"
               >
-                আপনার নতুন হাসির যাত্রা শুরু করুন
+                {content.ctas.primary.label}
                 <motion.span
                   animate={{ x: [0, 4, 0] }}
                   transition={{ duration: 1.6, repeat: Infinity }}
@@ -118,11 +119,11 @@ export default function Hero() {
                 </motion.span>
               </HashLink>
               <Link
-                to="/gallery"
+                to={content.ctas.secondary.href}
                 data-testid="hero-cta-secondary"
                 className="btn-outline-gold"
               >
-                ট্রান্সফরমেশন গ্যালারি
+                {content.ctas.secondary.label}
               </Link>
             </motion.div>
 
@@ -133,7 +134,7 @@ export default function Hero() {
               className="mt-12 md:mt-14 grid grid-cols-3 gap-4 md:gap-6 max-w-lg"
               data-testid="hero-trust"
             >
-              {STATS.map((s, i) => (
+              {content.stats.map((s, i) => (
                 <motion.div
                   key={s.label}
                   initial={{ opacity: 0, y: 20 }}
@@ -142,7 +143,7 @@ export default function Hero() {
                   className="text-left border-l-2 border-accent/40 pl-3 md:pl-4"
                 >
                   <p className="font-enSerif text-2xl md:text-3xl text-gradient">
-                    <CountUp value={s.num} suffix={s.suffix} />
+                    <CountUp value={s.value} suffix={s.suffix} />
                   </p>
                   <p className="font-bnSans text-[11px] md:text-xs text-ink-muted mt-1 leading-tight">
                     {s.label}
@@ -169,8 +170,8 @@ export default function Hero() {
                   initial={{ scale: 1.1 }}
                   animate={{ scale: 1 }}
                   transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
-                  src={HERO_IMG_RIGHT}
-                  alt="Confident smile - Banani Clinic"
+                  src={content.images.right.src}
+                  alt={content.images.right.alt}
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/35 via-transparent to-transparent" />
@@ -188,10 +189,10 @@ export default function Hero() {
                 </div>
                 <div>
                   <p className="font-bnSerif text-[12px] md:text-sm text-ink leading-tight">
-                    AACD সনদপ্রাপ্ত
+                    {content.awardBadge.title}
                   </p>
                   <p className="font-bnSans text-[9px] md:text-[10px] text-ink-muted uppercase tracking-widest">
-                    USA Certified
+                    {content.awardBadge.subtitle}
                   </p>
                 </div>
               </motion.div>
@@ -206,14 +207,17 @@ export default function Hero() {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="font-bnSerif text-base md:text-lg text-ink">
-                      Dr. Aslam Almehdi
+                      {content.doctorCard.name}
                     </p>
                     <p className="font-bnSans text-[10px] md:text-xs text-accent uppercase tracking-widest mt-0.5">
-                      Founder · Maxillofacial Surgeon
+                      {content.doctorCard.title}
                     </p>
                   </div>
                   <div className="flex -space-x-1">
-                    {[1, 2, 3, 4, 5].map((i) => (
+                    {Array.from(
+                      { length: content.doctorCard.pulseDots },
+                      (_, i) => i + 1
+                    ).map((i) => (
                       <span
                         key={i}
                         className="w-1.5 h-1.5 rounded-full bg-gold pulse-dot"
@@ -232,7 +236,12 @@ export default function Hero() {
       </div>
 
       {/* Hidden background image (for SEO/preload) */}
-      <img src={HERO_IMG_BG} alt="" className="hidden" aria-hidden />
+      <img
+        src={content.images.background.src}
+        alt={content.images.background.alt}
+        className="hidden"
+        aria-hidden
+      />
     </section>
   );
 }

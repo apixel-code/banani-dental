@@ -2,16 +2,10 @@
 import { useEffect, useState } from "react";
 import { Phone, Mail, MessageCircle, Trash2, Calendar } from "lucide-react";
 import { api } from "@/lib/api";
+import { appointmentStatuses } from "@/content/admin";
 
-const STATUSES = [
-  { id: "new", label: "নতুন", color: "bg-gold/15 text-gold border-gold/30" },
-  { id: "contacted", label: "যোগাযোগ হয়েছে", color: "bg-blue-50 text-blue-700 border-blue-200" },
-  { id: "confirmed", label: "নিশ্চিত", color: "bg-emerald-50 text-emerald-700 border-emerald-200" },
-  { id: "completed", label: "সম্পন্ন", color: "bg-slate-100 text-slate-700 border-slate-200" },
-  { id: "cancelled", label: "বাতিল", color: "bg-red-50 text-red-700 border-red-200" },
-];
-
-const statusObj = (id) => STATUSES.find((s) => s.id === id) || STATUSES[0];
+const statusObj = (id) =>
+  appointmentStatuses.find((s) => s.id === id) || appointmentStatuses[0];
 
 export default function AdminAppointments() {
   const [items, setItems] = useState([]);
@@ -67,7 +61,7 @@ export default function AdminAppointments() {
         >
           সব
         </button>
-        {STATUSES.map((s) => (
+        {appointmentStatuses.map((s) => (
           <button
             key={s.id}
             data-testid={`appt-filter-${s.id}`}
@@ -165,7 +159,7 @@ export default function AdminAppointments() {
                       onChange={(e) => updateStatus(appt.id, e.target.value)}
                       className="flex-1 md:flex-none px-3 py-2 rounded-lg border border-line bg-bg/40 text-sm font-bnSans focus:outline-none focus:border-gold"
                     >
-                      {STATUSES.map((opt) => (
+                      {appointmentStatuses.map((opt) => (
                         <option key={opt.id} value={opt.id}>
                           {opt.label}
                         </option>

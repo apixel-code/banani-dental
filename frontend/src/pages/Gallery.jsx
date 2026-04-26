@@ -9,14 +9,7 @@ import BeforeAfterSlider from "@/components/site/BeforeAfterSlider";
 import WhatsAppButton from "@/components/site/WhatsAppButton";
 import { api } from "@/lib/api";
 import { fadeUp, stagger } from "@/lib/motion";
-
-const FILTERS = [
-  { id: "all", label: "সব" },
-  { id: "before-after", label: "ট্রান্সফরমেশন" },
-  { id: "doctors", label: "চিকিৎসক" },
-  { id: "patients", label: "রোগী" },
-  { id: "clinic", label: "ক্লিনিক" },
-];
+import { galleryCategories, galleryPage } from "@/content/gallery";
 
 export default function Gallery() {
   const [items, setItems] = useState([]);
@@ -55,20 +48,22 @@ export default function Gallery() {
               className="max-w-3xl"
             >
               <motion.span variants={fadeUp} className="eyebrow mb-5">
-                ট্রান্সফরমেশন গ্যালারি
+                {galleryPage.header.eyebrow}
               </motion.span>
               <motion.h1
                 variants={fadeUp}
                 className="font-bnSerif text-4xl md:text-6xl text-ink leading-[1.1] mb-6"
               >
-                হাজারো হাসির <span className="italic text-gold">প্রকৃত গল্প</span>
+                {galleryPage.header.title}{" "}
+                <span className="italic text-gold">
+                  {galleryPage.header.highlight}
+                </span>
               </motion.h1>
               <motion.p
                 variants={fadeUp}
                 className="font-bnSans text-ink-muted leading-relaxed max-w-xl"
               >
-                আমাদের চিকিৎসক, ক্লিনিক ও রোগীদের ট্রান্সফরমেশনের সংগ্রহ। প্রতিটি
-                ছবি একটি ফিরে পাওয়া আত্মবিশ্বাসের সাক্ষ্য।
+                {galleryPage.header.description}
               </motion.p>
             </motion.div>
           </div>
@@ -78,7 +73,7 @@ export default function Gallery() {
         <section className="sticky top-[72px] md:top-[80px] z-20 bg-bg/85 backdrop-blur-lg border-y border-line/60">
           <div className="container-x">
             <div className="flex gap-2 md:gap-3 overflow-x-auto py-4 hide-scrollbar">
-              {FILTERS.map((f) => (
+              {galleryCategories.map((f) => (
                 <button
                   key={f.id}
                   data-testid={`filter-${f.id}`}
@@ -101,13 +96,13 @@ export default function Gallery() {
           <div className="container-x">
             {loading ? (
               <div data-testid="gallery-loading" className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                {Array.from({ length: 6 }).map((_, i) => (
+                {Array.from({ length: galleryPage.loadingCards }).map((_, i) => (
                   <div key={i} className="aspect-[3/4] rounded-2xl bg-white border border-line animate-pulse" />
                 ))}
               </div>
             ) : filtered.length === 0 ? (
               <p data-testid="gallery-empty" className="font-bnSans text-ink-muted text-center py-16">
-                এই ক্যাটাগরিতে এখনো কোন ছবি নেই।
+                {galleryPage.emptyState.description}
               </p>
             ) : (
               <>

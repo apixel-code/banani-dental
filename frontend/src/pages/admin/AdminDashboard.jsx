@@ -3,6 +3,14 @@ import { useEffect, useState } from "react";
 import { Image as ImageIcon, Users, Calendar, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { api } from "@/lib/api";
+import { adminDashboard } from "@/content/admin";
+
+const DASHBOARD_ICONS = {
+  appointments: Calendar,
+  doctors: Users,
+  gallery: ImageIcon,
+  sparkles: Sparkles,
+};
 
 export default function AdminDashboard() {
   const [stats, setStats] = useState({
@@ -33,31 +41,24 @@ export default function AdminDashboard() {
     fetchAll();
   }, []);
 
-  const cards = [
-    { label: "মোট ছবি", value: stats.gallery, icon: ImageIcon, to: "/admin/gallery" },
-    { label: "চিকিৎসক", value: stats.doctors, icon: Users, to: "/admin/doctors" },
-    { label: "মোট অ্যাপয়েন্টমেন্ট", value: stats.appointments, icon: Calendar, to: "/admin/appointments" },
-    { label: "নতুন অ্যাপয়েন্টমেন্ট", value: stats.newAppointments, icon: Sparkles, to: "/admin/appointments", highlight: true },
-  ];
-
   return (
     <div data-testid="admin-dashboard">
       <header className="mb-8 md:mb-10">
         <p className="text-xs uppercase tracking-[0.22em] text-gold font-bnSans mb-2">
-          ড্যাশবোর্ড
+          {adminDashboard.eyebrow}
         </p>
         <h1 className="font-bnSerif text-2xl md:text-4xl text-ink leading-tight">
-          স্বাগতম! এখানে আপনার ক্লিনিকের সংক্ষিপ্ত পরিসংখ্যান
+          {adminDashboard.title}
         </h1>
       </header>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        {cards.map((c) => {
-          const Icon = c.icon;
+        {adminDashboard.cards.map((c) => {
+          const Icon = DASHBOARD_ICONS[c.icon] || ImageIcon;
           return (
             <Link
               key={c.label}
-              to={c.to}
+              to={c.href}
               data-testid={`stat-${c.label}`}
               style={c.highlight ? { background: "linear-gradient(135deg, #1F4E79 0%, #2C8DCC 100%)", borderColor: "transparent" } : {}}
               className={`lux-card group !p-7 ${c.highlight ? "!text-white" : ""}`}
@@ -73,7 +74,7 @@ export default function AdminDashboard() {
                     c.highlight ? "text-white/80" : "text-ink-muted"
                   }`}
                 >
-                  → বিস্তারিত
+                  {adminDashboard.detailsLabel}
                 </span>
               </div>
               <p
@@ -81,7 +82,7 @@ export default function AdminDashboard() {
                   c.highlight ? "text-white" : "text-ink"
                 }`}
               >
-                {c.value}
+                {stats[c.statKey]}
               </p>
               <p
                 className={`font-bnSans text-sm mt-2 ${
@@ -96,28 +97,27 @@ export default function AdminDashboard() {
       </div>
 
       <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-5">
-        <Link to="/admin/gallery" className="lux-card flex items-center gap-5 hover:border-gold/40">
-          <span className="w-12 h-12 rounded-xl bg-gold/10 text-gold flex items-center justify-center">
-            <ImageIcon className="w-5 h-5" />
-          </span>
-          <div>
-            <p className="font-bnSerif text-lg text-ink">গ্যালারিতে নতুন ছবি যোগ করুন</p>
-            <p className="text-sm text-ink-muted font-bnSans">
-              ক্লিনিক, রোগী, চিকিৎসক বা ট্রান্সফরমেশন ছবি আপলোড করুন।
-            </p>
-          </div>
-        </Link>
-        <Link to="/admin/doctors" className="lux-card flex items-center gap-5 hover:border-gold/40">
-          <span className="w-12 h-12 rounded-xl bg-gold/10 text-gold flex items-center justify-center">
-            <Users className="w-5 h-5" />
-          </span>
-          <div>
-            <p className="font-bnSerif text-lg text-ink">চিকিৎসক প্রোফাইল আপডেট করুন</p>
-            <p className="text-sm text-ink-muted font-bnSans">
-              চিকিৎসকদের ছবি, যোগ্যতা ও বিস্তারিত তথ্য সম্পাদনা করুন।
-            </p>
-          </div>
-        </Link>
+        {adminDashboard.quickActions.map((action) => {
+          const Icon = DASHBOARD_ICONS[action.icon] || ImageIcon;
+
+          return (
+            <Link
+              key={action.href}
+              to={action.href}
+              className="lux-card flex items-center gap-5 hover:border-gold/40"
+            >
+              <span className="w-12 h-12 rounded-xl bg-gold/10 text-gold flex items-center justify-center">
+                <Icon className="w-5 h-5" />
+              </span>
+              <div>
+                <p className="font-bnSerif text-lg text-ink">{action.title}</p>
+                <p className="text-sm text-ink-muted font-bnSans">
+                  {action.description}
+                </p>
+              </div>
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

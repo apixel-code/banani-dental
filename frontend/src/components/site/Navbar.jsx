@@ -5,15 +5,8 @@ import { Menu, X, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import HashLink from "@/components/site/HashLink";
 import { api } from "@/lib/api";
-
-const NAV = [
-  { to: "/", label: "হোম", type: "route" },
-  { to: "/gallery", label: "গ্যালারি", type: "route" },
-  { to: "/about", label: "আমাদের সম্পর্কে", type: "route" },
-  { to: "/#services", label: "সেবা", type: "hash" },
-  { to: "/#doctors", label: "চিকিৎসক", type: "hash" },
-  { to: "/#contact", label: "যোগাযোগ", type: "hash" },
-];
+import { brand, buildTelHref } from "@/content/brand";
+import { navItems } from "@/content/navigation";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -56,27 +49,27 @@ export default function Navbar() {
           <motion.img
             whileHover={{ rotate: -8, scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
-            src="/brand/logo.png"
-            alt="Banani Clinic Ltd."
+            src={brand.logo.src}
+            alt={brand.logo.alt}
             className="w-9 h-9 md:w-11 md:h-11 object-contain drop-shadow-sm shrink-0"
           />
           <span className="flex flex-col leading-none min-w-0">
             <span className="font-enSerif text-sm md:text-lg tracking-tight text-ink truncate">
-              Banani Clinic
+              {brand.name}
             </span>
             <span className="font-bnSans text-[8px] md:text-[11px] uppercase tracking-[0.16em] md:tracking-[0.18em] text-accent mt-0.5 truncate">
-              Specialized Hospital
+              {brand.subtitle}
             </span>
           </span>
         </Link>
 
         {/* Desktop nav */}
         <nav className="hidden lg:flex items-center gap-9">
-          {NAV.map((item) =>
+          {navItems.map((item) =>
             item.type === "hash" ? (
               <HashLink
                 key={item.label}
-                to={item.to}
+                to={item.href}
                 data-testid={`nav-link-${item.label}`}
                 className="link-underline font-bnSans text-sm text-ink/80 hover:text-gold transition-colors cursor-pointer"
               >
@@ -85,7 +78,7 @@ export default function Navbar() {
             ) : (
               <NavLink
                 key={item.label}
-                to={item.to}
+                to={item.href}
                 end
                 data-testid={`nav-link-${item.label}`}
                 className={({ isActive }) =>
@@ -104,12 +97,12 @@ export default function Navbar() {
 
         <div className="flex items-center gap-2.5 md:gap-3">
           <a
-            href="tel:01711170890"
+            href={buildTelHref(brand.contact.phone.number)}
             data-testid="nav-phone"
             className="hidden md:inline-flex items-center gap-2 text-sm text-ink/70 hover:text-accent transition-colors"
           >
             <Phone className="w-4 h-4" />
-            <span className="tabular-nums">01711170890</span>
+            <span className="tabular-nums">{brand.contact.phone.display}</span>
           </a>
           <HashLink
             to="/#contact"
@@ -140,7 +133,7 @@ export default function Navbar() {
             className="lg:hidden bg-bg border-t border-line/60 overflow-hidden"
           >
             <div className="container-x py-5 flex flex-col gap-1">
-              {NAV.map((item, i) => (
+              {navItems.map((item, i) => (
                 <motion.div
                   key={item.label}
                   initial={{ opacity: 0, x: -20 }}
@@ -149,7 +142,7 @@ export default function Navbar() {
                 >
                   {item.type === "hash" ? (
                     <HashLink
-                      to={item.to}
+                      to={item.href}
                       onClick={() => setOpen(false)}
                       data-testid={`mobile-nav-link-${item.label}`}
                       className="block font-bnSans text-base text-ink py-3 border-b border-line/40 cursor-pointer"
@@ -158,7 +151,7 @@ export default function Navbar() {
                     </HashLink>
                   ) : (
                     <Link
-                      to={item.to}
+                      to={item.href}
                       onClick={() => setOpen(false)}
                       data-testid={`mobile-nav-link-${item.label}`}
                       className="block font-bnSans text-base text-ink py-3 border-b border-line/40"

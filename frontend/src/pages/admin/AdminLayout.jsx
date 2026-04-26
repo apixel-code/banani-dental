@@ -12,14 +12,16 @@ import {
   X,
 } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
+import { brand } from "@/content/brand";
+import { adminSidebar } from "@/content/admin";
 
-const NAV = [
-  { to: "/admin", label: "ড্যাশবোর্ড", icon: LayoutDashboard, end: true },
-  { to: "/admin/gallery", label: "গ্যালারি", icon: ImageIcon },
-  { to: "/admin/doctors", label: "চিকিৎসক", icon: Users },
-  { to: "/admin/appointments", label: "অ্যাপয়েন্টমেন্ট", icon: Calendar },
-  { to: "/admin/settings", label: "সেটিংস", icon: Settings },
-];
+const ADMIN_ICONS = {
+  appointments: Calendar,
+  dashboard: LayoutDashboard,
+  doctors: Users,
+  gallery: ImageIcon,
+  settings: Settings,
+};
 
 export default function AdminLayout() {
   const { user, loading, logout } = useAuth();
@@ -50,9 +52,9 @@ export default function AdminLayout() {
       <header className="lg:hidden fixed top-0 left-0 right-0 z-40 bg-bg/90 backdrop-blur border-b border-line/60">
         <div className="flex items-center justify-between px-5 py-3">
           <div className="flex items-center gap-2.5">
-            <img src="/brand/logo.png" alt="Banani Clinic" className="w-8 h-8 object-contain" />
+            <img src={brand.logo.src} alt={brand.logo.alt} className="w-8 h-8 object-contain" />
             <div className="leading-none">
-              <p className="font-enSerif text-sm text-ink">Banani Clinic</p>
+              <p className="font-enSerif text-sm text-ink">{brand.name}</p>
               <p className="text-[9px] uppercase tracking-[0.18em] text-accent mt-0.5">Admin</p>
             </div>
           </div>
@@ -75,24 +77,24 @@ export default function AdminLayout() {
       >
         <div className="p-6 border-b border-line/60">
           <div className="flex items-center gap-3">
-            <img src="/brand/logo.png" alt="Banani Clinic" className="w-11 h-11 object-contain" />
+            <img src={brand.logo.src} alt={brand.logo.alt} className="w-11 h-11 object-contain" />
             <div className="leading-none">
-              <p className="font-enSerif text-lg text-ink">Banani Clinic</p>
-              <p className="text-[10px] uppercase tracking-[0.2em] text-accent mt-0.5">Specialized Hospital</p>
+              <p className="font-enSerif text-lg text-ink">{brand.name}</p>
+              <p className="text-[10px] uppercase tracking-[0.2em] text-accent mt-0.5">{brand.subtitle}</p>
             </div>
           </div>
           <p className="text-xs uppercase tracking-[0.22em] text-accent font-bnSans mt-4">
-            অ্যাডমিন প্যানেল
+            {adminSidebar.panelLabel}
           </p>
         </div>
 
         <nav className="flex-1 p-4 space-y-1">
-          {NAV.map((item) => {
-            const Icon = item.icon;
+          {adminSidebar.navigation.map((item) => {
+            const Icon = ADMIN_ICONS[item.icon] || LayoutDashboard;
             return (
               <NavLink
-                key={item.to}
-                to={item.to}
+                key={item.href}
+                to={item.href}
                 end={item.end}
                 onClick={() => setOpen(false)}
                 data-testid={`admin-nav-${item.label}`}
@@ -115,7 +117,9 @@ export default function AdminLayout() {
           <div className="flex items-center justify-between mb-3 px-2">
             <div>
               <p className="font-bnSerif text-sm text-ink">{user.username}</p>
-              <p className="text-xs text-ink-muted font-bnSans">administrator</p>
+              <p className="text-xs text-ink-muted font-bnSans">
+                {adminSidebar.userRoleLabel}
+              </p>
             </div>
           </div>
           <button
@@ -124,7 +128,7 @@ export default function AdminLayout() {
             className="w-full flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm text-ink-muted hover:text-red-600 hover:bg-red-50 transition-colors font-bnSans"
           >
             <LogOut className="w-4 h-4" />
-            লগআউট
+            {adminSidebar.logoutLabel}
           </button>
         </div>
       </aside>

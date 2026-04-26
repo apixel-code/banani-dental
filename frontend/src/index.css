@@ -53,7 +53,8 @@
     margin: 0;
     background-color: var(--color-bg);
     color: var(--color-text);
-    font-family: "Hind Siliguri", "Noto Serif Bengali", system-ui, sans-serif;
+    font-family: "Hind Siliguri", system-ui, sans-serif;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
@@ -68,9 +69,42 @@
 }
 
 /* Typography utilities */
-.font-bn-serif { font-family: "Tiro Bangla", "Noto Serif Bengali", serif; }
-.font-en-serif { font-family: "Playfair Display", "Tiro Bangla", serif; }
-.font-bn-sans  { font-family: "Hind Siliguri", "Noto Serif Bengali", system-ui, sans-serif; }
+.font-bn-serif,
+.font-en-serif,
+.font-bn-sans {
+  font-family: "Hind Siliguri", system-ui, sans-serif;
+}
+
+/* Bengali glyph safety: prevents top matras/i-kar from being clipped. */
+p,
+span,
+a,
+button,
+label,
+input,
+textarea,
+select,
+li,
+blockquote,
+figcaption,
+.font-bn-serif,
+.font-en-serif,
+.font-bn-sans {
+  line-height: 1.6;
+  overflow: visible;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.eyebrow {
+  line-height: 1.45;
+  padding-top: 0.08em;
+  overflow: visible;
+}
 
 /* Hide scrollbar */
 .hide-scrollbar::-webkit-scrollbar { display: none; }
@@ -198,10 +232,10 @@
 /* Section reveal mask - extra padding for Bengali matras above headline characters */
 .reveal-mask {
   display: inline-block;
-  overflow: hidden;
+  overflow: visible;
   vertical-align: bottom;
-  padding-top: 0.18em;
-  padding-bottom: 0.06em;
-  margin-top: -0.18em;
-  line-height: 1.2;
+  padding-top: 0.22em;
+  padding-bottom: 0.08em;
+  margin-top: -0.12em;
+  line-height: 1.45;
 }

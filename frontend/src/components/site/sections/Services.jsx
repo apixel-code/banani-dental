@@ -10,40 +10,16 @@ import {
 } from "lucide-react";
 import { fadeUp, stagger } from "@/lib/motion";
 
-const SERVICES = [
-  {
-    icon: Smile,
-    title: "কসমেটিক ডেন্টিস্ট্রি",
-    desc: "নিখুঁত হাসির জন্য স্মাইল ডিজাইনিং, ভেনিয়ার ও দাঁতের সাদা করণ।",
-  },
-  {
-    icon: Crown,
-    title: "ডেন্টাল ইমপ্ল্যান্ট",
-    desc: "হারিয়ে যাওয়া দাঁতের স্থায়ী সমাধান বিশ্বমানের ইমপ্ল্যান্ট দিয়ে।",
-  },
-  {
-    icon: Activity,
-    title: "অর্থোডন্টিক্স",
-    desc: "ইনভিজিবল ব্রেস ও ক্লিয়ার অ্যালাইনারে দাঁত সোজা করুন।",
-  },
-  {
-    icon: Stethoscope,
-    title: "জেনারেল ডেন্টিস্ট্রি",
-    desc: "ফিলিং, এক্সট্রাকশন, রুট ক্যানাল ও দাঁতের সমস্ত সাধারণ চিকিৎসা।",
-  },
-  {
-    icon: ShieldCheck,
-    title: "পেডিয়াট্রিক কেয়ার",
-    desc: "শিশুদের জন্য বন্ধুত্বপূর্ণ পরিবেশে আনন্দদায়ক ডেন্টাল কেয়ার।",
-  },
-  {
-    icon: Sparkles,
-    title: "টিথ হোয়াইটেনিং",
-    desc: "মাত্র এক সিটিংয়ে ঝকঝকে সাদা দাঁত পেতে অ্যাডভান্সড ট্রিটমেন্ট।",
-  },
-];
+const SERVICE_ICONS = {
+  teeth: Smile,
+  implant: Crown,
+  orthodontics: Activity,
+  stethoscope: Stethoscope,
+  shield: ShieldCheck,
+  sparkles: Sparkles,
+};
 
-export default function Services() {
+export default function Services({ heading, items }) {
   return (
     <section
       id="services"
@@ -59,21 +35,20 @@ export default function Services() {
           className="max-w-2xl mb-16"
         >
           <motion.span variants={fadeUp} className="eyebrow mb-4">
-            আমাদের সেবা
+            {heading.eyebrow}
           </motion.span>
           <motion.h2
             variants={fadeUp}
             className="font-bnSerif text-3xl md:text-5xl text-ink leading-tight"
           >
-            প্রতিটি সমস্যার জন্য{" "}
-            <span className="italic text-gold">প্রিমিয়াম সমাধান</span>
+            {heading.title}{" "}
+            <span className="italic text-gold">{heading.highlight}</span>
           </motion.h2>
           <motion.p
             variants={fadeUp}
             className="font-bnSans text-ink-muted mt-5 leading-relaxed"
           >
-            আধুনিক প্রযুক্তি এবং বিশেষজ্ঞ চিকিৎসকদের সমন্বয়ে আমরা প্রদান করি
-            ডেন্টাল কেয়ারের সম্পূর্ণ স্পেকট্রাম।
+            {heading.description}
           </motion.p>
         </motion.div>
 
@@ -84,8 +59,8 @@ export default function Services() {
           variants={stagger}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
         >
-          {SERVICES.map((s, i) => {
-            const Icon = s.icon;
+          {items.map((s, i) => {
+            const Icon = SERVICE_ICONS[s.icon] || Smile;
             return (
               <motion.div
                 key={s.title}

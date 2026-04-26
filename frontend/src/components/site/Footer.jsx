@@ -2,6 +2,8 @@
 import { Link } from "react-router-dom";
 import { Phone, MapPin, MessageCircle, Mail } from "lucide-react";
 import { motion } from "framer-motion";
+import { brand, buildTelHref, buildWhatsAppHref } from "@/content/brand";
+import { footerLinks } from "@/content/navigation";
 
 export default function Footer() {
   return (
@@ -22,19 +24,19 @@ export default function Footer() {
           >
             <div className="flex items-center gap-3 mb-5">
               <img
-                src="/brand/logo.png"
-                alt="Banani Clinic"
+                src={brand.logo.src}
+                alt={brand.logo.alt}
                 className="w-12 h-12 object-contain bg-white/95 rounded-xl p-1"
               />
               <div>
-                <p className="font-enSerif text-xl tracking-tight">Banani Clinic</p>
+                <p className="font-enSerif text-xl tracking-tight">{brand.name}</p>
                 <p className="text-[10px] uppercase tracking-[0.2em] text-accent-soft mt-0.5">
-                  Specialized Hospital
+                  {brand.subtitle}
                 </p>
               </div>
             </div>
             <p className="font-bnSans text-sm text-bg/65 leading-relaxed max-w-xs">
-              ব্যথামুক্ত আধুনিক ডেন্টাল চিকিৎসায় ফিরিয়ে দিচ্ছি প্রকৃত আত্মবিশ্বাস।
+              {brand.tagline}
             </p>
           </motion.div>
 
@@ -51,34 +53,39 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 mt-0.5 text-accent shrink-0" />
                 <span className="text-bg/80">
-                  House #116, Road #15, Block #C, Banani, Dhaka-1213
+                  {brand.contact.address.full}
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-accent" />
                 <a
-                  href="tel:01711170890"
+                  href={buildTelHref(brand.contact.phone.number)}
                   className="text-bg/90 hover:text-accent transition-colors tabular-nums"
                   data-testid="footer-phone"
                 >
-                  01711170890
+                  {brand.contact.phone.display}
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <MessageCircle className="w-4 h-4 text-accent" />
                 <a
-                  href="https://wa.me/8801711170890"
+                  href={buildWhatsAppHref(brand.contact.whatsapp.number)}
                   target="_blank"
                   rel="noreferrer"
                   className="text-bg/90 hover:text-accent transition-colors"
                   data-testid="footer-whatsapp"
                 >
-                  হোয়াটসঅ্যাপে কথা বলুন
+                  {brand.contact.whatsapp.label}
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-accent" />
-                <span className="text-bg/80">contact@bananiclinic.com</span>
+                <a
+                  href={`mailto:${brand.contact.email}`}
+                  className="text-bg/80 hover:text-accent transition-colors"
+                >
+                  {brand.contact.email}
+                </a>
               </li>
             </ul>
           </motion.div>
@@ -111,30 +118,19 @@ export default function Footer() {
         <div className="mt-12 pt-8 border-t border-bg/10 flex flex-col md:flex-row justify-between items-center gap-5">
           <div className="flex flex-col md:flex-row items-center gap-x-5 gap-y-2 text-xs font-bnSans">
             <p className="text-bg/40 text-center md:text-left">
-              © {new Date().getFullYear()} Banani Clinic Ltd. সমস্ত অধিকার সংরক্ষিত।
+              © {new Date().getFullYear()} {brand.legalName} {brand.copyrightText}
             </p>
             <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
-              <Link
-                to="/about"
-                className="text-bg/55 hover:text-accent transition-colors"
-                data-testid="footer-about"
-              >
-                আমাদের সম্পর্কে
-              </Link>
-              <Link
-                to="/privacy"
-                className="text-bg/55 hover:text-accent transition-colors"
-                data-testid="footer-privacy"
-              >
-                গোপনীয়তা নীতি
-              </Link>
-              <Link
-                to="/terms"
-                className="text-bg/55 hover:text-accent transition-colors"
-                data-testid="footer-terms"
-              >
-                শর্তাবলী
-              </Link>
+              {footerLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className="text-bg/55 hover:text-accent transition-colors"
+                  data-testid={link.testId}
+                >
+                  {link.label}
+                </Link>
+              ))}
             </nav>
           </div>
           <a
