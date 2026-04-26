@@ -1,11 +1,11 @@
 // Home before/after preview - shows the latest 1-2 transformations
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
-import { api } from "@/lib/api";
 import BeforeAfterSlider from "@/components/site/BeforeAfterSlider";
+import { api } from "@/lib/api";
 import { fadeUp, stagger } from "@/lib/motion";
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function BeforeAfterShowcase() {
   const [items, setItems] = useState([]);
@@ -23,8 +23,9 @@ export default function BeforeAfterShowcase() {
 
   return (
     <section
+      id="gallery"
       data-testid="home-ba"
-      className="section-pad"
+      className="section-pad scroll-mt-24 bg-gradient-to-b from-accent/5 via-bg to-bg"
     >
       <div className="container-x">
         <motion.div
@@ -35,19 +36,19 @@ export default function BeforeAfterShowcase() {
           className="text-center max-w-2xl mx-auto mb-14"
         >
           <motion.span variants={fadeUp} className="eyebrow mb-4 justify-center">
-            Transformation
+            Gallery
           </motion.span>
           <motion.h2
             variants={fadeUp}
             className="font-bnSerif text-3xl md:text-5xl text-ink leading-tight"
           >
-            Before and After: <span className="italic text-gold">Real Change</span>
+            Signature Transformations, <span className="italic text-gradient">Clinically Delivered</span>
           </motion.h2>
           <motion.p
             variants={fadeUp}
             className="font-bnSans text-ink-muted mt-5"
           >
-            See how our patients regained confidence. Slide to compare.
+            Explore real before-and-after cases from Banani Clinic and compare outcomes with the interactive slider.
           </motion.p>
         </motion.div>
 
@@ -56,13 +57,14 @@ export default function BeforeAfterShowcase() {
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {items.map((item) => (
-              <BeforeAfterSlider
-                key={item.id}
-                before={item.beforeUrl}
-                after={item.afterUrl}
-                title={item.title}
-                caption={item.caption}
-              />
+              <div key={item.id} className="rounded-2xl border border-line/60 bg-white p-2 md:p-3 shadow-sm">
+                <BeforeAfterSlider
+                  before={item.beforeUrl}
+                  after={item.afterUrl}
+                  title={item.title}
+                  caption={item.caption}
+                />
+              </div>
             ))}
           </div>
         )}
