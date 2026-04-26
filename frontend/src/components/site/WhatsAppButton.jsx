@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const PHONE = "8801711170890";
 const MESSAGE =
-  "নমস্কার! আমি Banani Clinic এর সেবা নিয়ে জানতে চাই।";
+  "আসসালামু আলাইকুম! আমি Banani Dental এর সেবা নিয়ে জানতে চাই।";
 const HREF = `https://wa.me/${PHONE}?text=${encodeURIComponent(MESSAGE)}`;
 
 export default function WhatsAppButton() {
