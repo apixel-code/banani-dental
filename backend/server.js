@@ -14,9 +14,12 @@ const settingsRoutes = require('./routes/settings');
 const app = express();
 
 // Middleware
+// Middleware
 app.use(
   cors({
-    origin: (process.env.CORS_ORIGINS || '*').split(','),
+    origin: (process.env.CORS_ORIGINS || '*')
+      .split(',')
+      .map(origin => origin.trim()),
     credentials: true,
   })
 );
