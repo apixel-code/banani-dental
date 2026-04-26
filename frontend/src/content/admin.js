@@ -1,62 +1,62 @@
 export const adminSidebar = {
-  panelLabel: "অ্যাডমিন প্যানেল",
+  panelLabel: "Admin Panel",
   userRoleLabel: "administrator",
-  logoutLabel: "লগআউট",
+  logoutLabel: "Logout",
   navigation: [
     {
       href: "/admin",
-      label: "ড্যাশবোর্ড",
+      label: "Dashboard",
       icon: "dashboard",
       end: true,
     },
     {
       href: "/admin/gallery",
-      label: "গ্যালারি",
+      label: "Gallery",
       icon: "gallery",
     },
     {
       href: "/admin/doctors",
-      label: "চিকিৎসক",
+      label: "Doctors",
       icon: "doctors",
     },
     {
       href: "/admin/appointments",
-      label: "অ্যাপয়েন্টমেন্ট",
+      label: "Appointments",
       icon: "appointments",
     },
     {
       href: "/admin/settings",
-      label: "সেটিংস",
+      label: "Settings",
       icon: "settings",
     },
   ],
 };
 
 export const adminDashboard = {
-  eyebrow: "ড্যাশবোর্ড",
-  title: "স্বাগতম! এখানে আপনার ক্লিনিকের সংক্ষিপ্ত পরিসংখ্যান",
-  detailsLabel: "→ বিস্তারিত",
+  eyebrow: "Dashboard",
+  title: "Welcome. Here is a concise overview of your clinic.",
+  detailsLabel: "-> Details",
   cards: [
     {
-      label: "মোট ছবি",
+      label: "Total Images",
       statKey: "gallery",
       icon: "gallery",
       href: "/admin/gallery",
     },
     {
-      label: "চিকিৎসক",
+      label: "Doctors",
       statKey: "doctors",
       icon: "doctors",
       href: "/admin/doctors",
     },
     {
-      label: "মোট অ্যাপয়েন্টমেন্ট",
+      label: "Total Appointments",
       statKey: "appointments",
       icon: "appointments",
       href: "/admin/appointments",
     },
     {
-      label: "নতুন অ্যাপয়েন্টমেন্ট",
+      label: "New Appointments",
       statKey: "newAppointments",
       icon: "sparkles",
       href: "/admin/appointments",
@@ -66,14 +66,14 @@ export const adminDashboard = {
   quickActions: [
     {
       href: "/admin/gallery",
-      title: "গ্যালারিতে নতুন ছবি যোগ করুন",
-      description: "ক্লিনিক, রোগী, চিকিৎসক বা ট্রান্সফরমেশন ছবি আপলোড করুন।",
+      title: "Add New Gallery Images",
+      description: "Upload clinic, patient, doctor, or transformation images.",
       icon: "gallery",
     },
     {
       href: "/admin/doctors",
-      title: "চিকিৎসক প্রোফাইল আপডেট করুন",
-      description: "চিকিৎসকদের ছবি, যোগ্যতা ও বিস্তারিত তথ্য সম্পাদনা করুন।",
+      title: "Update Doctor Profiles",
+      description: "Edit doctors' photos, qualifications, and professional details.",
       icon: "doctors",
     },
   ],
@@ -82,34 +82,34 @@ export const adminDashboard = {
 export const appointmentStatuses = [
   {
     id: "new",
-    label: "নতুন",
+    label: "New",
     color: "bg-gold/15 text-gold border-gold/30",
   },
   {
     id: "contacted",
-    label: "যোগাযোগ হয়েছে",
+    label: "Contacted",
     color: "bg-blue-50 text-blue-700 border-blue-200",
   },
   {
     id: "confirmed",
-    label: "নিশ্চিত",
+    label: "Confirmed",
     color: "bg-emerald-50 text-emerald-700 border-emerald-200",
   },
   {
     id: "completed",
-    label: "সম্পন্ন",
+    label: "Completed",
     color: "bg-slate-100 text-slate-700 border-slate-200",
   },
   {
     id: "cancelled",
-    label: "বাতিল",
+    label: "Cancelled",
     color: "bg-red-50 text-red-700 border-red-200",
   },
 ];
 
 export const adminGalleryCategories = [
-  { id: "clinic", label: "ক্লিনিক" },
-  { id: "patients", label: "রোগী" },
-  { id: "doctors", label: "চিকিৎসক" },
-  { id: "before-after", label: "ট্রান্সফরমেশন" },
+  { id: "clinic", label: "Clinic" },
+  { id: "patients", label: "Patients" },
+  { id: "doctors", label: "Doctors" },
+  { id: "before-after", label: "Transformations" },
 ];

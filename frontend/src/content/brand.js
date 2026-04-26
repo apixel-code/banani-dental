@@ -6,7 +6,7 @@ export const brand = {
   legalName: "Banani Clinic Ltd.",
   subtitle: "Specialized Hospital",
   tagline:
-    "ব্যথামুক্ত আধুনিক ডেন্টাল চিকিৎসায় ফিরিয়ে দিচ্ছি প্রকৃত আত্মবিশ্বাস।",
+    "Restoring genuine confidence through comfortable, modern dental care.",
   logo: {
     src: "/brand/logo.png",
     alt: "Banani Clinic Ltd.",
@@ -21,7 +21,7 @@ export const brand = {
     },
     whatsapp: {
       number: whatsappNumber,
-      label: "হোয়াটসঅ্যাপে কথা বলুন",
+      label: "Chat on WhatsApp",
     },
     email: "contact@bananiclinic.com",
     address: {
@@ -30,7 +30,7 @@ export const brand = {
       full: "House #116, Road #15, Block #C, Banani, Dhaka-1213",
     },
   },
-  copyrightText: "সমস্ত অধিকার সংরক্ষিত।",
+  copyrightText: "All rights reserved.",
   developerCredit: {
     prefix: "Developed by",
     name: "Apixel",

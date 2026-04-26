@@ -1,14 +1,14 @@
 export const navItems = [
-  { href: "/", label: "হোম", type: "route" },
-  { href: "/gallery", label: "গ্যালারি", type: "route" },
-  { href: "/about", label: "আমাদের সম্পর্কে", type: "route" },
-  { href: "/#services", label: "সেবা", type: "hash" },
-  { href: "/#doctors", label: "চিকিৎসক", type: "hash" },
-  { href: "/#contact", label: "যোগাযোগ", type: "hash" },
+  { href: "/", label: "Home", type: "route" },
+  { href: "/gallery", label: "Gallery", type: "route" },
+  { href: "/about", label: "About Us", type: "route" },
+  { href: "/#services", label: "Services", type: "hash" },
+  { href: "/#doctors", label: "Doctors", type: "hash" },
+  { href: "/#contact", label: "Contact", type: "hash" },
 ];
 
 export const footerLinks = [
-  { href: "/about", label: "আমাদের সম্পর্কে", testId: "footer-about" },
-  { href: "/privacy", label: "গোপনীয়তা নীতি", testId: "footer-privacy" },
-  { href: "/terms", label: "শর্তাবলী", testId: "footer-terms" },
+  { href: "/about", label: "About Us", testId: "footer-about" },
+  { href: "/privacy", label: "Privacy Policy", testId: "footer-privacy" },
+  { href: "/terms", label: "Terms of Service", testId: "footer-terms" },
 ];

@@ -2,12 +2,12 @@ import { brand } from "@/content/brand";
 
 export const aboutPage = {
   testId: "about-page",
-  eyebrow: "আমাদের সম্পর্কে",
-  title: "বানানী ক্লিনিক — যেখানে আস্থা ও দক্ষতা মিশে এক হয়",
+  eyebrow: "About Us",
+  title: "Banani Clinic: Where Trust and Clinical Excellence Come Together",
   intro:
-    "ঢাকার বানানীতে অবস্থিত একটি স্পেশালাইজড হাসপাতাল যেখানে আধুনিক প্রযুক্তি, আন্তর্জাতিক মানের চিকিৎসা ও মানবিক যত্ন একসাথে পাওয়া যায়। আমরা শুধু চিকিৎসা দিই না — ফিরিয়ে দিই আত্মবিশ্বাস।",
+    "Located in Banani, Dhaka, Banani Clinic is a specialized hospital where advanced technology, international-standard treatment, and compassionate care come together. We do more than provide treatment; we restore confidence.",
   founder: {
-    sectionTitle: "আমাদের প্রতিষ্ঠাতা ও বিশেষজ্ঞ",
+    sectionTitle: "Our Founder and Specialist",
     fullName: "Assoc. Prof. Dr. Aslam Almehdi",
     displayName: "Dr. Aslam Almehdi",
     role: "Founder · Lead Maxillofacial Surgeon",
@@ -19,21 +19,21 @@ export const aboutPage = {
         { text: "Assoc. Prof. Dr. Aslam Almehdi", strong: true },
         {
           text:
-            " — Best Dentist / Dental Surgeon / Periodontist / Implantologist / Maxillofacial Surgeon. তিনি Advanced Dentistry এর Leader এবং Advanced Digital Implant Treatments (USA) এর leader। American Academy of Cosmetic Dentistry (AACD) এর সম্মানিত সদস্য।",
+            " - Best Dentist / Dental Surgeon / Periodontist / Implantologist / Maxillofacial Surgeon. He is recognized as a leader in advanced dentistry and Advanced Digital Implant Treatments (USA), and is an esteemed member of the American Academy of Cosmetic Dentistry (AACD).",
         },
       ],
       [
         {
           text:
-            "Dental implants, maxillofacial surgery এবং periodontal plastic surgery তে বিশেষ দক্ষতাসম্পন্ন এই অভিজ্ঞ চিকিৎসক ",
+            "With specialized expertise in dental implants, maxillofacial surgery, and periodontal plastic surgery, this experienced clinician has completed advanced training in ",
         },
         {
-          text: "জাপান, কোরিয়া, ইউকে, আমেরিকা ও অস্ট্রেলিয়া",
+          text: "Japan, Korea, the United Kingdom, the United States, and Australia",
           strong: true,
         },
         {
           text:
-            " থেকে advanced training সম্পন্ন করেছেন। জটিল dental ও oral conditions এর ক্ষেত্রে personalized treatment plans এবং cutting-edge procedures এর জন্য তিনি প্রসিদ্ধ।",
+            ". He is known for personalized treatment plans and advanced procedures for complex dental and oral conditions.",
         },
       ],
     ],
@@ -41,23 +41,23 @@ export const aboutPage = {
   values: [
     {
       icon: "shield",
-      title: "ব্যথামুক্ত চিকিৎসা",
-      desc: "আধুনিক প্রযুক্তি ও সঠিক অ্যানেস্থেসিয়া ব্যবহার করে আমরা চিকিৎসাকে যতটা সম্ভব আরামদায়ক করি।",
+      title: "Comfortable Treatment",
+      desc: "We use modern technology and appropriate anesthesia to make every procedure as comfortable as possible.",
     },
     {
       icon: "award",
-      title: "আন্তর্জাতিক প্রশিক্ষণ",
-      desc: "জাপান, কোরিয়া, ইউকে, আমেরিকা ও অস্ট্রেলিয়া থেকে অগ্রসর প্রশিক্ষণপ্রাপ্ত বিশেষজ্ঞ চিকিৎসকদের দল।",
+      title: "International Training",
+      desc: "Our specialist clinicians have received advanced training in Japan, Korea, the United Kingdom, the United States, and Australia.",
     },
     {
       icon: "heart",
-      title: "রোগীকেন্দ্রিক যত্ন",
-      desc: "প্রতিটি রোগীর জন্য আলাদাভাবে ব্যক্তিগত চিকিৎসা পরিকল্পনা ও সহানুভূতিশীল পরিচর্যা।",
+      title: "Patient-Centered Care",
+      desc: "Each patient receives an individualized treatment plan and compassionate clinical care.",
     },
     {
       icon: "stethoscope",
-      title: "সম্পূর্ণ সমাধান",
-      desc: "ডেন্টাল, ম্যাক্সিলোফেসিয়াল সার্জারি থেকে ক্লেফট লিপ ও ফাইলেরিয়াসিস — সব সমাধান এক ছাদের নিচে।",
+      title: "Comprehensive Solutions",
+      desc: "From dentistry and maxillofacial surgery to cleft lip and filariasis care, our services are available under one roof.",
     },
   ],
   sections: [
@@ -79,7 +79,7 @@ export const aboutPage = {
         "The palate is the roof of the mouth and has two main parts. The front part behind the teeth is hard and the back part near the throat is soft. In babies with cleft palate, there is an opening between the roof of the mouth and the nose. This opening may be only through part of the palate (either the soft part or hard part) or through the entire palate. A complete cleft palate occurs when the left and right sides of the roof of the mouth have not fused together in the middle. In many cases, a baby born with a cleft palate also has a cleft lip.",
       ],
       quote:
-        "আমাদের ক্লেফট লিপ ও প্যালেট চিকিৎসা সম্পূর্ণ surgical correction থেকে speech therapy পর্যন্ত — সব ধরনের সাপোর্ট এক ছাদের নিচে।",
+        "Our cleft lip and palate care includes comprehensive support under one roof, from surgical correction to speech therapy.",
     },
     {
       title: "About Filariasis / Elephantiasis",
@@ -93,14 +93,14 @@ export const aboutPage = {
           },
         ],
         "It is characterised by edema, hypertrophy, and fibrosis of skin and subcutaneous tissues due to obstruction of lymphatic vessels. The term elephantiasis is often used in reference to parasitic worm infections, but may refer to a variety of diseases where parts of a person's body swell to massive proportions.",
-        "Banani Clinic এ আমরা early diagnosis, comprehensive medical management ও long-term care সহ filariasis এর সমন্বিত চিকিৎসা প্রদান করি।",
+        "At Banani Clinic, we provide integrated filariasis care, including early diagnosis, comprehensive medical management, and long-term follow-up.",
       ],
     },
   ],
   cta: {
-    title: "আপনার চিকিৎসার যাত্রা শুরু হোক আজই",
-    desc: "অভিজ্ঞ বিশেষজ্ঞের তত্ত্বাবধানে ব্যক্তিগত পরামর্শের জন্য আজই যোগাযোগ করুন।",
-    label: "অ্যাপয়েন্টমেন্ট নিন",
+    title: "Begin Your Treatment Journey Today",
+    desc: "Contact us today for a personalized consultation under the care of an experienced specialist.",
+    label: "Schedule an Appointment",
     href: "/#contact",
   },
 };

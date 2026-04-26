@@ -2,32 +2,32 @@ export const heroContent = {
   eyebrow: "BANANI CLINIC LTD · SPECIALIZED HOSPITAL",
   headline: [
     [
-      { text: "ব্যথামুক্ত", delay: 0.3 },
-      { text: "আধুনিক", delay: 0.4 },
-      { text: "চিকিৎসায়", delay: 0.5 },
+      { text: "Comfortable", delay: 0.3 },
+      { text: "Modern", delay: 0.4 },
+      { text: "Treatment", delay: 0.5 },
     ],
     [
-      { text: "বদলে দিন", delay: 0.7, highlight: true },
-      { text: "আপনার", delay: 0.85 },
-      { text: "জীবন।", delay: 0.95 },
+      { text: "Transform", delay: 0.7, highlight: true },
+      { text: "Your", delay: 0.85 },
+      { text: "Life.", delay: 0.95 },
     ],
   ],
   subtitle:
-    "লুকানো হাসি নয়, ফিরে পান আপনার প্রকৃত আত্মবিশ্বাস। প্রিমিয়াম কেয়ার, বিশ্বমানের সরঞ্জাম এবং অভিজ্ঞ চিকিৎসকের তত্ত্বাবধানে।",
+    "No more hiding your smile. Regain genuine confidence through premium care, world-class equipment, and experienced clinical supervision.",
   ctas: {
     primary: {
-      label: "আপনার নতুন হাসির যাত্রা শুরু করুন",
+      label: "Begin Your New Smile Journey",
       href: "/#contact",
     },
     secondary: {
-      label: "ট্রান্সফরমেশন গ্যালারি",
+      label: "Transformation Gallery",
       href: "/gallery",
     },
   },
   stats: [
-    { value: 15, suffix: "+", label: "বছরের অভিজ্ঞতা" },
-    { value: 5000, suffix: "+", label: "সন্তুষ্ট রোগী" },
-    { value: 100, suffix: "%", label: "ব্যথামুক্ত" },
+    { value: 15, suffix: "+", label: "Years of Experience" },
+    { value: 5000, suffix: "+", label: "Satisfied Patients" },
+    { value: 100, suffix: "%", label: "Comfort-Focused Care" },
   ],
   images: {
     right: {
@@ -40,7 +40,7 @@ export const heroContent = {
     },
   },
   awardBadge: {
-    title: "AACD সনদপ্রাপ্ত",
+    title: "AACD Certified",
     subtitle: "USA Certified",
   },
   doctorCard: {
@@ -52,70 +52,70 @@ export const heroContent = {
 
 export const servicesContent = {
   heading: {
-    eyebrow: "আমাদের সেবা",
-    title: "প্রতিটি সমস্যার জন্য",
-    highlight: "প্রিমিয়াম সমাধান",
+    eyebrow: "Our Services",
+    title: "Premium Solutions",
+    highlight: "For Every Concern",
     description:
-      "আধুনিক প্রযুক্তি এবং বিশেষজ্ঞ চিকিৎসকদের সমন্বয়ে আমরা প্রদান করি ডেন্টাল কেয়ারের সম্পূর্ণ স্পেকট্রাম।",
+      "With advanced technology and specialist clinicians, we provide a complete spectrum of dental care.",
   },
   items: [
     {
       icon: "teeth",
-      title: "কসমেটিক ডেন্টিস্ট্রি",
-      desc: "নিখুঁত হাসির জন্য স্মাইল ডিজাইনিং, ভেনিয়ার ও দাঁতের সাদা করণ।",
+      title: "Cosmetic Dentistry",
+      desc: "Smile design, veneers, and teeth whitening for a refined, confident smile.",
     },
     {
       icon: "implant",
-      title: "ডেন্টাল ইমপ্ল্যান্ট",
-      desc: "হারিয়ে যাওয়া দাঁতের স্থায়ী সমাধান বিশ্বমানের ইমপ্ল্যান্ট দিয়ে।",
+      title: "Dental Implants",
+      desc: "Permanent replacement for missing teeth using world-class implant systems.",
     },
     {
       icon: "orthodontics",
-      title: "অর্থোডন্টিক্স",
-      desc: "ইনভিজিবল ব্রেস ও ক্লিয়ার অ্যালাইনারে দাঁত সোজা করুন।",
+      title: "Orthodontics",
+      desc: "Straighten teeth with invisible braces and clear aligner treatment.",
     },
     {
       icon: "stethoscope",
-      title: "জেনারেল ডেন্টিস্ট্রি",
-      desc: "ফিলিং, এক্সট্রাকশন, রুট ক্যানাল ও দাঁতের সমস্ত সাধারণ চিকিৎসা।",
+      title: "General Dentistry",
+      desc: "Fillings, extractions, root canal treatment, and comprehensive routine dental care.",
     },
     {
       icon: "shield",
-      title: "পেডিয়াট্রিক কেয়ার",
-      desc: "শিশুদের জন্য বন্ধুত্বপূর্ণ পরিবেশে আনন্দদায়ক ডেন্টাল কেয়ার।",
+      title: "Pediatric Care",
+      desc: "Gentle dental care for children in a friendly and reassuring environment.",
     },
     {
       icon: "sparkles",
-      title: "টিথ হোয়াইটেনিং",
-      desc: "মাত্র এক সিটিংয়ে ঝকঝকে সাদা দাঁত পেতে অ্যাডভান্সড ট্রিটমেন্ট।",
+      title: "Teeth Whitening",
+      desc: "Advanced whitening treatment for a noticeably brighter smile in a single visit.",
     },
   ],
 };
 
 export const testimonialsContent = {
   heading: {
-    eyebrow: "রোগীর কথা",
-    title: "যাঁরা পেয়েছেন",
-    highlight: "নতুন আত্মবিশ্বাস",
+    eyebrow: "Patient Stories",
+    title: "Patients Who Gained",
+    highlight: "New Confidence",
   },
   items: [
     {
       quote:
-        "জীবনে প্রথমবার আয়নায় তাকিয়ে নিজের হাসি দেখে চোখে পানি এসে গিয়েছিল। ধন্যবাদ পুরো টিমকে।",
-      name: "সাদিয়া রহমান",
-      role: "স্মাইল মেকওভার",
+        "For the first time in my life, seeing my own smile in the mirror brought tears to my eyes. Thank you to the entire team.",
+      name: "Sadia Rahman",
+      role: "Smile Makeover",
     },
     {
       quote:
-        "ভয় ছিল ব্যথা হবে। কিন্তু পুরো প্রক্রিয়া এত আরামদায়ক ছিল যে বুঝতেই পারিনি কখন শেষ হলো।",
-      name: "তানভীর হোসেন",
-      role: "ডেন্টাল ইমপ্ল্যান্ট",
+        "I was worried the procedure would be painful, but the entire experience was so comfortable that I barely noticed when it was finished.",
+      name: "Tanvir Hossain",
+      role: "Dental Implant",
     },
     {
       quote:
-        "আমার মেয়ের ব্রেস করানোর সময় সবচেয়ে কঠিন কাজটা ছিল ক্লিনিক বেছে নেয়া। বানানী ডেন্টাল এর সিদ্ধান্ত নিয়ে আমি পুরোপুরি সন্তুষ্ট।",
-      name: "মাহফুজা আক্তার",
-      role: "অর্থোডন্টিক্স",
+        "Choosing the right clinic for my daughter's braces was the hardest decision. I am completely satisfied that we chose Banani Dental.",
+      name: "Mahfuza Akter",
+      role: "Orthodontics",
     },
   ],
 };

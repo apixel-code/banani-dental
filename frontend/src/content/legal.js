@@ -7,119 +7,119 @@ const contact = {
 
 export const privacyPolicy = {
   testId: "privacy-page",
-  eyebrow: "গোপনীয়তা নীতি",
-  title: "আপনার তথ্যের গোপনীয়তা — আমাদের সর্বোচ্চ অগ্রাধিকার",
+  eyebrow: "Privacy Policy",
+  title: "Your Privacy Is Our Highest Priority",
   intro:
-    "Banani Clinic Ltd. আপনার ব্যক্তিগত ও মেডিকেল তথ্যের গোপনীয়তাকে সর্বোচ্চ গুরুত্ব দেয়। কীভাবে আমরা তথ্য সংগ্রহ, ব্যবহার এবং সুরক্ষিত রাখি, তা নিচে বিস্তারিত উল্লেখ করা হলো।",
-  lastUpdated: "জানুয়ারি ২০২৬",
+    "Banani Clinic Ltd. places the highest importance on the confidentiality of your personal and medical information. The details below explain how we collect, use, and protect your data.",
+  lastUpdated: "January 2026",
   numberSections: true,
   sections: [
     {
-      title: "তথ্য সংগ্রহ",
+      title: "Information We Collect",
       content:
-        "Banani Clinic শুধুমাত্র আপনার চিকিৎসা সেবা প্রদান এবং অ্যাপয়েন্টমেন্ট ব্যবস্থাপনার প্রয়োজনে নাম, ফোন নম্বর, ইমেইল এবং সংক্ষিপ্ত মেডিকেল তথ্য সংগ্রহ করে। সংগৃহীত তথ্য কখনোই তৃতীয় পক্ষের কাছে বিক্রি বা শেয়ার করা হয় না।",
+        "Banani Clinic collects your name, phone number, email address, and brief medical information only when required to provide clinical services and manage appointments. Collected information is never sold or shared with third parties.",
     },
     {
-      title: "তথ্যের ব্যবহার",
+      title: "How We Use Information",
       content:
-        "আপনার দেওয়া তথ্য আমরা ব্যবহার করি — অ্যাপয়েন্টমেন্ট নিশ্চিত করতে, ফলো-আপ যোগাযোগে, চিকিৎসা পরিষেবা উন্নত করতে, এবং প্রয়োজন অনুসারে আপনাকে গুরুত্বপূর্ণ মেডিকেল রিমাইন্ডার পাঠাতে।",
+        "We use the information you provide to confirm appointments, support follow-up communication, improve clinical services, and send important medical reminders when necessary.",
     },
     {
-      title: "কুকিজ ও ব্রাউজিং তথ্য",
+      title: "Cookies and Browsing Information",
       content:
-        "আমাদের ওয়েবসাইটে শুধুমাত্র অপরিহার্য কুকিজ ব্যবহৃত হয় (অ্যাডমিন সেশন ও পেজ অ্যানালিটিক্স)। আপনি ব্রাউজার সেটিংস থেকে যেকোনো সময় কুকিজ নিষ্ক্রিয় করতে পারেন।",
+        "Our website uses only essential cookies, including admin session cookies and page analytics. You may disable cookies at any time through your browser settings.",
     },
     {
-      title: "ছবি ও মিডিয়া",
+      title: "Images and Media",
       content:
-        "চিকিৎসার আগে/পরের ছবি বা গ্যালারিতে প্রদর্শনের জন্য ব্যবহৃত যেকোনো ফটো শুধুমাত্র রোগীর লিখিত সম্মতি নিয়ে পাবলিশ করা হয়। যেকোনো সময় অপসারণের অনুরোধ করা যাবে।",
+        "Any before-and-after images or gallery photographs are published only with the patient's written consent. Removal may be requested at any time.",
     },
     {
-      title: "তথ্যের নিরাপত্তা",
+      title: "Data Security",
       content:
-        "আপনার তথ্য encrypted database ও secure cloud (Cloudinary, MongoDB) এ সংরক্ষিত। শুধুমাত্র অনুমোদিত প্রশাসনিক কর্মী JWT-প্রটেক্টেড অ্যাডমিন প্যানেলে অ্যাক্সেস পান।",
+        "Your information is stored in encrypted databases and secure cloud services, including Cloudinary and MongoDB. Only authorized administrative personnel can access the JWT-protected admin panel.",
     },
     {
-      title: "তৃতীয় পক্ষের পরিষেবা",
+      title: "Third-Party Services",
       content:
-        "WhatsApp ক্লিক-টু-চ্যাট, Google Fonts এবং Cloudinary CDN আমাদের সাইটে ব্যবহৃত হয়। এই পরিষেবাগুলোর নিজস্ব প্রাইভেসি পলিসি রয়েছে।",
+        "Our site uses WhatsApp click-to-chat, Google Fonts, and the Cloudinary CDN. These services maintain their own privacy policies.",
     },
     {
-      title: "আপনার অধিকার",
+      title: "Your Rights",
       content:
-        "আপনি যেকোনো সময় আপনার সংরক্ষিত তথ্য দেখতে, সংশোধন করতে অথবা মুছে ফেলার অনুরোধ করতে পারেন। অনুরোধের জন্য contact@bananiclinic.com -এ ইমেইল করুন অথবা 01711170890 নম্বরে কল দিন।",
+        "You may request to view, correct, or delete your stored information at any time. To submit a request, email contact@bananiclinic.com or call 01711170890.",
     },
     {
-      title: "নীতির পরিবর্তন",
+      title: "Policy Updates",
       content:
-        "এই প্রাইভেসি পলিসিতে যেকোনো পরিবর্তন এই পেজে আপডেট করা হবে। নিয়মিত পরিদর্শনের জন্য অনুরোধ করা হলো।",
+        "Any changes to this Privacy Policy will be updated on this page. We recommend reviewing this page periodically.",
     },
   ],
   contactBlock: {
-    title: "যোগাযোগ",
-    desc: "গোপনীয়তা সংক্রান্ত যেকোনো প্রশ্নের জন্য —",
+    title: "Contact",
+    desc: "For any privacy-related questions:",
     ...contact,
   },
 };
 
 export const termsOfService = {
   testId: "terms-page",
-  eyebrow: "শর্তাবলী",
-  title: "ব্যবহারের শর্তাবলী — স্বচ্ছতা ও ন্যায্যতার অঙ্গীকার",
+  eyebrow: "Terms of Service",
+  title: "Terms of Service: A Commitment to Transparency and Fairness",
   intro:
-    "Banani Clinic Ltd. এর ওয়েবসাইট ও সেবা ব্যবহারের পূর্বে অনুগ্রহ করে নিম্নলিখিত শর্তাবলী মনোযোগ সহকারে পড়ুন।",
-  lastUpdated: "জানুয়ারি ২০২৬",
+    "Please read the following terms carefully before using the website and services of Banani Clinic Ltd.",
+  lastUpdated: "January 2026",
   numberSections: true,
   sections: [
     {
-      title: "শর্তাবলীর গ্রহণযোগ্যতা",
+      title: "Acceptance of Terms",
       content:
-        "এই ওয়েবসাইট (bananiclinic.com) ব্যবহার বা চিকিৎসা সেবা গ্রহণ করে আপনি স্বয়ংক্রিয়ভাবে নিচে উল্লেখিত সকল শর্তাবলী মেনে নিচ্ছেন। আপনি যদি কোনো শর্ত মানতে না চান, অনুগ্রহ করে এই ওয়েবসাইট ব্যবহার থেকে বিরত থাকুন।",
+        "By using this website (bananiclinic.com) or receiving clinical services, you agree to all terms stated below. If you do not agree with any term, please refrain from using this website.",
     },
     {
-      title: "চিকিৎসা পরামর্শ ও দাবিত্যাগ",
+      title: "Medical Information and Disclaimer",
       content:
-        "আমাদের ওয়েবসাইটে প্রদত্ত যেকোনো তথ্য (Cleft Lip & Palate, Filariasis সংক্রান্ত আর্টিকেল সহ) শিক্ষামূলক ও তথ্যমূলক উদ্দেশ্যে। এটি কোনোভাবেই ব্যক্তিগত পেশাদার চিকিৎসা পরামর্শ, রোগ নির্ণয় বা চিকিৎসার বিকল্প নয়। নির্দিষ্ট চিকিৎসার জন্য সর্বদা যোগ্য চিকিৎসকের সাথে সরাসরি পরামর্শ করুন।",
+        "All information provided on our website, including articles related to cleft lip and palate or filariasis, is for educational and informational purposes only. It is not a substitute for personalized professional medical advice, diagnosis, or treatment. Always consult a qualified clinician directly for condition-specific care.",
     },
     {
-      title: "অ্যাপয়েন্টমেন্ট ও পেমেন্ট",
+      title: "Appointments and Payment",
       content:
-        "অনলাইন অ্যাপয়েন্টমেন্ট রিকোয়েস্ট একটি বুকিং অনুরোধ মাত্র — সম্পূর্ণ অ্যাপয়েন্টমেন্ট আমাদের কোঅর্ডিনেটরের সাথে যোগাযোগের পর নিশ্চিত হয়। চিকিৎসা ফি ও পেমেন্ট পদ্ধতি ক্লিনিকে বিস্তারিত জানানো হবে। অগ্রিম পেমেন্ট প্রযোজ্য চিকিৎসার ক্ষেত্রে রিফান্ড নীতি প্রযোজ্য হবে।",
+        "An online appointment request is only a request for an appointment. The appointment is confirmed after communication with our coordinator. Treatment fees and payment methods will be explained at the clinic. For procedures requiring advance payment, the applicable refund policy will apply.",
     },
     {
-      title: "অ্যাপয়েন্টমেন্ট পরিবর্তন ও বাতিল",
+      title: "Appointment Rescheduling and Cancellation",
       content:
-        "অ্যাপয়েন্টমেন্ট পরিবর্তন বা বাতিল করতে কমপক্ষে ২৪ ঘণ্টা আগে কল বা WhatsApp এর মাধ্যমে জানানোর অনুরোধ করা হলো। বারবার অনুপস্থিতির ক্ষেত্রে ভবিষ্যতে অ্যাপয়েন্টমেন্ট প্রদানে সীমাবদ্ধতা আরোপিত হতে পারে।",
+        "To reschedule or cancel an appointment, please inform us by phone or WhatsApp at least 24 hours in advance. Repeated missed appointments may result in limitations on future appointment availability.",
     },
     {
-      title: "ছবি ও কনটেন্টের মেধাস্বত্ব",
+      title: "Images and Content Rights",
       content:
-        "এই ওয়েবসাইটের সকল লোগো, ছবি, লেখা, ডিজাইন, ভিডিও Banani Clinic Ltd. এর মেধাস্বত্ব। লিখিত অনুমতি ছাড়া কোনো কনটেন্ট কপি, পুনঃপ্রকাশ বা বাণিজ্যিক ব্যবহার সম্পূর্ণ নিষিদ্ধ।",
+        "All logos, images, written content, designs, and videos on this website are the intellectual property of Banani Clinic Ltd. Copying, republishing, or using any content commercially without written permission is strictly prohibited.",
     },
     {
-      title: "ব্যবহারকারীর আচরণ",
+      title: "User Conduct",
       content:
-        "আপনি সম্মত হচ্ছেন যে — মিথ্যা তথ্য প্রদান করবেন না, অন্য কারো নামে অ্যাপয়েন্টমেন্ট নেবেন না, ক্লিনিকের পরিবেশ ও কর্মীদের প্রতি সম্মান বজায় রাখবেন, এবং ক্লিনিকের নিয়মাবলী অনুসরণ করবেন।",
+        "You agree not to provide false information, not to schedule appointments under another person's identity, to maintain respect for the clinic environment and staff, and to follow clinic policies.",
     },
     {
-      title: "দায়বদ্ধতার সীমা",
+      title: "Limitation of Liability",
       content:
-        "ওয়েবসাইট ব্যবহারের ফলে কোনো প্রত্যক্ষ বা পরোক্ষ ক্ষতির জন্য Banani Clinic Ltd. দায়ী থাকবে না। চিকিৎসাকালীন স্বাভাবিক ঝুঁকি সম্পর্কে আগেই বিস্তারিত জানানো হবে এবং রোগীর লিখিত সম্মতি গ্রহণ করা হবে।",
+        "Banani Clinic Ltd. will not be liable for any direct or indirect loss resulting from website use. Standard treatment-related risks will be explained in advance, and written patient consent will be obtained when required.",
     },
     {
-      title: "প্রযোজ্য আইন",
+      title: "Governing Law",
       content:
-        "এই ওয়েবসাইট এবং Banani Clinic Ltd. এর সকল কার্যক্রম গণপ্রজাতন্ত্রী বাংলাদেশের প্রচলিত আইন দ্বারা পরিচালিত। কোনো বিরোধের ক্ষেত্রে ঢাকার আদালতের এখতিয়ারভুক্ত হবে।",
+        "This website and all activities of Banani Clinic Ltd. are governed by the laws of the People's Republic of Bangladesh. Any dispute shall fall under the jurisdiction of the courts of Dhaka.",
     },
     {
-      title: "শর্তাবলী পরিবর্তন",
+      title: "Changes to Terms",
       content:
-        "এই শর্তাবলী যেকোনো সময় আপডেট হতে পারে। আপডেটের পর ওয়েবসাইট ব্যবহার অব্যাহত রাখলে নতুন শর্তাবলী মেনে নেওয়া বলে গণ্য হবে।",
+        "These terms may be updated at any time. Continued use of the website after updates are published will be considered acceptance of the revised terms.",
     },
   ],
   contactBlock: {
-    title: "প্রশ্ন বা মতামত?",
-    desc: "শর্তাবলী সংক্রান্ত প্রশ্নের জন্য —",
+    title: "Questions or Feedback?",
+    desc: "For questions about these Terms of Service:",
     ...contact,
   },
 };
