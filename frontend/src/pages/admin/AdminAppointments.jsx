@@ -1,6 +1,7 @@
 // Admin appointments management
 import { useEffect, useState } from "react";
 import { Phone, Mail, MessageCircle, Trash2, Calendar } from "lucide-react";
+import ConfirmDeleteModal from "@/components/admin/ConfirmDeleteModal";
 import { api } from "@/lib/api";
 import { appointmentStatuses } from "@/content/admin";
 
@@ -11,6 +12,7 @@ export default function AdminAppointments() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("all");
+  const [deleteTarget, setDeleteTarget] = useState(null);
 
   const fetchItems = async () => {
     setLoading(true);
@@ -31,10 +33,16 @@ export default function AdminAppointments() {
     setItems((prev) => prev.map((it) => (it.id === id ? data : it)));
   };
 
-  const handleDelete = async (id) => {
-    if (!window.confirm("এই অ্যাপয়েন্টমেন্ট মুছে ফেলবেন?")) return;
-    await api.delete(`/appointments/${id}`);
-    setItems((prev) => prev.filter((it) => it.id !== id));
+  const handleDelete = (appt) => {
+    setDeleteTarget(appt);
+  };
+
+  const confirmDelete = async () => {
+    if (!deleteTarget) return;
+
+    await api.delete(`/appointments/${deleteTarget.id}`);
+    setItems((prev) => prev.filter((it) => it.id !== deleteTarget.id));
+    setDeleteTarget(null);
   };
 
   const filtered = filter === "all" ? items : items.filter((it) => it.status === filter);
@@ -166,7 +174,7 @@ export default function AdminAppointments() {
                       ))}
                     </select>
                     <button
-                      onClick={() => handleDelete(appt.id)}
+                      onClick={() => handleDelete(appt)}
                       data-testid={`delete-appt-${appt.id}`}
                       className="px-3 py-2 md:px-0 md:py-0 rounded-lg md:rounded-none text-xs text-red-600 hover:text-red-800 font-bnSans flex items-center justify-center gap-1 border md:border-0 border-red-200 md:bg-transparent"
                     >
@@ -180,6 +188,18 @@ export default function AdminAppointments() {
           })}
         </div>
       )}
+
+      <ConfirmDeleteModal
+        isOpen={Boolean(deleteTarget)}
+        onClose={() => setDeleteTarget(null)}
+        onConfirm={confirmDelete}
+        title="অ্যাপয়েন্টমেন্ট মুছে ফেলবেন?"
+        description={
+          deleteTarget?.name
+            ? `${deleteTarget.name} এর অ্যাপয়েন্টমেন্টটি স্থায়ীভাবে মুছে যাবে। পরে এটি ফিরিয়ে আনা যাবে না।`
+            : "এই অ্যাপয়েন্টমেন্টটি স্থায়ীভাবে মুছে যাবে। পরে এটি ফিরিয়ে আনা যাবে না।"
+        }
+      />
     </div>
   );
 }
