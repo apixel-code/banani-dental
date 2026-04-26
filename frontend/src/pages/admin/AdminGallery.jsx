@@ -1,6 +1,7 @@
 // Admin Gallery management - upload, filter, delete
 import { useEffect, useState } from "react";
 import { Trash2, Upload, X, Image as ImageIcon, Plus } from "lucide-react";
+import ConfirmDeleteModal from "@/components/admin/ConfirmDeleteModal";
 import { api } from "@/lib/api";
 import { adminGalleryCategories } from "@/content/admin";
 
@@ -9,6 +10,7 @@ export default function AdminGallery() {
   const [filter, setFilter] = useState("all");
   const [loading, setLoading] = useState(true);
   const [showUpload, setShowUpload] = useState(false);
+  const [deleteTarget, setDeleteTarget] = useState(null);
 
   const fetchItems = async () => {
     setLoading(true);
@@ -24,10 +26,16 @@ export default function AdminGallery() {
     fetchItems();
   }, []);
 
-  const handleDelete = async (id) => {
-    if (!window.confirm("এই ছবিটি স্থায়ীভাবে মুছে ফেলা হবে। নিশ্চিত?")) return;
-    await api.delete(`/gallery/${id}`);
-    setItems((prev) => prev.filter((it) => it.id !== id));
+  const handleDelete = (item) => {
+    setDeleteTarget(item);
+  };
+
+  const confirmDelete = async () => {
+    if (!deleteTarget) return;
+
+    await api.delete(`/gallery/${deleteTarget.id}`);
+    setItems((prev) => prev.filter((it) => it.id !== deleteTarget.id));
+    setDeleteTarget(null);
   };
 
   const filtered = filter === "all" ? items : items.filter((it) => it.category === filter);
@@ -87,7 +95,7 @@ export default function AdminGallery() {
       ) : (
         <div data-testid="admin-gallery-grid" className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {filtered.map((it) => (
-            <GalleryCard key={it.id} item={it} onDelete={() => handleDelete(it.id)} />
+            <GalleryCard key={it.id} item={it} onDelete={() => handleDelete(it)} />
           ))}
         </div>
       )}
@@ -101,6 +109,18 @@ export default function AdminGallery() {
           }}
         />
       )}
+
+      <ConfirmDeleteModal
+        isOpen={Boolean(deleteTarget)}
+        onClose={() => setDeleteTarget(null)}
+        onConfirm={confirmDelete}
+        title="গ্যালারি আইটেম মুছে ফেলবেন?"
+        description={
+          deleteTarget?.title
+            ? `${deleteTarget.title} ছবিটি স্থায়ীভাবে মুছে যাবে। পরে এটি ফিরিয়ে আনা যাবে না।`
+            : "এই ছবিটি স্থায়ীভাবে মুছে যাবে। পরে এটি ফিরিয়ে আনা যাবে না।"
+        }
+      />
     </div>
   );
 }

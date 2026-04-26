@@ -1,12 +1,14 @@
 // Admin Doctors management - CRUD
 import { useEffect, useState } from "react";
 import { Trash2, Plus, X, Upload, Pencil, Users } from "lucide-react";
+import ConfirmDeleteModal from "@/components/admin/ConfirmDeleteModal";
 import { api } from "@/lib/api";
 
 export default function AdminDoctors() {
   const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
   const [editing, setEditing] = useState(null); // null | "new" | doctor obj
+  const [deleteTarget, setDeleteTarget] = useState(null);
 
   const fetchDoctors = async () => {
     setLoading(true);
@@ -22,10 +24,16 @@ export default function AdminDoctors() {
     fetchDoctors();
   }, []);
 
-  const handleDelete = async (id) => {
-    if (!window.confirm("চিকিৎসকের প্রোফাইল মুছে ফেলবেন?")) return;
-    await api.delete(`/doctors/${id}`);
-    setDoctors((prev) => prev.filter((d) => d.id !== id));
+  const handleDelete = (doctor) => {
+    setDeleteTarget(doctor);
+  };
+
+  const confirmDelete = async () => {
+    if (!deleteTarget) return;
+
+    await api.delete(`/doctors/${deleteTarget.id}`);
+    setDoctors((prev) => prev.filter((d) => d.id !== deleteTarget.id));
+    setDeleteTarget(null);
   };
 
   return (
@@ -80,7 +88,7 @@ export default function AdminDoctors() {
                     <Pencil className="w-4 h-4" />
                   </button>
                   <button
-                    onClick={() => handleDelete(d.id)}
+                    onClick={() => handleDelete(d)}
                     data-testid={`delete-doctor-${d.id}`}
                     className="w-9 h-9 rounded-full bg-white text-red-600 hover:bg-red-600 hover:text-white shadow-md flex items-center justify-center transition-colors"
                   >
@@ -115,6 +123,18 @@ export default function AdminDoctors() {
           }}
         />
       )}
+
+      <ConfirmDeleteModal
+        isOpen={Boolean(deleteTarget)}
+        onClose={() => setDeleteTarget(null)}
+        onConfirm={confirmDelete}
+        title="চিকিৎসকের প্রোফাইল মুছে ফেলবেন?"
+        description={
+          deleteTarget?.name
+            ? `${deleteTarget.name} এর প্রোফাইলটি স্থায়ীভাবে মুছে যাবে। পরে এটি ফিরিয়ে আনা যাবে না।`
+            : "এই চিকিৎসকের প্রোফাইলটি স্থায়ীভাবে মুছে যাবে। পরে এটি ফিরিয়ে আনা যাবে না।"
+        }
+      />
     </div>
   );
 }
